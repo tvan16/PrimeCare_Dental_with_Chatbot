@@ -1,0 +1,383 @@
+{% load static %}
+<!-- Tìm PrimeCare gần nhất Section Start -->
+<div class="find-parkway-section" style="margin-top: 60px; margin-bottom: 60px; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; background: transparent;">
+    <div class="container-fluid" style="max-width: 100vw;">
+        <div style="text-align: center; margin-bottom: 32px;">
+            <div style="width: 80px; height: 3px; background: #19335A; margin: 0 auto 16px auto; border-radius: 2px;"></div>
+            <h2 style="font-size: 2rem; font-weight: 700; color: #19335A;">Tìm PrimeCare gần nhất</h2>
+        </div>
+        <div class="row" style="display: flex; justify-content: center; gap: 32px;">
+            <div class="col-lg-4 col-md-6" style="max-width: 420px; flex: 1;">
+                <a href="{% url 'contact' %}" style="text-decoration: none;">
+                    <div style="position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(25,51,90,0.08);">
+                        <img src="{% static 'images/HCM.png' %}" alt="Tp. Hồ Chí Minh" style="width: 100%; height: 220px; object-fit: cover;">
+                        <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 24px 20px 20px 20px; background: linear-gradient(0deg, rgba(25,51,90,0.7) 60%, rgba(25,51,90,0.1) 100%); color: #fff;">
+                            <div style="font-size: 1.3rem; font-weight: 700;">Tp. Hồ Chí Minh</div>
+                            <div style="font-size: 1rem; font-weight: 500;">+2 Phòng khám</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-6" style="max-width: 420px; flex: 1;">
+                <a href="{% url 'contact' %}" style="text-decoration: none;">
+                    <div style="position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(25,51,90,0.08);">
+                        <img src="{% static 'images/HN.png' %}" alt="Hà Nội" style="width: 100%; height: 220px; object-fit: cover;">
+                        <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 24px 20px 20px 20px; background: linear-gradient(0deg, rgba(25,51,90,0.7) 60%, rgba(25,51,90,0.1) 100%); color: #fff;">
+                            <div style="font-size: 1.3rem; font-weight: 700;">Hà Nội</div>
+                            <div style="font-size: 1rem; font-weight: 500;">+2 Phòng khám</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-6" style="max-width: 420px; flex: 1;">
+                <a href="{% url 'contact' %}" style="text-decoration: none;">
+                    <div style="position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(25,51,90,0.08);">
+                        <img src="{% static 'images/CT.png' %}" alt="Các tỉnh" style="width: 100%; height: 220px; object-fit: cover;">
+                        <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 24px 20px 20px 20px; background: linear-gradient(0deg, rgba(25,51,90,0.7) 60%, rgba(25,51,90,0.1) 100%); color: #fff;">
+                            <div style="font-size: 1.3rem; font-weight: 700;">Các tỉnh</div>
+                            <div style="font-size: 1rem; font-weight: 500;">+2 Phòng khám</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Tìm PrimeCare gần nhất Section End -->
+    <!-- Book Appointment Section Start -->
+    <div class="book-appointment">
+        <div class="container">
+            <div class="row section-row align-items-center">
+                <div class="col-lg-6">
+                    <!-- Tiêu đề Phần Start -->
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp">Đặt Lịch Hẹn</h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">Đặt lịch khám nha khoa trực tuyến với PrimeCare</h2>
+                    </div>
+                    <!-- Tiêu đề Phần End -->
+                </div>
+
+                <div class="col-lg-6">
+                    <!-- Nội dung Phần Start -->
+                    <div class="section-title-content wow fadeInUp" data-wow-delay="0.25s">
+                        <p>Sẵn sàng thực hiện bước tiếp theo để có nụ cười khỏe mạnh hơn? Sử dụng hệ thống đặt lịch trực tuyến dễ dàng của chúng tôi để lên lịch hẹn. Chỉ cần chọn ngày và giờ thuận tiện, cung cấp một số thông tin cơ bản, và chúng tôi sẽ lo phần còn lại.</p>
+                    </div>
+                    <!-- Nội dung Phần End -->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <!-- Sidebar Đặt Lịch Start -->
+                    <div class="book-appointment-sidebar">
+                        <!-- Khung Giờ Làm Việc Start -->
+                        <div class="working-time-box wow fadeInUp">
+                            <div class="working-box-title">
+                                <h3>Giờ Làm Việc</h3>
+                            </div>
+                            <div class="working-time-list">
+                                <ul>
+                                    <li><span>Thứ Hai - Thứ Sáu</span> 8:00 - 19:00 </li>
+                                    <li><span>Thứ Bảy</span> 7:00 - 18:00 </li>
+                                    <li><span>Chủ Nhật</span> 7:00 - 16:00 </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Khung Giờ Làm Việc End -->
+
+                        <!-- Hộp CTA Start -->
+                        <div class="section-cta-box wow fadeInUp" data-wow-delay="0.25s">
+                            <div class="icon-box">
+                                <img src="{% static 'images/icon-faqs-cta-box.svg' %}" alt="Khẩn Cấp">
+                            </div>
+                            <div class="section-cta-content">
+                                <p>Chúng tôi luôn chăm sóc nụ cười của bạn</p>
+                                <h3>Hỗ trợ khẩn cấp 24/7</h3>
+                                <span>659-989-698565</span>
+                            </div>
+                        </div>
+                        <!-- Hộp CTA End -->
+                    </div>
+                    <!-- Sidebar Đặt Lịch End -->
+                </div>
+
+                <div class="col-lg-8">
+                    <!-- Biểu Mẫu Đặt Lịch Start -->
+                    <div class="appointment-form wow fadeInUp" data-wow-delay="0.25s">
+                        <div class="appointment-form-content">
+                            <p>Điền thông tin vào biểu mẫu dưới đây để yêu cầu lịch hẹn. Chúng tôi sẽ xác nhận thời gian và gửi cho bạn một lời nhắc.</p>
+                        </div>
+                        <!-- Form Start -->
+                        <form id="appointmentForm" action="{% url 'book_appointment' %}" method="POST" data-toggle="validator">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="form-group col-md-6 mb-4">
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Nhập Họ và Tên" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-md-6 mb-4">
+                                    <input type="email" name="email" class="form-control" id="email" placeholder="Nhập Email" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-md-6 mb-4">
+                                    <input type="text" name="location" class="form-control" id="location" placeholder="Nhập Địa Chỉ">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-md-6 mb-4">
+                                    <input type="tel" name="recordno" class="form-control" id="recordno" placeholder="Số Điện Thoại" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-md-6 mb-4">
+                                    <input type="date" name="date" class="form-control" id="date" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-md-6 mb-4">
+                                    <div class="time-picker-container">
+                                        <input type="time" name="time" class="form-control" id="time" required>
+                                        <button type="button" class="time-ok-btn" id="timeOkBtn" style="display:none;margin-left:8px;">OK</button>
+                                    </div>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="appointment-form-title">
+                                    <h3>Lý Do Khám</h3>
+                                </div>
+
+                                <div class="appointment-reason">
+                                    <div class="reason-box">
+                                        <input type="radio" id="routine" name="reason" value="Routine Checkup" checked>
+                                        <label for="routine">Khám tổng quát</label>
+                                    </div>                                      
+                                    <div class="reason-box">
+                                        <input type="radio" id="new" name="reason" value="New Patient Visit">
+                                        <label for="new">Khám lần đầu</label>
+                                    </div>
+                                    <div class="reason-box">
+                                        <input type="radio" id="specific" name="reason" value="Specific Concern">
+                                        <label for="specific">Vấn đề cụ thể</label>
+                                    </div>
+                                </div>
+                                
+                                <!-- Thêm box text cho vấn đề cụ thể - ban đầu ẩn đi -->
+                                <div id="specificIssueContainer" class="col-md-12 mt-3" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="specificIssueDetail" class="form-label" style="font-weight:600; font-size:16px; color:#6247ea;">Mô tả vấn đề răng miệng bạn đang gặp phải</label>
+                                        <textarea name="specificIssueDetail" id="specificIssueDetail" class="form-control specific-issue-textarea" rows="7" placeholder="Vui lòng mô tả chi tiết vấn đề răng miệng bạn đang gặp phải (càng chi tiết càng tốt, ví dụ: đau răng, chảy máu, ê buốt, v.v.)..."></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn-default">Đặt Lịch Hẹn</button>
+                                    {% comment %} <div id="msgSubmit" class="h3 hidden"></div> {% endcomment %}
+                                </div>
+                            </div>
+                        </form>
+                        <!-- Form End -->
+                    </div>
+                    <!-- Biểu Mẫu Đặt Lịch End -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="{% static 'js/appointment.v2.js' %}?v=1.0.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+.reason-buttons {
+    margin-bottom: 1.5rem;
+}
+.reason-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f7f7fb;
+    border-radius: 16px;
+    border: 2px solid #e0e0e0;
+    padding: 18px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.04);
+    user-select: none;
+}
+.reason-btn i {
+    margin-right: 10px;
+    font-size: 1.3em;
+    color: #1976D2;
+}
+.reason-btn input:checked + span,
+.reason-btn input:focus + span {
+    color: #fff;
+    background: linear-gradient(90deg, #34c3ff 0%, #1976D2 100%);
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(25, 118, 210, 0.10);
+    padding: 18px 0;
+}
+.reason-btn input:checked + span i {
+    color: #fff;
+}
+.reason-btn:hover {
+    border-color: #1976D2;
+    background: #e3f2fd;
+}
+
+/* Style cho time picker */
+.time-picker-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+input[type="time"] {
+    padding: 12px 15px;
+    border: 2px solid #e1e4e8;
+    border-radius: 12px;
+    font-size: 16px;
+    color: #333;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    width: 100%;
+}
+
+input[type="time"]:focus {
+    border-color: #6247ea;
+    box-shadow: 0 0 0 4px rgba(98, 71, 234, 0.15);
+    outline: none;
+}
+
+.time-close-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 5px;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.time-close-btn:hover {
+    color: #6247ea;
+}
+
+.time-close-btn.show {
+    display: block;
+}
+
+/* Style cho phần lý do khám */
+.appointment-reason {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 25px 0;
+    padding: 0 15px;
+}
+
+.reason-box {
+    flex: 1;
+    min-width: 200px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.reason-box input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.reason-box label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    border: 2px solid #e1e4e8;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 100px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #333;
+}
+
+.reason-box label i {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #6247ea;
+    transition: all 0.3s ease;
+}
+
+.reason-box label:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    border-color: #6247ea;
+    background: #f0f2f5;
+}
+
+.reason-box input[type="radio"]:checked + label {
+    background: linear-gradient(135deg, #6247ea 0%, #8362ff 100%);
+    color: white;
+    border-color: #6247ea;
+    box-shadow: 0 8px 25px rgba(98, 71, 234, 0.3);
+    transform: translateY(-3px);
+}
+
+.reason-box input[type="radio"]:checked + label i {
+    color: white;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .reason-box {
+        flex: 0 0 100%;
+    }
+    
+    .reason-box label {
+        height: 80px;
+        padding: 15px;
+    }
+}
+
+.specific-issue-textarea {
+    min-height: 160px;
+    font-size: 17px;
+    border: 2px solid #6247ea;
+    border-radius: 14px;
+    padding: 18px 16px;
+    resize: vertical;
+    background: #f8f9ff;
+    color: #222;
+    transition: border 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 12px rgba(98,71,234,0.06);
+}
+.specific-issue-textarea:focus {
+    border-color: #34c3ff;
+    box-shadow: 0 0 0 4px rgba(52,195,255,0.12);
+    background: #fff;
+    outline: none;
+}
+
+/* Đẩy nút Đặt Lịch Hẹn xuống khi có khung nhập vấn đề cụ thể */
+#specificIssueContainer + .col-md-12 .btn-default {
+    margin-top: 32px !important;
+}
+
+@media (max-width: 768px) {
+    #specificIssueContainer + .col-md-12 .btn-default {
+        margin-top: 20px !important;
+    }
+}
+</style>

@@ -1,0 +1,1060 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}PrimeCare - Nha Khoa Chất Lượng Cao{% endblock %}
+
+{% block content %}
+    <!-- Hero Section Start -->
+    <div class="hero">
+        <div class="hero-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <!-- Hero Content Start -->
+                        <div class="hero-content">
+                            <!-- Section Title Start -->
+                            <div class="section-title">
+                                <h1 data-cursor="-opaque">Vì nụ cười của bạn <img src="{% static 'images/hero-title-img-1.jpg' %}" alt=""> Chăm sóc nha khoa chuyên nghiệp <img src="{% static 'images/hero-title-img-2.jpg' %}" alt=""> Cho một ngày mai rạng rỡ</h1>
+                                <p class="wow fadeInUp" data-wow-delay="0.25s">Trải nghiệm dịch vụ chăm sóc nha khoa chất lượng hàng đầu, tập trung vào sức khỏe và vẻ đẹp của nụ cười. Hãy cùng chúng tôi tạo nên một ngày mai tươi sáng và mạnh khỏe hơn.</p>
+                            </div>
+                            <!-- Section Title End -->
+
+                            <!-- Hero Content Body Start -->
+                            <div class="hero-content-body">
+                                <!-- Hero Counter Box Start -->
+                                <div class="hero-counter-box">
+                                    <h2><span class="counter">24</span>X 7</h2>
+                                    <p>Dịch vụ hỗ trợ khẩn cấp</p>
+                                </div>
+                                <!-- Hero Counter Box End -->
+
+                                <!-- Hero Counter Box Start -->
+                                <div class="hero-counter-box">
+                                    <h2><span class="counter">25</span>K</h2>
+                                    <p>Bệnh nhân đã hồi phục</p>
+                                </div>
+                                <!-- Hero Counter Box End -->
+
+                                <!-- Hero Counter Box Start -->
+                                <div class="hero-counter-box">
+                                    <h2><span class="counter">15</span>+</h2>
+                                    <p>Năm kinh nghiệm nha khoa</p>
+                                </div>
+                                <!-- Hero Counter Box End -->
+                            </div>
+                            <!-- Hero Content Body End -->
+
+                            <!-- Hero Content Footer Start -->
+                            <div class="hero-content-footer wow fadeInUp" data-wow-delay="0.5s">
+                                <a href="{% url 'contact' %}" class="btn-default">Đặt lịch ngay</a>
+                                <a href="{% url 'faqs' %}" class="btn-default btn-highlighted">Thắc mắc</a>
+                            </div>
+                            <!-- Hero Content Footer End -->
+                        </div>
+                        <!-- Hero Content End -->                    
+                    </div>
+
+                    <div class="col-lg-6">
+                        <!-- Hero Images Start -->
+                        <div class="hero-image">
+                            <!-- Hero Image Start -->
+                            <div class="hero-img">
+                                <figure class="image-anime reveal">
+                                    <img src="{% static 'images/hero-image.jpg' %}" alt="">
+                                </figure>
+                            </div>
+                            <!-- Hero Image End -->
+
+                            <!-- Company Service Rating Box Start -->
+                            <div class="company-service-rating">
+                                <!-- Company Rating Icon Start -->
+                                <div class="company-rating-icon">
+                                    <ul>
+                                        <li>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- Company Rating Icon End -->
+
+                                <!-- Company Rating Content Start -->
+                                <div class="company-rating-content">
+                                    <h3>Dịch vụ tiêu chuẩn 5 sao </h3>
+                                    <p>Phòng khám nha khoa tốt là cở sở cho một xã hội văn minh, tươi đẹp.</p>
+                                </div>
+                                <!-- Company Rating Content End -->
+                            </div>
+                            <!-- Company Service Rating Box End -->
+                        </div>
+                        <!-- Hero Images End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Our Cta Box Start -->
+        <div class="our-cta-box">
+            <div class="container">
+                <!-- Cta Content Box Start -->
+                <div class="row cta-content-box">
+                    <div class="col-lg-4 col-md-6">
+                        <!-- Cta Item Start -->
+                        <div class="cta-item wow fadeInUp">
+                            <div class="icon-box">
+                                <img src="{% static 'images/icon-phone.svg' %}" alt="">
+                            </div>
+                            <div class="cta-item-content">
+                                <h3>Liên hệ chúng tôi khi bạn cần tư vấn về nha khoa</h3>
+                                <p>(+84) 789 987 645</p>
+                            </div>
+                        </div>
+                        <!-- Cta Item End -->                    
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <!-- Cta Item Start -->
+                        <div class="cta-item wow fadeInUp" data-wow-delay="0.25s">
+                            <div class="icon-box">
+                                <img src="{% static 'images/icon-watch.svg' %}" alt="">
+                            </div>
+                            <div class="cta-item-content">
+                                <h3>Giờ mở cửa</h3>
+                                <p>Từ Thứ hai đến Thứ bảy - Từ 8:00 đến 20:00</p>
+                            </div>
+                        </div>
+                        <!-- Cta Item End -->                    
+                    </div>
+
+                    <div class="col-lg-4 col-md-12">
+                        <div class="cta-btn wow fadeInUp" data-wow-delay="0.5s">
+                            <a href="{% url 'contact' %}" class="btn-default">Đặt lịch ngay</a>
+                        </div>            
+                    </div>
+                </div>
+                <!-- Cta Content Box End -->
+            </div>
+        </div>
+        <!-- Our Cta Box End -->
+    </div>
+    <!-- Hero Section End -->
+
+    <!-- About Us Section Start -->
+    <div class="about-us">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-1 order-2">
+                    <!-- About Us Image Start -->
+                    <div class="about-image">
+                        <!-- About Image Start -->
+                        <div class="about-img">
+                            <figure class="image-anime">
+                                <img src="{% static 'images/about-image.jpg' %}" alt="">
+                            </figure>
+                        </div>
+                        <!-- About Image End -->
+
+                        <!-- Company Experience Start -->
+                        <div class="company-experience">
+                            <div class="company-experience-box">
+                                <div class="company-experience-counter">
+                                    <h2><span class="counter">25</span>+</h2>
+                                </div>
+                                <div class="company-experience-content">
+                                    <p>Năm kinh nghiệm trong lĩnh vực sức khỏe răng miệng</p>
+                                </div>
+                            </div>                            
+                        </div>
+                        <!-- Company Experience End -->
+                    </div>
+                    <!-- About Us Image End -->
+                </div>
+
+                <div class="col-lg-6 order-lg-2 order-1">
+                    <!-- About Us Content Start -->
+                    <div class="about-us-content">
+                        <!-- Section Title Start -->
+                        <div class="section-title">
+                            <h3 class="wow fadeInUp">Về chúng tôi</h3>
+                            <h2 class="text-anime-style-3" data-cursor="-opaque">Cam kết tuyệt đối với sức khỏe và vẻ đẹp nơi nụ cười của bạn</h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.25s">Với số lượng phòng khám trải dài trên thế giới, mục tiêu của phòng khám chúng tôi là cung cấp dịch vụ nha khoa thân thiện, chu đáo và mức độ cao nhất về các phương pháp điều trị nha khoa tổng quát, thẩm mỹ và chuyên khoa</p>
+                        </div>
+                        <!-- Section Title End -->
+
+                        <!-- About Us Body Start -->
+                        <div class="about-us-body wow fadeInUp" data-wow-delay="0.5s">
+                            <!-- About Body Item Start -->
+                            <div class="about-body-item">
+                                <div class="about-counter">
+                                    <h2><span class="counter">98</span>%</h2>
+                                </div>
+                                <div class="about-counter-content">
+                                    <p>Thành công trong điều trị Invisalign</p>
+                                </div>
+                            </div>
+                            <!-- About Body Item End -->
+
+                            <!-- About Body Item Start -->
+                            <div class="about-body-item">
+                                <div class="about-counter">
+                                    <h2><span class="counter">100</span>%</h2>
+                                </div>
+                                <div class="about-counter-content">
+                                    <p>Khách hàng hài lòng </p>
+                                </div>
+                            </div>
+                            <!-- About Body Item End -->
+                        </div>
+                        <!-- About Us Body End -->
+
+                        <!-- About Us Footer Start -->
+                        <div class="about-us-footer wow fadeInUp" data-wow-delay="0.75s">
+                            <!-- About Us Footer Btn Start -->
+                            <div class="about-us-footer-btn">
+                                <a href="{% url 'about' %}" class="btn-default">Tìm hiểu thêm</a>
+                            </div>
+                            <!-- About Us Footer Btn End -->
+
+                            <!-- About Company Founder Start -->
+                            <div class="about-company-founder">
+                                <!-- Company Founder Image Start -->
+                                <div class="company-founder-image">
+                                    <figure class="image-anime">
+                                        <img src="{% static 'images/about-company-founder-img.jpg' %}" alt="">
+                                    </figure>
+                                </div>
+                                <!-- Company Founder Image End -->
+
+                                <!-- Company Founder Content Start -->
+                                <div class="company-founder-content">
+                                    <h3>Dianne Russell</h3>
+                                    <p>Co founder</p>
+                                </div>
+                                <!-- Company Founder Content End -->
+                            </div>
+                            <!-- About Company Founder End -->                            
+                        </div>
+                        <!-- About Us Footer End -->
+                    </div>
+                    <!-- About Us Content End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About Us Section End -->
+
+    <!-- Our Services Section Start -->
+    <div class="our-service">
+        <div class="container">
+            <div class="row section-row align-items-center">
+                <div class="col-lg-8">
+                    <!-- Section Title Start -->
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp">Dịch vụ của chúng tôi</h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">Dịch vụ chăm sóc răng miệng vì một nụ cười tươi sáng</h2>
+                    </div>
+                    <!-- Section Title End -->
+                </div>
+
+                <div class="col-lg-4">
+                    <!-- Section Btn Start -->
+                    <div class="section-btn wow fadeInUp">
+                        <a href="{% url 'service_list' %}" class="btn-default">Xem tất cả dịch vụ</a>
+                    </div>
+                    <!-- Section Btn End -->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <!-- Service Item Start -->
+                    <div class="service-item wow fadeInUp">
+                        <!-- Bắt đầu tiêu đề dịch vụ -->
+                        <div class="service-header">
+                            <!-- Bắt đầu hộp mục dịch vụ -->
+                            <div class="service-item-box">
+                                <div class="icon-box">
+                                    <img src="{% static 'images/icon-service-1.svg' %}" alt="">
+                                </div>
+                                <div class="service-item-content">
+                                    <a href="{% url 'service_detail' 'nha-khoa-tong-quat' %}">
+                                        <h3>Nha Khoa Tổng Quát</h3>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Kết thúc hộp mục dịch vụ -->
+                    
+                            <!-- Bắt đầu đọc thêm dịch vụ -->
+                            <div class="service-readmore">
+                                <a href="{% url 'service_detail' 'nha-khoa-tong-quat' %}">
+                                    <img src="{% static 'images/arrow-accent.svg' %}" alt="">
+                                </a>
+                            </div>
+                            <!-- Kết thúc đọc thêm dịch vụ -->
+                        </div>
+                        <!-- Kết thúc tiêu đề dịch vụ -->
+                    
+                        <!-- Bắt đầu nội dung dịch vụ -->
+                        <div class="service-body">
+                            <p>Nha khoa tổng quát bao gồm các dịch vụ chăm sóc răng miệng cơ bản và toàn diện.</p>
+                        </div>
+                        <!-- Kết thúc nội dung dịch vụ -->
+                    
+                        <!-- Bắt đầu hình ảnh dịch vụ -->
+                        <div class="service-image">
+                            <a href="{% url 'service_detail' 'nha-khoa-tong-quat' %}">
+                                <figure class="image-anime">
+                                    <img src="{% static 'images/service-img-1.jpg' %}" alt="">
+                                </figure>
+                            </a>
+                        </div>
+                        <!-- Kết thúc hình ảnh dịch vụ -->
+                    </div>
+                    <!-- Service Item End -->
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <!-- Service Item Start -->
+                    <div class="service-item wow fadeInUp" data-wow-delay="0.25s">
+                        <!-- Service Header Start -->
+                        <div class="service-header">
+                            <!-- Service Item Box Start -->
+                            <div class="service-item-box">
+                                <div class="icon-box">
+                                    <img src="{% static 'images/icon-service-2.svg' %}" alt="">
+                                </div>
+                                <div class="service-item-content">
+                                    <a href="{% url 'service_detail' 'nha-khoa-tham-my' %}">
+                                        <h3>Nha khoa thẩm mỹ</h3>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Service Item Box End -->
+
+                            <!-- Service Readmore Start -->
+                            <div class="service-readmore">
+                                <a href="{% url 'service_detail' 'nha-khoa-tham-my' %}">
+                                    <img src="{% static 'images/arrow-accent.svg' %}" alt="">
+                                </a>
+                            </div>
+                            <!-- Service Readmore End -->
+                        </div>
+                        <!-- Service Header End -->
+
+                        <!-- Service Body Start -->
+                        <div class="service-body">
+                            <p>Nha khoa thẩm mỹ tập trung vào việc cải thiện vẻ ngoài của răng, nướu và nụ cười.</p>
+                        </div>
+                        <!-- Service Body End -->
+
+                        <!-- Service Image Start -->
+                        <div class="service-image">
+                            <a href="{% url 'service_detail' 'nha-khoa-tham-my' %}">
+                                <figure class="image-anime">
+                                    <img src="{% static 'images/service-img-2.jpg' %}" alt="">
+                                </figure>
+                            </a>
+                        </div>
+                        <!-- Service Image End -->
+                    </div>
+                    <!-- Service Item End -->
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <!-- Service Item Start -->
+                    <div class="service-item wow fadeInUp" data-wow-delay="0.5s">
+                        <!-- Service Header Start -->
+                        <div class="service-header">
+                            <!-- Service Item Box Start -->
+                            <div class="service-item-box">
+                                <div class="icon-box">
+                                    <img src="{% static 'images/icon-service-3.svg' %}" alt="">
+                                </div>
+                                <div class="service-item-content">
+                                    <a href="{% url 'service_detail' 'nha-khoa-phuc-hoi' %}">
+                                        <h3>Nha khoa phục hồi</h3>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Service Item Box End -->
+
+                            <!-- Service Readmore Start -->
+                            <div class="service-readmore">
+                                <a href="{% url 'service_detail' 'nha-khoa-phuc-hoi' %}">
+                                    <img src="{% static 'images/arrow-accent.svg' %}" alt="">
+                                </a>
+                            </div>
+                            <!-- Service Readmore End -->
+                        </div>
+                        <!-- Service Header End -->
+
+                        <!-- Service Body Start -->
+                        <div class="service-body">
+                            <p>Nha khoa phục hồi tập trung vào khôi phục chức năng và thẩm mỹ của răng.</p>
+                        </div>
+                        <!-- Service Body End -->
+
+                        <!-- Service Image Start -->
+                        <div class="service-image">
+                            <a href="{% url 'service_detail' 'nha-khoa-phuc-hoi' %}">
+                                <figure class="image-anime">
+                                    <img src="{% static 'images/service-img-3.jpg' %}" alt="">
+                                </figure>
+                            </a>
+                        </div>
+                        <!-- Service Image End -->
+                    </div>
+                    <!-- Service Item End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Services Section End -->
+
+    <!-- Our Expertise Section Start -->
+    <div class="our-expertise">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <!-- Nội dung Chuyên môn Start -->
+                    <div class="expertise-content">
+                        <!-- Tiêu đề Phần Start -->
+                        <div class="section-title">
+                            <h3 class="wow fadeInUp">Chuyên môn</h3>
+                            <h2 class="text-anime-style-3" data-cursor="-opaque">
+                                Cam kết vì sức khỏe răng miệng và nụ cười của bạn
+                            </h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.25s">
+                                Bác sĩ chuyên khoa luôn sẵn sàng đáp ứng mọi nhu cầu của bạn. Chúng tôi có mặt tại hơn 150 địa điểm với cơ sở vật chất hiện đại và đội ngũ bác sĩ giàu kinh nghiệm.
+                            </p>
+                        </div>
+                        <!-- Tiêu đề Phần End -->
+
+                        <!-- Nội dung Chuyên môn Start -->
+                        <div class="expertise-body">
+                            <!-- Hộp Nội dung Chuyên môn Start -->
+                            <div class="expertise-list-box wow fadeInUp" data-wow-delay="0.5s">
+                                <div class="expertise-list-title">
+                                    <h3>Nhu cầu của bệnh nhân luôn được ưu tiên hàng đầu</h3>
+                                </div>
+                                <div class="expertise-list-content">
+                                    <p>
+                                        Bác sĩ chuyên khoa luôn sẵn sàng đáp ứng mọi nhu cầu của bạn. Chúng tôi có mặt tại hơn 150 địa điểm với cơ sở vật chất hiện đại và đội ngũ bác sĩ giàu kinh nghiệm.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Hộp Nội dung Chuyên môn End -->
+
+                            <!-- Hộp Nội dung Chuyên môn Start -->
+                            <div class="expertise-list-box wow fadeInUp" data-wow-delay="0.75s">
+                                <div class="expertise-list-title">
+                                    <h3>Đơn vị hàng đầu trong lĩnh vực giáo dục nha khoa</h3>
+                                </div>
+                                <div class="expertise-list-content">
+                                    <p>
+                                        Chúng tôi luôn ưu tiên đào tạo các nha sĩ từ khắp nơi trên thế giới và chia sẻ những tiến bộ mới nhất trong việc chăm sóc và điều trị cho bệnh nhân.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Hộp Nội dung Chuyên môn End -->
+                        </div>
+                        <!-- Nội dung Chuyên môn End -->
+                    </div>
+                    <!-- Nội dung Chuyên môn End -->
+                </div>
+
+                <div class="col-lg-6">
+                    <!-- Expertise Image Start -->
+                    <div class="expertise-image">
+                        <!-- Expertise Img Start -->
+                        <div class="expertise-img-1">
+                            <figure class="image-anime reveal">
+                                <img src="{% static 'images/expertise-img-1.jpg' %}" alt="">
+                            </figure>
+                        </div>
+                        <!-- Expertise Img End -->
+
+                        <!-- Expertise Img Start -->
+                        <div class="expertise-img-2">
+                            <figure class="image-anime reveal">
+                                <img src="{% static 'images/expertise-img-2.jpg' %}" alt="">
+                            </figure>
+                        </div>
+                        <!-- Expertise Img End -->
+
+                        <!-- Expert Doctor Start -->
+                        <div class="expert-doctor">
+                            <div class="icon-box">
+                                <img src="{% static 'images/icon-phone.svg' %}" alt="">
+                            </div>
+                            <div class="expert-doctor-content">
+                                <h3><span class="counter">250</span>+</h3>
+                                <p>Chuyên gia đầu ngành về Răng - Hàm - Mặt</p>
+                            </div>
+                        </div>
+                        <!-- Expert Doctor End -->
+                    </div>
+                    <!-- Expertise Image End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Expertise Section End -->
+
+    <!-- Why Choose Us Section Start -->
+    <div class="why-choose-us">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 order-lg-1 order-1">
+                    <!-- Nội dung Lý do tin tưởng PrimeCare Start -->
+                    <div class="why-choose-content">
+                        <!-- Tiêu đề Phần Start -->
+                        <div class="section-title">
+                            <h3 class="wow fadeInUp">Lý do tin tưởng PrimeCare</h3>
+                            <h2 class="text-anime-style-3" data-cursor="-opaque">Kết quả xuất sắc mà bạn có thể tin tưởng</h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.25s">
+                                Chẩn đoán chính xác các bệnh về răng miệng giúp xây dựng kế hoạch điều trị hiệu quả, giúp duy trì sức khỏe răng miệng và ngăn ngừa các biến chứng sau này.
+                            </p>
+                        </div>
+                        <!-- Tiêu đề Phần End -->
+
+                        <!-- Nút Liên hệ Start -->
+                        <div class="why-choose-btn wow fadeInUp">
+                            <a href="{% url 'contact' %}" class="btn-default btn-border">Liên hệ với chúng tôi</a>
+                        </div>
+                        <!-- Nút Liên hệ End -->
+                    </div>
+                    <!-- Nội dung Lý do tin tưởng PrimeCare End -->
+                </div>
+
+                <div class="col-lg-4 order-lg-2 order-3">
+                    <!-- Hình ảnh Lý do tin tưởng PrimeCare Start -->
+                    <div class="why-choose-image">
+                        <figure>
+                            <img src="{% static 'images/why-choose-image.png' %}" alt="Lý do tin tưởng PrimeCare">
+                        </figure>
+                    </div>
+                    <!-- Hình ảnh Lý do tin tưởng PrimeCare End -->
+                </div>
+
+                <div class="col-lg-4 order-lg-3 order-2">
+                    <!-- Danh sách Lý do tin tưởng PrimeCare Start -->
+                    <div class="why-choose-list wow fadeInUp">
+                        <!-- Mục 1 Start -->
+                        <div class="why-choose-item">
+                            <div class="icon-box">
+                                <img src="{% static 'images/icon-why-choose-1.svg' %}" alt="Dịch vụ khẩn cấp">
+                            </div>
+                            <div class="why-choose-item-content">
+                                <h3>Dịch vụ khẩn cấp</h3>
+                                <p>Mục tiêu của phòng khám là cung cấp dịch vụ nha khoa thân thiện và tận tâm.</p>
+                            </div>
+                        </div>
+                        <!-- Mục 1 End -->
+
+                        <!-- Mục 2 Start -->
+                        <div class="why-choose-item wow fadeInUp" data-wow-delay="0.25s">
+                            <div class="icon-box">
+                                <img src="{% static 'images/icon-why-choose-2.svg' %}" alt="Phản hồi tích cực">
+                            </div>
+                            <div class="why-choose-item-content">
+                                <h3>Phản hồi tích cực từ khách hàng</h3>
+                                <p>Mục tiêu của phòng khám là cung cấp dịch vụ nha khoa thân thiện và tận tâm.</p>
+                            </div>
+                        </div>
+                        <!-- Mục 2 End -->
+
+                        <!-- Mục 3 Start -->
+                        <div class="why-choose-item wow fadeInUp" data-wow-delay="0.5s">
+                            <div class="icon-box">
+                                <img src="{% static 'images/icon-why-choose-3.svg' %}" alt="Đội ngũ giàu kinh nghiệm">
+                            </div>
+                            <div class="why-choose-item-content">
+                                <h3>Đội ngũ giàu kinh nghiệm</h3>
+                                <p>Mục tiêu của phòng khám là cung cấp dịch vụ nha khoa thân thiện và tận tâm.</p>
+                            </div>
+                        </div>
+                        <!-- Mục 3 End -->
+                    </div>
+                    <!-- Danh sách Lý do tin tưởng PrimeCare End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Why Choose Us Section End -->
+
+    <!-- How It Work Section Start -->
+    <div class="how-it-work">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-1 order-2">
+                    <!-- Hình ảnh Quy trình hoạt động Start -->
+                    <div class="how-work-image">
+                        <!-- Hình ảnh Quy trình Start -->
+                        <div class="how-work-img-1">
+                            <figure class="image-anime reveal">
+                                <img src="{% static 'images/how-work-img-1.jpg' %}" alt="Quy trình 1">
+                            </figure>
+                        </div>
+                        <!-- Hình ảnh Quy trình End -->
+
+                        <div class="how-work-img-2">
+                            <figure class="image-anime reveal">
+                                <img src="{% static 'images/how-work-img-2.jpg' %}" alt="Quy trình 2">
+                            </figure>
+                        </div>
+
+                        <div class="how-work-img-3">
+                            <figure class="image-anime reveal">
+                                <img src="{% static 'images/how-work-img-3.jpg' %}" alt="Quy trình 3">
+                            </figure>
+                        </div>
+
+                        <!-- Hình ảnh Bác sĩ Start -->
+                        <div class="doctor-work-img-box">
+                            <figure>
+                                <img src="{% static 'images/expert-doctor-image.png' %}" alt="Bác sĩ chuyên gia">
+                            </figure>
+                        </div>
+                        <!-- Hình ảnh Bác sĩ End -->
+                    </div>
+                    <!-- Hình ảnh Quy trình hoạt động End -->
+                </div>
+
+                <div class="col-lg-6 order-lg-2 order-1">
+                    <!-- Nội dung Quy trình hoạt động Start -->
+                    <div class="how-work-content">
+                        <!-- Tiêu đề Phần Start -->
+                        <div class="section-title">
+                            <h3 class="wow fadeInUp">Quy trình hoạt động</h3>
+                            <h2 class="text-anime-style-3" data-cursor="-opaque">Hành trình chăm sóc sức khỏe răng miệng của bạn</h2>
+                        </div>
+                        <!-- Tiêu đề Phần End -->
+
+                        <!-- Accordion Quy trình Start -->
+                        <div class="faq-accordion how-work-accordion" id="Workaccordion">
+                            <!-- Mục 1 Start -->
+                            <div class="accordion-item wow fadeInUp">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <span>1.</span>Bạn có chấp nhận bảo hiểm không?
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                    data-bs-parent="#Workaccordion">
+                                    <div class="accordion-body">
+                                        <p>Chúng tôi chấp nhận hầu hết các loại bảo hiểm nha khoa lớn. Vui lòng liên hệ với chúng tôi để xác nhận quyền lợi của bạn.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Mục 1 End -->
+                    
+                            <!-- Mục 2 Start -->
+                            <div class="accordion-item wow fadeInUp" data-wow-delay="0.25s">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <span>2.</span>Bạn cung cấp những dịch vụ nào?
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#Workaccordion">
+                                    <div class="accordion-body">
+                                        <p>Chúng tôi cung cấp các dịch vụ nha khoa tổng quát, nha khoa thẩm mỹ và nha khoa phục hồi. Hãy liên hệ để được tư vấn chi tiết.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Mục 2 End -->
+                            
+                            <!-- Mục 3 Start -->
+                            <div class="accordion-item wow fadeInUp" data-wow-delay="0.5s">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        <span>3.</span>Tôi nên đi khám nha khoa bao lâu một lần?
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                    data-bs-parent="#Workaccordion">
+                                    <div class="accordion-body">
+                                        <p>Bạn nên đi khám nha khoa ít nhất 6 tháng một lần để đảm bảo sức khỏe răng miệng luôn ở trạng thái tốt nhất.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Mục 3 End -->
+                        </div>
+                        <!-- Accordion Quy trình End -->
+                    </div>
+                    <!-- Nội dung Quy trình hoạt động End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- How It Work Section End -->
+
+    <!-- Our Testimonial Section Start -->
+    <div class="our-testimonials">
+        <div class="container">
+            <div class="row section-row align-items-center">
+                <div class="col-lg-8">
+                    <!-- Tiêu đề Phần Start -->
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp">Phản hồi từ khách hàng</h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">Những câu chuyện thực tế về sự chăm sóc tuyệt vời và nụ cười tự tin</h2>
+                    </div>
+                    <!-- Tiêu đề Phần End -->
+                </div>
+
+                <div class="col-lg-4">
+                    <!-- Nút Liên hệ Start -->
+                    <div class="section-btn wow fadeInUp">
+                        <a href="{% url 'contact' %}" class="btn-default btn-border">Liên hệ ngay</a>
+                    </div>
+                    <!-- Nút Liên hệ End -->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Slider Phản hồi Start -->
+                    <div class="testimonial-slider">
+                        <div class="swiper">
+                            <div class="swiper-wrapper">
+                                <!-- Mục Phản hồi Start -->
+                                <div class="swiper-slide">
+                                    <div class="testimonial-item">
+                                        <div class="testimonial-header">
+                                            <div class="testimonial-quote">
+                                                <img src="{% static 'images/icon-quote.svg' %}" alt="Phản hồi">
+                                            </div>
+                                            <div class="testimonial-content">
+                                                <p>Bác sĩ Smith và đội ngũ thật tuyệt vời! Ngay từ khi tôi bước vào phòng khám, tôi đã cảm thấy rất thoải mái. Sự chăm sóc và tỉ mỉ trong từng chi tiết thật ấn tượng. Nụ cười của tôi chưa bao giờ trông đẹp như vậy! Tôi luôn cảm thấy lo lắng khi đến nha sĩ, nhưng đội ngũ ở đây đã giúp tôi cảm thấy yên tâm. Họ giải thích mọi thứ rất rõ ràng và luôn đảm bảo tôi cảm thấy thoải mái trong suốt quá trình điều trị. Trải nghiệm nha khoa tốt nhất mà tôi từng có!</p>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-body">
+                                            <div class="author-image">
+                                                <figure class="image-anime">
+                                                    <img src="{% static 'images/author-1.jpg' %}" alt="Khách hàng">
+                                                </figure>
+                                            </div>
+                                            <div class="author-content">
+                                                <h3>Trần Thị Trinh</h3>
+                                                <p>Khách hàng</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Mục Phản hồi End -->
+
+                                <!-- Mục Phản hồi Start -->
+                                <div class="swiper-slide">
+                                    <div class="testimonial-item">
+                                        <div class="testimonial-header">
+                                            <div class="testimonial-quote">
+                                                <img src="{% static 'images/icon-quote.svg' %}" alt="Phản hồi">
+                                            </div>
+                                            <div class="testimonial-content">
+                                                <p>Tôi đã từng rất sợ đến nha sĩ, nhưng đội ngũ ở đây đã thay đổi hoàn toàn suy nghĩ của tôi. Họ không chỉ chuyên nghiệp mà còn rất thân thiện. Từ lúc khám đến lúc điều trị, tôi luôn được giải thích rõ ràng và chăm sóc chu đáo. Kết quả thật tuyệt vời, nụ cười của tôi giờ đây đã tự tin hơn rất nhiều!</p>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-body">
+                                            <div class="author-image">
+                                                <figure class="image-anime">
+                                                    <img src="{% static 'images/author-2.jpg' %}" alt="Khách hàng">
+                                                </figure>
+                                            </div>
+                                            <div class="author-content">
+                                                <h3>Trần Văn Cảnh</h3>
+                                                <p>Khách hàng</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Mục Phản hồi End -->
+
+                                <!-- Mục Phản hồi Start -->
+                                <div class="swiper-slide">
+                                    <div class="testimonial-item">
+                                        <div class="testimonial-header">
+                                            <div class="testimonial-quote">
+                                                <img src="{% static 'images/icon-quote.svg' %}" alt="Phản hồi">
+                                            </div>
+                                            <div class="testimonial-content">
+                                                <p>Tôi thực sự ấn tượng với sự tận tâm và chuyên nghiệp của đội ngũ bác sĩ. Họ đã giúp tôi khắc phục vấn đề răng miệng mà tôi đã gặp phải từ lâu. Quá trình điều trị rất nhẹ nhàng và hiệu quả. Cảm ơn đội ngũ đã mang lại cho tôi một nụ cười tự tin!</p>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-body">
+                                            <div class="author-image">
+                                                <figure class="image-anime">
+                                                    <img src="{% static 'images/author-3.jpg' %}" alt="Khách hàng">
+                                                </figure>
+                                            </div>
+                                            <div class="author-content">
+                                                <h3>Nguyễn Văn Bình</h3>
+                                                <p>Khách hàng</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Mục Phản hồi End -->
+                            </div>
+
+                            <!-- Nút Điều hướng Start -->
+                            <div class="testimonial-btn">
+                                <div class="testimonial-button-prev"></div>
+                                <div class="testimonial-button-next"></div>
+                            </div>
+                            <!-- Nút Điều hướng End -->
+                        </div>
+                    </div>
+                    <!-- Slider Phản hồi End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Testimonial Section End -->
+
+    <!-- Our Transformation Section Start -->
+    <div class="our-transformation">
+        <div class="container">
+            <div class="row section-row align-items-center">
+                <div class="col-lg-9">
+                    <!-- Tiêu đề Phần Start -->
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp">Kết quả thay đổi rõ rệt</h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">Những kết quả ấn tượng mang lại sự thay đổi lớn</h2>
+                    </div>
+                    <!-- Tiêu đề Phần End -->
+                </div>
+
+                <div class="col-lg-3">
+                    <!-- Nút Liên hệ Start -->
+                    <div class="section-btn wow fadeInUp">
+                        <a href="{% url 'contact' %}" class="btn-default">Liên hệ ngay</a>
+                    </div>
+                    <!-- Nút Liên hệ End -->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">					
+                    <!-- Hình ảnh Trước và Sau Start -->
+                    <div class="transformation_image">					
+                        <img src="{% static 'images/transformation-img-1.jpg' %}" alt="Trước khi điều trị">
+                        <img src="{% static 'images/transformation-img-2.jpg' %}" alt="Sau khi điều trị">
+                    </div>
+                    <!-- Hình ảnh Trước và Sau End -->
+                </div>
+
+                <div class="col-md-6">					
+                    <!-- Hình ảnh Trước và Sau Start -->
+                    <div class="transformation_image">					
+                        <img src="{% static 'images/transformation-img-3.jpg' %}" alt="Trước khi điều trị">
+                        <img src="{% static 'images/transformation-img-4.jpg' %}" alt="Sau khi điều trị">
+                    </div>
+                    <!-- Hình ảnh Trước và Sau End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Transformation Section End -->
+
+    <!-- Our Faqs Section Start -->
+    <div class="our-faqs">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <!-- Nội dung Câu hỏi thường gặp Start -->
+                    <div class="our-faqs-content">
+                        <!-- Tiêu đề Phần Start -->
+                        <div class="section-title">
+                            <h3 class="wow fadeInUp">Câu hỏi thường gặp</h3>
+                            <h2 class="text-anime-style-2" data-cursor="-opaque">Tất cả những gì bạn cần biết về chăm sóc răng miệng</h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.25s">
+                                Tìm kiếm câu trả lời nhanh cho các câu hỏi phổ biến về dịch vụ nha khoa, quy trình điều trị và chăm sóc khách hàng của chúng tôi trong mục Hỏi Đáp.
+                            </p>
+                        </div>
+                        <!-- Tiêu đề Phần End -->
+
+                        <!-- Hộp CTA Start -->
+                        <div class="section-cta-box wow fadeInUp" data-wow-delay="0.5s">
+                            <div class="icon-box">
+                                <img src="{% static 'images/icon-faqs-cta-box.svg' %}" alt="Liên hệ">
+                            </div>
+                            <div class="section-cta-content">
+                                <p>Chúng tôi luôn chăm sóc nụ cười của bạn</p>
+                                <h3>Hỗ trợ khẩn cấp 24/7</h3>
+                                <span>659-989-698565</span>
+                            </div>
+                        </div>
+                        <!-- Hộp CTA End -->
+                    </div>  
+                    <!-- Nội dung Câu hỏi thường gặp End -->                  
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="our-faq-section">
+                        <!-- Accordion Câu hỏi thường gặp Start -->
+                        <div class="faq-accordion" id="faqaccordion">
+                            <!-- Mục 1 Start -->
+                            <div class="accordion-item wow fadeInUp">
+                                <h2 class="accordion-header" id="heading1">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                        Bạn cung cấp những dịch vụ nào?
+                                    </button>
+                                </h2>
+                                <div id="collapse1" class="accordion-collapse collapse" aria-labelledby="heading1" data-bs-parent="#faqaccordion">
+                                    <div class="accordion-body">
+                                        <p>Chúng tôi cung cấp dịch vụ nha khoa tổng quát, nha khoa thẩm mỹ và nha khoa phục hồi. Vui lòng liên hệ để được tư vấn chi tiết.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Mục 1 End -->
+
+                            <!-- Mục 2 Start -->
+                            <div class="accordion-item wow fadeInUp" data-wow-delay="0.2s">
+                                <h2 class="accordion-header" id="heading2">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                        Tôi nên đi khám nha khoa bao lâu một lần?
+                                    </button>
+                                </h2>
+                                <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#faqaccordion">
+                                    <div class="accordion-body">
+                                        <p>Bạn nên đi khám nha khoa ít nhất 6 tháng một lần để duy trì sức khỏe răng miệng tốt nhất.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Mục 2 End -->
+
+                            <!-- Mục 3 Start -->
+                            <div class="accordion-item wow fadeInUp" data-wow-delay="0.4s">
+                                <h2 class="accordion-header" id="heading3">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                        Bạn có chấp nhận bảo hiểm không?
+                                    </button>
+                                </h2>
+                                <div id="collapse3" class="accordion-collapse collapse show" aria-labelledby="heading3" data-bs-parent="#faqaccordion">
+                                    <div class="accordion-body">
+                                        <p>Chúng tôi chấp nhận hầu hết các loại bảo hiểm nha khoa lớn. Vui lòng liên hệ với chúng tôi để xác nhận chi tiết.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Mục 3 End -->
+
+                            <!-- Mục 4 Start -->
+                            <div class="accordion-item wow fadeInUp" data-wow-delay="0.6s">
+                                <h2 class="accordion-header" id="heading4">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                        Tôi có thể mong đợi gì trong lần khám đầu tiên?
+                                    </button>
+                                </h2>
+                                <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#faqaccordion">
+                                    <div class="accordion-body">
+                                        <p>Trong lần khám đầu tiên, bác sĩ sẽ kiểm tra tình trạng răng miệng của bạn, chụp X-quang nếu cần và thảo luận về kế hoạch điều trị phù hợp.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Mục 4 End -->
+
+                            <!-- Mục 5 Start -->
+                            <div class="accordion-item wow fadeInUp" data-wow-delay="0.8s">
+                                <h2 class="accordion-header" id="heading5">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                        Bạn có cung cấp dịch vụ nha khoa khẩn cấp không?
+                                    </button>
+                                </h2>
+                                <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#faqaccordion">
+                                    <div class="accordion-body">
+                                        <p>Chúng tôi cung cấp dịch vụ nha khoa khẩn cấp 24/7 để xử lý các trường hợp đau răng hoặc tai nạn nha khoa ngoài giờ.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Mục 5 End --> 
+                        </div>
+                        <!-- Accordion Câu hỏi thường gặp End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Faqs Section End -->
+
+    <!-- Our Latest Blog Section Start -->
+    <div class="our-blog">
+        <div class="container">
+            <div class="row section-row align-items-center">
+                <div class="col-lg-9">
+                    <!-- Tiêu đề Phần Start -->
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp">Tin tức mới nhất</h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">Thông tin mới nhất về nha khoa và lời khuyên chăm sóc răng miệng</h2>
+                    </div>
+                    <!-- Tiêu đề Phần End -->
+                </div>
+
+                <div class="col-lg-3">
+                    <!-- Nút Xem thêm Start -->
+                    <div class="section-btn wow fadeInUp">
+                        <a href="{% url 'blogs:blog_list' %}" class="btn-default">Xem tất cả bài viết</a>
+                    </div>
+                    <!-- Nút Xem thêm End -->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <!-- Mục Blog Start -->
+                    <a href="{% url 'blogs:blog_detail' 'meo-can-thiet-cho-mot-nu-cuoi-khoe' %}" style="text-decoration:none; color:inherit; display:block;">
+                        <div class="blog-item wow fadeInUp" style="cursor:pointer;">
+                            <div class="post-featured-image" data-cursor-text="Xem thêm">
+                                <figure>
+                                    <img src="{% static 'images/post-1.jpg' %}" alt="Mẹo cần thiết cho một nụ cười khỏe">
+                                </figure>
+                            </div>
+                            <div class="post-item-body">
+                                <div class="post-item-content">
+                                    <h3>Mẹo cần thiết cho một nụ cười khỏe</h3>
+                                    <p>Khám răng định kỳ giúp ngăn ngừa sâu răng, phát hiện sớm các dấu hiệu bệnh nướu và duy trì sức khỏe răng miệng.</p>
+                                </div>
+                                <div class="post-readmore-btn">
+                                    <span style="color:#2563eb; font-weight:600;">Tìm hiểu thêm</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Mục Blog End -->
+                </div>
+
+                <div class="col-lg-6">
+                    <!-- Mục Blog Start -->
+                    <a href="{% url 'blogs:blog_detail' 'loi-ich-cua-nieng-rang-tham-my' %}" style="text-decoration:none; color:inherit; display:block;">
+                        <div class="blog-item wow fadeInUp" data-wow-delay="0.25s" style="cursor:pointer;">
+                            <div class="post-featured-image" data-cursor-text="Xem thêm">
+                                <figure>
+                                    <img src="{% static 'images/post-2.jpg' %}" alt="Lợi ích của niềng răng thẩm mỹ">
+                                </figure>
+                            </div>
+                            <div class="post-item-body">
+                                <div class="post-item-content">
+                                    <h3>Lợi ích của niềng răng thẩm mỹ</h3>
+                                    <p>Niềng răng thẩm mỹ không chỉ cải thiện vẻ đẹp của nụ cười mà còn giúp cải thiện sức khỏe răng miệng tổng thể.</p>
+                                </div>
+                                <div class="post-readmore-btn">
+                                    <span style="color:#2563eb; font-weight:600;">Tìm hiểu thêm</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Mục Blog End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Latest Blog Section End -->
+
+    {% include 'includes/appointment.html' %}
+{% endblock %}

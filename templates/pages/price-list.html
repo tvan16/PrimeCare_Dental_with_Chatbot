@@ -1,0 +1,689 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Bảng Giá Dịch Vụ - PrimeCare Dental{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Main Container */
+    .price-container {
+        max-width: 1200px;
+        margin: 40px auto 60px;
+        padding: 0 20px;
+    }
+    
+    /* Page Header */
+    .price-container .price-header {
+        text-align: center;
+        margin-bottom: 40px;
+        position: relative;
+        padding: 50px 0;
+        background-color: #f8f9fd;
+        border-radius: 10px;
+    }
+    
+    .price-container .price-header:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(circle, #e0e0e0 1px, transparent 1px);
+        background-size: 20px 20px;
+        opacity: 0.3;
+        z-index: 0;
+        border-radius: 10px;
+    }
+    
+    .price-container .price-header h1 {
+        position: relative;
+        color: #313B79;
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        z-index: 1;
+    }
+    
+    .price-container .price-header p {
+        position: relative;
+        max-width: 700px;
+        margin: 0 auto;
+        color: #666;
+        font-size: 16px;
+        line-height: 1.6;
+        z-index: 1;
+    }
+    
+    /* Filter Button Group */
+    .price-container .filter-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+    
+    .price-container .filter-btn {
+        background: #fff;
+        color: #313B79;
+        border: 2px solid #e1e5ef;
+        border-radius: 8px;
+        padding: 10px 22px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .price-container .filter-btn.active, .price-container .filter-btn:hover {
+        background: linear-gradient(90deg, #313B79 0%, #1976D2 100%);
+        color: #fff;
+        border-color: #1976D2;
+    }
+    
+    .price-container .filter-btn i {
+        font-size: 18px;
+    }
+    
+    /* Price Section */
+    .price-container .price-section {
+        margin-bottom: 40px;
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 3px 20px rgba(0,0,0,0.06);
+    }
+    
+    .price-container .section-title {
+        background-color: #313B79;
+        color: #fff;
+        padding: 18px 25px;
+        margin: 0;
+        font-size: 20px;
+        font-weight: 600;
+        border-radius: 10px 10px 0 0;
+        display: flex;
+        align-items: center;
+    }
+    
+    .price-container .section-title i {
+        margin-right: 10px;
+        font-size: 22px;
+    }
+    
+    /* Price Table */
+    .price-container .price-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .price-container .price-table thead th {
+        background-color: #f1f5ff;
+        padding: 15px 20px;
+        text-align: left;
+        font-size: 14px;
+        font-weight: 600;
+        color: #555;
+        border-bottom: 1px solid #e1e5ef;
+    }
+    
+    .price-container .price-table thead th.unit-column {
+        text-align: center !important;
+    }
+    
+    .price-container .price-table tbody tr {
+        transition: all 0.2s ease;
+    }
+    
+    .price-container .price-table tbody tr:hover {
+        background-color: #f8f9fd;
+    }
+    
+    .price-container .price-table tbody tr:not(:last-child) {
+        border-bottom: 1px solid #efefef;
+    }
+    
+    .price-container .price-table td {
+        padding: 18px 20px;
+        vertical-align: middle;
+    }
+    
+    /* Column Styling */
+    .price-container .service-column {
+        width: 45%;
+        font-weight: 500;
+        color: #333;
+        font-size: 15px;
+    }
+    
+    .price-container .price-column {
+        width: 30%;
+    }
+    
+    .price-container .unit-column {
+        width: 10%;
+        text-align: center !important;
+        color: #666;
+    }
+    
+    .price-container .action-column {
+        width: 15%;
+        text-align: center;
+    }
+    
+    /* Discount Tag */
+    .price-container .discount-tag {
+        display: inline-block;
+        background-color: #fa9f34;
+        color: white;
+        padding: 4px 10px;
+        border-radius: 16px;
+        margin-left: 10px;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1;
+        vertical-align: middle;
+        box-shadow: 0 2px 8px rgba(250,159,52,0.12);
+    }
+    
+    /* Price Display */
+    .price-container .price-display {
+        margin: 0;
+    }
+    
+    .price-container .price-old {
+        text-decoration: line-through;
+        color: #888;
+        display: block;
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+    
+    .price-container .price-new {
+        color: #e53935;
+        font-weight: 700;
+        font-size: 17px;
+    }
+    
+    .price-container .price-normal {
+        color: #1976D2;
+        font-weight: 700;
+        font-size: 17px;
+    }
+    
+    /* Detail Button */
+    .price-container .detail-btn {
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: #313B79;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .price-container .detail-btn:hover {
+        background-color: #fa9f34;
+        color: white;
+        transform: translateY(-2px);
+    }
+    
+    /* Notes */
+    .price-container .price-notes {
+        background: #f8f9fd;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 30px;
+    }
+    
+    .price-container .note-item {
+        font-style: italic;
+        color: #666;
+        font-size: 14px;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: flex-start;
+    }
+    
+    .price-container .note-item i {
+        margin-right: 8px;
+        color: #fa9f34;
+        margin-top: 3px;
+    }
+    
+    .price-container .note-item:last-child {
+        margin-bottom: 0;
+    }
+    
+    /* Call to Action */
+    .price-container .price-cta {
+        text-align: center;
+        margin-top: 50px;
+        padding: 30px;
+        background-color: #f1f5ff;
+        border-radius: 10px;
+    }
+    
+    .price-container .price-cta h3 {
+        color: #313B79;
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    
+    .price-container .price-cta p {
+        margin-bottom: 20px;
+        color: #666;
+    }
+    
+    .price-container .cta-btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: #fa9f34;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    
+    .price-container .cta-btn:hover {
+        background-color: #313B79;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(49, 59, 121, 0.2);
+    }
+    
+    /* Responsive Styling */
+    @media (max-width: 991px) {
+        .price-container .price-header h1 {
+            font-size: 32px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .price-container .filter-group {
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .price-container .price-header {
+            padding: 30px 0;
+        }
+        
+        .price-container .price-header h1 {
+            font-size: 28px;
+        }
+        
+        .price-container .price-table thead {
+            display: none;
+        }
+        
+        .price-container .price-table, .price-container .price-table tbody, .price-container .price-table tr, .price-container .price-table td {
+            display: block;
+            width: 100%;
+        }
+        
+        .price-container .price-table tr {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e1e5ef;
+            padding-bottom: 15px;
+        }
+        
+        .price-container .price-table td {
+            text-align: right;
+            padding: 12px 15px;
+            position: relative;
+            padding-left: 50%;
+        }
+        
+        .price-container .price-table td:before {
+            content: attr(data-label);
+            position: absolute;
+            left: 15px;
+            width: 45%;
+            text-align: left;
+            font-weight: 600;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        .price-container .service-column, .price-container .price-column, .price-container .unit-column, .price-container .action-column {
+            width: 100%;
+        }
+        
+        .price-container .unit-column {
+            text-align: right !important;
+        }
+        
+        .price-container .action-column {
+            text-align: center;
+            padding-left: 15px !important;
+        }
+        
+        .price-container .action-column:before {
+            display: none;
+        }
+    }
+
+    .price-container .enhanced-header {
+        background: linear-gradient(135deg, #e3f0ff 60%, #e6ecf7 100%);
+        box-shadow: 0 6px 32px rgba(49,59,121,0.08);
+        border-radius: 22px;
+        padding: 56px 32px 44px 32px;
+        margin-bottom: 48px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 210px;
+    }
+    .price-container .enhanced-header:before {
+        content: '';
+        position: absolute;
+        left: 0; top: 0; right: 0; bottom: 0;
+        background-image: radial-gradient(circle, #bfc7e6 1.5px, transparent 1.5px);
+        background-size: 32px 32px;
+        opacity: 0.18;
+        z-index: 0;
+    }
+    .price-container .enhanced-title {
+        color: #313B79;
+        font-size: 2.6rem;
+        font-weight: 800;
+        letter-spacing: -1px;
+        margin-bottom: 18px;
+        text-align: center;
+        z-index: 1;
+        line-height: 1.18;
+    }
+    .price-container .enhanced-desc {
+        color: #555;
+        font-size: 1.18rem;
+        font-weight: 400;
+        max-width: 700px;
+        margin: 0 auto;
+        text-align: center;
+        z-index: 1;
+        line-height: 1.7;
+    }
+    @media (max-width: 768px) {
+        .price-container .enhanced-header {
+            padding: 32px 10px 28px 10px;
+            min-height: 120px;
+        }
+        .price-container .enhanced-title {
+            font-size: 1.5rem;
+        }
+        .price-container .enhanced-desc {
+            font-size: 1rem;
+        }
+    }
+    .price-container .filter-group {
+        margin-top: 0;
+        margin-bottom: 36px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+    <!-- Price List Container Start -->
+    <div class="price-container">
+        <!-- Price Header Start -->
+        <div class="price-header wow fadeInUp enhanced-header">
+            <h1 class="enhanced-title">Bảng Giá Dịch Vụ Nha Khoa</h1>
+            <p class="enhanced-desc">Tham khảo chi phí các dịch vụ nha khoa tại PrimeCare Dental. Giá có thể thay đổi tùy theo nhu cầu điều trị cụ thể của từng khách hàng.</p>
+        </div>
+        <!-- Price Header End -->
+        
+        <!-- Filter Button Group -->
+        <div class="filter-group" id="serviceFilterGroup">
+            <button class="filter-btn active" data-category="all"><i class="fas fa-list"></i> Tất cả</button>
+            <button class="filter-btn" data-category="nieng-rang"><i class="fas fa-teeth"></i> Niềng răng</button>
+            <button class="filter-btn" data-category="implant"><i class="fas fa-tooth"></i> Trồng răng Implant</button>
+            <button class="filter-btn" data-category="tong-quat"><i class="fas fa-notes-medical"></i> Nha khoa tổng quát</button>
+            <button class="filter-btn" data-category="tham-my"><i class="fas fa-magic"></i> Nha khoa thẩm mỹ</button>
+            <button class="filter-btn" data-category="phuc-hoi"><i class="fas fa-tooth"></i> Nha khoa phục hồi</button>
+            <button class="filter-btn" data-category="tre-em"><i class="fas fa-child"></i> Nha khoa trẻ em</button>
+        </div>
+        <!-- Bảng giá dịch vụ Niềng răng -->
+        <div class="price-section" data-category="nieng-rang">
+            <h2 class="section-title"><i class="fas fa-teeth"></i>Niềng răng</h2>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Dịch vụ</th>
+                        <th>Giá</th>
+                        <th class="unit-column">Đơn vị</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="service-column" data-label="Dịch vụ">Niềng răng mắc cài sứ tự động <span class="discount-tag">-15%</span></td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-old">57.000.000đ - 62.000.000đ</span><span class="price-new">48.450.000đ - 55.800.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'nieng-rang-mac-cai-su-tu-dong' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Niềng răng mắc cài sứ/pha lê <span class="discount-tag">-15%</span></td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-old">39.000.000đ - 47.000.000đ</span><span class="price-new">33.150.000đ - 42.300.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'nieng-rang-mac-cai-su-pha-le' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Niềng răng mắc cài kim loại tự động <span class="discount-tag">-15%</span></td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-old">37.000.000đ - 45.000.000đ</span><span class="price-new">31.450.000đ - 40.500.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'nieng-rang-mac-cai-kim-loai-tu-dong' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Niềng răng mắc cài kim loại <span class="discount-tag">-15%</span></td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-old">31.000.000đ - 35.000.000đ</span><span class="price-new">26.350.000đ - 31.500.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'nieng-rang-mac-cai-kim-loai' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Gói niềng trong suốt Essentials by Invisalign <span class="discount-tag">-10%</span></td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-old">56.000.000đ - 59.000.000đ</span><span class="price-new">50.400.000đ - 56.050.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'nieng-rang-trong-suot-essentials' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Gói niềng trong suốt Invisalign Comprehensive 5 năm <span class="discount-tag">-25%</span></td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-old">127.000.000đ - 133.000.000đ</span><span class="price-new">95.250.000đ - 99.750.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'nieng-rang-trong-suot-comprehensive-5-nam' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Gói niềng trong suốt Invisalign Comprehensive 3 năm <span class="discount-tag">-35%</span></td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-old">117.000.000đ - 120.000.000đ</span><span class="price-new">76.050.000đ - 78.000.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'nieng-rang-trong-suot-comprehensive-3-nam' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Gói niềng răng trong suốt Invisalign Moderate <span class="discount-tag">-25%</span></td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-old">98.000.000đ - 101.000.000đ</span><span class="price-new">73.500.000đ - 75.750.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'nieng-rang-trong-suot-moderate' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Gói niềng trong suốt Invisalign Express <span class="discount-tag">-25%</span></td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-old">41.000.000đ - 43.000.000đ</span><span class="price-new">30.750.000đ - 32.250.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'nieng-rang-trong-suot-express' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Gói niềng trong suốt Invisalign Lite <span class="discount-tag">-25%</span></td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-old">73.000.000đ - 77.000.000đ</span><span class="price-new">54.750.000đ - 57.750.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'nieng-rang-trong-suot-lite' %}" class="detail-btn">Chi tiết</a></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Bảng giá dịch vụ Trồng răng Implant -->
+        <div class="price-section" data-category="implant">
+            <h2 class="section-title"><i class="fas fa-tooth"></i>Trồng răng Implant</h2>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Dịch vụ</th>
+                        <th>Giá</th>
+                        <th class="unit-column">Đơn vị</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="service-column" data-label="Dịch vụ">Trụ Implant Straumann BLT SLActive</td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-normal">49.000.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'tru-implant-straumann-blt-slactive' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Trụ Implant Straumann BLT SLA</td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-normal">39.000.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'tru-implant-straumann-blt-sla' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Trụ Implant Neodent Acqua</td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-normal">24.000.000đ - 27.000.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'tru-implant-neodent-acqua' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Trụ Implant Dentium Super Line/ NR line/ SlimLine</td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-normal">15.000.000đ - 17.000.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'tru-implant-dentium' %}" class="detail-btn">Chi tiết</a></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Bảng giá dịch vụ Nha khoa tổng quát -->
+        <div class="price-section" data-category="tong-quat">
+            <h2 class="section-title"><i class="fas fa-notes-medical"></i>Nha khoa tổng quát</h2>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Dịch vụ</th>
+                        <th>Giá</th>
+                        <th class="unit-column">Đơn vị</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="service-column" data-label="Dịch vụ">Điều trị nha chu</td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-normal">850.000đ - 1.600.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'dieu-tri-nha-chu' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Nhổ răng khôn</td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-normal">950.000đ - 1.600.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'nho-rang-khon' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Nhổ răng thường</td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-normal">290.000đ - 370.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'nho-rang-thuong' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Điều trị tuỷ lại</td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-normal">2.000.000đ - 4.000.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'dieu-tri-tuy-lai' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Điều trị tuỷ</td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-normal">800.000đ - 2.500.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'dieu-tri-tuy' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Lấy cao răng</td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-normal">200.000đ - 370.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'lay-cao-rang' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Điều trị viêm lợi</td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-normal">740.000đ - 1.200.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'dieu-tri-viem-loi' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Trám răng mặt nhai</td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-normal">160.000đ - 370.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'tram-rang-mat-nhai' %}" class="detail-btn">Chi tiết</a></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Bảng giá dịch vụ Nha khoa thẩm mỹ -->
+        <div class="price-section" data-category="tham-my">
+            <h2 class="section-title"><i class="fas fa-magic"></i>Nha khoa thẩm mỹ</h2>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Dịch vụ</th>
+                        <th>Giá</th>
+                        <th class="unit-column">Đơn vị</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="service-column" data-label="Dịch vụ">Răng sứ Emax thẩm mỹ <span class="discount-tag">-25%</span></td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-old">6.000.000đ - 7.000.000đ</span><span class="price-new">4.500.000đ - 5.600.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'rang-su-emax-tham-my' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Răng sứ Zircad Prime/ Lava <span class="discount-tag">-25%</span></td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-old">9.000.000đ - 11.000.000đ</span><span class="price-new">6.750.000đ - 8.800.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'rang-su-zircad-prime-lava' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Răng sứ Cercon/ Nacera/ Cercon HT/ Zorlid Ceramill <span class="discount-tag">-25%</span></td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-old">6.000.000đ - 7.000.000đ</span><span class="price-new">4.500.000đ - 5.600.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'rang-su-cercon-nacera' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Răng sứ Zirconia DMax/ DDBIO <span class="discount-tag">-5%</span></td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-old">5.000.000đ</span><span class="price-new">4.750.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'rang-su-zirconia-dmax-ddbio' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Răng sứ Titan <span class="discount-tag">-10%</span></td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-old">2.200.000đ - 2.700.000đ</span><span class="price-new">1.980.000đ - 2.565.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'rang-su-titan' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Răng sứ Lisi thẩm mỹ <span class="discount-tag">-25%</span></td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-old">8.000.000đ - 10.000.000đ</span><span class="price-new">6.000.000đ - 8.000.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'rang-su-lisi-tham-my' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Dán sứ veneer Emax thẩm mỹ <span class="discount-tag">-25%</span></td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-old">7.000.000đ - 8.000.000đ</span><span class="price-new">5.250.000đ - 6.400.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'dan-su-veneer-emax-tham-my' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Dán sứ veneer Lisi thẩm mỹ <span class="discount-tag">-25%</span></td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-old">9.000.000đ - 11.000.000đ</span><span class="price-new">6.750.000đ - 8.800.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'dan-su-veneer-lisi-tham-my' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Inlay/ Onlay <span class="discount-tag">-10%</span></td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-old">2.700.000đ - 4.800.000đ</span><span class="price-new">2.430.000đ - 4.560.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'inlay-onlay' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Trám răng thẩm mỹ <span class="discount-tag">-11.11%</span></td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-old">450.000đ - 500.000đ</span><span class="price-new">400.000đ - 500.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'tram-rang-tham-my' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Trám răng mặt bên/ cổ răng</td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-normal">160.000đ - 480.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'tram-rang-mat-ben-co-rang' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Tẩy trắng răng cấp tốc Express</td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-normal">900.000đ - 1.400.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'tay-trang-rang-cap-toc-express' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Tẩy trắng tiêu chuẩn Zoom Laser</td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-normal">1.300.000đ - 2.500.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'tay-trang-tieu-chuan-zoom-laser' %}" class="detail-btn">Chi tiết</a></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Bảng giá dịch vụ Nha khoa phục hồi -->
+        <div class="price-section" data-category="phuc-hoi">
+            <h2 class="section-title"><i class="fas fa-tooth"></i>Nha khoa phục hồi</h2>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Dịch vụ</th>
+                        <th>Giá</th>
+                        <th class="unit-column">Đơn vị</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="service-column" data-label="Dịch vụ">Mão sứ phục hồi răng đã điều trị tủy</td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-normal">2.500.000đ - 5.000.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'mao-su-phuc-hoi-rang-da-dieu-tri-tuy' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Cầu răng sứ 3 đơn vị <span class="discount-tag">-10%</span></td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-old">8.000.000đ - 12.000.000đ</span><span class="price-new">7.200.000đ - 10.800.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'cau-rang-su-3-don-vi' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Phục hồi răng mẻ bằng composite</td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-normal">500.000đ - 1.200.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'phuc-hoi-rang-me-bang-composite' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Chốt sợi carbon phục hồi cùi răng</td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-normal">800.000đ - 1.500.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'chot-soi-carbon-phuc-hoi-cui-rang' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Phục hình tháo lắp một hàm <span class="discount-tag">-15%</span></td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-old">5.000.000đ - 8.000.000đ</span><span class="price-new">4.250.000đ - 6.800.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'phuc-hinh-thao-lap-mot-ham' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Phục hình overdenture trên implant</td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-normal">18.000.000đ - 25.000.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'phuc-hinh-overdenture-tren-implant' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Phục hình mặt dán sứ veneer <span class="discount-tag">-20%</span></td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-old">6.000.000đ - 9.000.000đ</span><span class="price-new">4.800.000đ - 7.200.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'phuc-hinh-mat-dan-su-veneer' %}" class="detail-btn">Chi tiết</a></td></tr>
+                    <tr><td class="service-column" data-label="Dịch vụ">Phục hình hàm all-on-4</td><td class="price-column" data-label="Giá"><div class="price-display"><span class="price-normal">120.000.000đ - 180.000.000đ</span></div></td><td class="unit-column" data-label="Đơn vị">Lần</td><td class="action-column"><a href="{% url 'subservice_detail' 'phuc-hinh-ham-all-on-4' %}" class="detail-btn">Chi tiết</a></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Bảng giá dịch vụ Nha khoa trẻ em -->
+        <div class="price-section" data-category="tre-em">
+            <h2 class="section-title"><i class="fas fa-child"></i>Nha khoa trẻ em</h2>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Dịch vụ</th>
+                        <th>Giá</th>
+                        <th class="unit-column">Đơn vị</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="service-column" data-label="Dịch vụ">Gói chỉnh răng lệch lạc <span class="discount-tag" style="background:#ff6600;">-10%</span></td>
+                        <td class="price-column" data-label="Giá">
+                            <div class="price-display">
+                                <span class="price-old">11.000.000đ - 13.000.000đ</span>
+                                <span class="price-new" style="color:#e53935; font-weight:700;">9.900.000đ - 12.350.000đ</span>
+                            </div>
+                        </td>
+                        <td class="unit-column" data-label="Đơn vị">Lần</td>
+                        <td class="action-column"><a href="{% url 'subservice_detail' 'goi-chinh-rang-lech-lac' %}" class="detail-btn">Chi tiết</a></td>
+                    </tr>
+                    <tr>
+                        <td class="service-column" data-label="Dịch vụ">Gói chăm sóc thay răng theo năm <span class="discount-tag" style="background:#ff6600;">-15%</span></td>
+                        <td class="price-column" data-label="Giá">
+                            <div class="price-display">
+                                <span class="price-old">1.600.000đ - 1.800.000đ</span>
+                                <span class="price-new" style="color:#e53935; font-weight:700;">1.360.000đ - 1.665.000đ</span>
+                            </div>
+                        </td>
+                        <td class="unit-column" data-label="Đơn vị">Lần</td>
+                        <td class="action-column"><a href="{% url 'subservice_detail' 'goi-cham-soc-thay-rang-theo-nam' %}" class="detail-btn">Chi tiết</a></td>
+                    </tr>
+                    <tr>
+                        <td class="service-column" data-label="Dịch vụ">Gói niềng răng Invisalign First <span class="discount-tag" style="background:#ff6600;">-25%</span></td>
+                        <td class="price-column" data-label="Giá">
+                            <div class="price-display">
+                                <span class="price-old">74.000.000đ - 78.000.000đ</span>
+                                <span class="price-new" style="color:#e53935; font-weight:700;">55.500.000đ - 58.500.000đ</span>
+                            </div>
+                        </td>
+                        <td class="unit-column" data-label="Đơn vị">Lần</td>
+                        <td class="action-column"><a href="{% url 'subservice_detail' 'goi-nieng-rang-invisalign-first' %}" class="detail-btn">Chi tiết</a></td>
+                    </tr>
+                    <tr>
+                        <td class="service-column" data-label="Dịch vụ">Trám răng sữa <span class="discount-tag" style="background:#ff6600;">-0.63%</span></td>
+                        <td class="price-column" data-label="Giá">
+                            <div class="price-display">
+                                <span class="price-old">160.000đ - 270.000đ</span>
+                                <span class="price-new" style="color:#e53935; font-weight:700;">159.000đ - 270.000đ</span>
+                            </div>
+                        </td>
+                        <td class="unit-column" data-label="Đơn vị">Lần</td>
+                        <td class="action-column"><a href="{% url 'subservice_detail' 'tram-rang-sua' %}" class="detail-btn">Chi tiết</a></td>
+                    </tr>
+                    <tr>
+                        <td class="service-column" data-label="Dịch vụ">Nhổ răng sữa</td>
+                        <td class="price-column" data-label="Giá">
+                            <div class="price-display">
+                                <span class="price-normal">50.000đ - 110.000đ</span>
+                            </div>
+                        </td>
+                        <td class="unit-column" data-label="Đơn vị">Lần</td>
+                        <td class="action-column"><a href="{% url 'subservice_detail' 'nho-rang-sua' %}" class="detail-btn">Chi tiết</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Price Notes Start -->
+        <div class="price-notes wow fadeInUp" data-wow-delay="0.8s">
+            <div class="note-item">
+                <i class="fas fa-info-circle"></i>
+                <span>Dịch vụ không chịu thuế GTGT</span>
+            </div>
+            <div class="note-item">
+                <i class="fas fa-info-circle"></i>
+                <span>* Bảng giá mang tính tham khảo. Chi phí thực tế sau khi được bác sĩ thăm khám và chỉ định.</span>
+            </div>
+        </div>
+        <!-- Price Notes End -->
+        
+    </div>
+    <!-- Price List Container End -->
+    {# Dữ liệu lấy từ file service-prices.json, không render động nữa #}
+    {% include 'includes/appointment.html' %}
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Ẩn/hiện bảng theo filter (nếu muốn dùng JS filter)
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('serviceFilterGroup').addEventListener('click', function(e) {
+        if (e.target.closest('.filter-btn')) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            e.target.closest('.filter-btn').classList.add('active');
+            const cat = e.target.closest('.filter-btn').getAttribute('data-category');
+            document.querySelectorAll('.price-section').forEach(section => {
+                if (cat === 'all' || section.getAttribute('data-category') === cat) {
+                    section.style.display = '';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+    });
+});
+</script>
+{% endblock %}

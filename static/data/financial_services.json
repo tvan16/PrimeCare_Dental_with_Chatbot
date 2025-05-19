@@ -1,0 +1,145 @@
+{
+    "payment_plans": {
+      "standard": {
+        "name": "Thanh toán tiêu chuẩn",
+        "name_en": "Standard payment",
+        "description": "Thanh toán toàn bộ trước khi điều trị",
+        "description_en": "Pay in full before treatment",
+        "discount": "0%",
+        "min_treatment_cost": "0đ"
+      },
+      "installment_3": {
+        "name": "Trả góp 3 tháng",
+        "name_en": "3-month installment",
+        "description": "Thanh toán 50% trước khi điều trị, 50% còn lại chia thành 2 đợt trong 2 tháng tiếp theo",
+        "description_en": "Pay 50% before treatment, remaining 50% divided into 2 payments over the next 2 months",
+        "interest": "0%",
+        "min_treatment_cost": "5.000.000đ",
+        "partners": ["TPBank", "VPBank", "Shinhan Bank"]
+      },
+      "installment_6": {
+        "name": "Trả góp 6 tháng",
+        "name_en": "6-month installment",
+        "description": "Thanh toán 30% trước khi điều trị, 70% còn lại chia thành 5 đợt trong 5 tháng tiếp theo",
+        "description_en": "Pay 30% before treatment, remaining 70% divided into 5 payments over the next 5 months",
+        "interest": "1% mỗi tháng",
+        "interest_en": "1% per month",
+        "min_treatment_cost": "10.000.000đ",
+        "partners": ["TPBank", "VPBank", "Shinhan Bank", "BIDV", "VietcomBank"]
+      },
+      "installment_12": {
+        "name": "Trả góp 12 tháng",
+        "name_en": "12-month installment",
+        "description": "Thanh toán 20% trước khi điều trị, 80% còn lại chia thành 11 đợt trong 11 tháng tiếp theo",
+        "description_en": "Pay 20% before treatment, remaining 80% divided into 11 payments over the next 11 months",
+        "interest": "1.5% mỗi tháng",
+        "interest_en": "1.5% per month",
+        "min_treatment_cost": "20.000.000đ",
+        "partners": ["TPBank", "VPBank", "BIDV", "VietcomBank", "ACB"]
+      }
+    },
+    "special_promotions": {
+      "student": {
+        "name": "Ưu đãi sinh viên",
+        "name_en": "Student discount",
+        "description": "Giảm giá đặc biệt cho sinh viên có thẻ sinh viên hợp lệ",
+        "description_en": "Special discount for students with valid student ID",
+        "discount": "10% cho dịch vụ vệ sinh và khám răng",
+        "discount_en": "10% for dental cleaning and check-up services",
+        "conditions": "Áp dụng cho sinh viên dưới 25 tuổi với thẻ sinh viên còn hiệu lực",
+        "conditions_en": "Applies to students under 25 years old with valid student ID"
+      },
+      "senior": {
+        "name": "Ưu đãi người cao tuổi",
+        "name_en": "Senior discount",
+        "description": "Giảm giá đặc biệt cho người từ 65 tuổi trở lên",
+        "description_en": "Special discount for people 65 years and older",
+        "discount": "15% cho tất cả dịch vụ nha khoa",
+        "discount_en": "15% for all dental services",
+        "conditions": "Áp dụng cho khách hàng từ 65 tuổi trở lên với CMND/CCCD",
+        "conditions_en": "Applies to customers 65 years and older with ID"
+      },
+      "disabled": {
+        "name": "Ưu đãi người khuyết tật",
+        "name_en": "Disability discount",
+        "description": "Giảm giá đặc biệt cho người có thẻ khuyết tật",
+        "description_en": "Special discount for people with disability ID",
+        "discount": "20% cho tất cả dịch vụ nha khoa",
+        "discount_en": "20% for all dental services",
+        "conditions": "Áp dụng cho người có thẻ khuyết tật hợp lệ",
+        "conditions_en": "Applies to people with valid disability ID"
+      },
+      "family": {
+        "name": "Gói gia đình",
+        "name_en": "Family package",
+        "description": "Ưu đãi cho cả gia đình đăng ký điều trị",
+        "description_en": "Discount for families registering for treatment",
+        "discount": "10% khi có từ 3 thành viên trong gia đình đăng ký cùng lúc",
+        "discount_en": "10% when 3+ family members register at the same time",
+        "conditions": "Áp dụng khi 3+ thành viên gia đình đăng ký dịch vụ trong cùng ngày",
+        "conditions_en": "Applies when 3+ family members register for services on the same day"
+      }
+    },
+    "seasonal_promotions": {
+      "new_year": {
+        "name": "Ưu đãi Tết Nguyên Đán",
+        "name_en": "Lunar New Year Promotion",
+        "description": "Khởi đầu năm mới với nụ cười rạng rỡ",
+        "description_en": "Start the new year with a radiant smile",
+        "discount": "15% cho tất cả dịch vụ thẩm mỹ nha khoa",
+        "discount_en": "15% for all cosmetic dental services",
+        "valid_period": "15/01 - 15/02 hàng năm",
+        "valid_period_en": "Jan 15 - Feb 15 annually"
+      },
+      "women_day": {
+        "name": "Ưu đãi ngày Quốc tế Phụ nữ",
+        "name_en": "International Women's Day Promotion",
+        "description": "Dành tặng phái đẹp nhân ngày 8/3",
+        "description_en": "Special offer for women on March 8",
+        "discount": "20% cho dịch vụ tẩy trắng răng và làm đẹp",
+        "discount_en": "20% for teeth whitening and cosmetic services",
+        "valid_period": "01/03 - 15/03 hàng năm",
+        "valid_period_en": "Mar 1 - Mar 15 annually"
+      },
+      "labor_day": {
+        "name": "Ưu đãi ngày 30/4 - 1/5",
+        "name_en": "Labor Day Holiday Promotion",
+        "description": "Kỷ niệm ngày giải phóng và Quốc tế Lao động",
+        "description_en": "Celebrating Liberation and Labor Day",
+        "discount": "15% cho tất cả dịch vụ nha khoa",
+        "discount_en": "15% for all dental services",
+        "valid_period": "20/04 - 10/05 hàng năm",
+        "valid_period_en": "Apr 20 - May 10 annually"
+      },
+      "summer": {
+        "name": "Ưu đãi mùa hè",
+        "name_en": "Summer Promotion",
+        "description": "Nụ cười rạng rỡ cho kỳ nghỉ hè",
+        "description_en": "Radiant smile for your summer vacation",
+        "discount": "10% cho tất cả dịch vụ nha khoa cho học sinh, sinh viên",
+        "discount_en": "10% for all dental services for students",
+        "valid_period": "01/06 - 31/08 hàng năm",
+        "valid_period_en": "Jun 1 - Aug 31 annually"
+      },
+      "national_day": {
+        "name": "Ưu đãi ngày Quốc khánh",
+        "name_en": "National Day Promotion",
+        "description": "Mừng Quốc khánh 2/9",
+        "description_en": "Celebrating National Day September 2",
+        "discount": "15% cho tất cả dịch vụ nha khoa",
+        "discount_en": "15% for all dental services",
+        "valid_period": "25/08 - 10/09 hàng năm",
+        "valid_period_en": "Aug 25 - Sep 10 annually"
+      },
+      "year_end": {
+        "name": "Ưu đãi cuối năm",
+        "name_en": "Year-end Promotion",
+        "description": "Kết thúc năm với nụ cười khỏe mạnh",
+        "description_en": "End the year with a healthy smile",
+        "discount": "20% cho dịch vụ kiểm tra và vệ sinh răng miệng",
+        "discount_en": "20% for dental check-up and cleaning services",
+        "valid_period": "01/12 - 31/12 hàng năm",
+        "valid_period_en": "Dec 1 - Dec 31 annually"
+      }
+    }
+}

@@ -1,0 +1,536 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+{% load service_filters %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+<style>
+/* CSS cho trang chi tiết */
+.service-pricing {
+    background: #f8f9fd;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 20px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.service-pricing strong {
+    color: #313B79;
+    font-size: 1.1rem;
+}
+
+.badge {
+    font-size: 0.9rem;
+    padding: 5px 10px;
+}
+
+/* Card styling */
+.card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1.25rem;
+}
+
+.card-title {
+    color: #313B79;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.btn-outline-primary {
+    border-color: #313B79;
+    color: #313B79;
+}
+
+.btn-outline-primary:hover {
+    background: #313B79;
+    color: white;
+}
+
+/* Breadcrumb styling */
+.breadcrumb {
+    background: transparent;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+.breadcrumb-item a {
+    color: #1e90ff;
+    text-decoration: none;
+}
+
+.breadcrumb-item.active {
+    color: #666;
+}
+
+/* Section title */
+h2 {
+    color: #313B79;
+    font-weight: 700;
+    margin: 2rem 0 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+/* Gạch dưới chỉ cho title sản phẩm khác */
+.other-services-title {
+    color: #313B79;
+    font-weight: 800;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2.2rem;
+    letter-spacing: -1px;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+.other-services-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #1e90ff;
+    margin: 16px auto 0 auto;
+    border-radius: 2px;
+}
+
+/* Breadcrumb styling */
+.breadcrumb-custom {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 1.08rem;
+    margin-bottom: 1.2rem;
+    margin-top: 0.5rem;
+    color: #22336b;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+.breadcrumb-custom a {
+    color: #1e90ff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+.breadcrumb-custom a:hover {
+    color: #0b5ed7;
+    text-decoration: underline;
+}
+.breadcrumb-custom .active {
+    color: #888;
+    font-weight: 600;
+}
+.breadcrumb-sep {
+    color: #b0b0b0;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin: 0 0.2em;
+    user-select: none;
+}
+
+/* Giá dịch vụ */
+.service-pricing {
+    background: #f8f9fd;
+    padding: 20px 28px;
+    border-radius: 14px;
+    margin: 20px 0 36px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    font-size: 1.15rem;
+}
+.service-pricing .price-sale {
+    color: #e53935;
+    font-size: 2rem;
+    font-weight: 900;
+}
+.service-pricing .badge {
+    font-size: 1rem;
+    vertical-align: middle;
+}
+
+/* Dịch vụ khác - carousel */
+.swiper {
+    padding-bottom: 40px;
+    overflow: visible !important;
+}
+.swiper-slide {
+    height: auto;
+}
+.card {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    background: #fff;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+.card-title {
+    color: #313B79;
+    font-weight: 700;
+    font-size: 1.08rem;
+    margin-bottom: 0.5rem;
+}
+.badge.bg-danger {
+    background: #e53935 !important;
+}
+.swiper-button-prev {
+    left: -24px !important;
+    right: auto !important;
+}
+.swiper-button-next {
+    right: -24px !important;
+    left: auto !important;
+}
+.swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 2rem;
+    font-weight: bold;
+}
+.swiper-button-next:hover, .swiper-button-prev:hover {
+    box-shadow: 0 4px 16px rgba(25,118,210,0.18);
+    background: #e3f0ff;
+}
+.page-title-service {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #313B79;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.page-title-service .bar {
+    color: #1e90ff;
+    font-size: 2.5rem;
+    font-weight: 900;
+}
+.service-pricing .text-muted {
+    font-size: 0.98rem;
+}
+.section-other-services {
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+.section-other-services h2 {
+    color: #313B79;
+    font-weight: 800;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2.2rem;
+    letter-spacing: -1px;
+}
+@media (max-width: 768px) {
+    .swiper-button-next, .swiper-button-prev {
+        width: 36px;
+        height: 36px;
+        top: 40%;
+    }
+    .swiper-button-next { right: -10px; }
+    .swiper-button-prev { left: -10px; }
+}
+/* Nút xem chi tiết nổi bật */
+.btn-detail {
+    display: inline-block;
+    width: 100%;
+    padding: 10px 0;
+    background: linear-gradient(90deg,#1976D2 0,#313B79 100%);
+    color: #fff !important;
+    border: none;
+    border-radius: 24px;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-top: 8px;
+    box-shadow: 0 2px 8px rgba(25,118,210,0.08);
+    transition: background 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+.btn-detail:hover, .btn-detail:focus {
+    background: linear-gradient(90deg,#313B79 0,#1976D2 100%);
+    color: #fff !important;
+    box-shadow: 0 4px 16px rgba(25,118,210,0.18);
+    text-decoration: none;
+}
+.swiper-container-fix {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.swiper {
+    overflow: visible !important;
+}
+.swiper-button-prev {
+    left: 0px !important;
+    right: auto !important;
+}
+.swiper-button-next {
+    right: -0px !important;
+    left: auto !important;
+}
+.service-card-link .card {
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+.service-card-link:hover .card {
+    box-shadow: 0 8px 32px rgba(30,144,255,0.16);
+    transform: translateY(-6px) scale(1.06);
+    z-index: 2;
+}
+.service-price-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.price-old {
+  text-decoration: line-through;
+  color: #888;
+  font-size: 1.1rem;
+}
+.price-sale-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+.price-sale {
+  color: #e53935;
+  font-weight: 900;
+  font-size: 2rem;
+  white-space: nowrap;
+}
+.badge.bg-danger {
+  background: #e53935 !important;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 16px;
+  padding: 4px 12px;
+  margin-left: 8px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+  <!-- Breadcrumb -->
+<div class="container mt-4 mb-2">
+  <nav aria-label="breadcrumb">
+        <div class="breadcrumb-custom">
+            <a href="/">Trang chủ</a>
+            <span class="breadcrumb-sep">&gt;</span>
+            <a href="/services-list/">Dịch vụ</a>
+            <span class="breadcrumb-sep">&gt;</span>
+            <a href="{% url 'service_detail' sub_service.main_service.slug %}">{{ sub_service.main_service.name }}</a>
+            <span class="breadcrumb-sep">&gt;</span>
+            <span class="active">{{ sub_service.name }}</span>
+        </div>
+  </nav>
+</div>
+
+<!-- Title dịch vụ con -->
+<div class="container" style="margin-bottom: 2.5rem;">
+    <div class="page-title-service mb-3">
+        <span class="bar">|</span> {{ sub_service.name }}
+    </div>
+</div>
+
+<!-- Chi tiết dịch vụ con -->
+<div class="container mb-5" style="margin-bottom: 3.5rem;">
+  <div class="row align-items-start">
+    <div class="col-lg-7 mb-4 mb-lg-0">
+      {% if sub_service.images.first %}
+        <img src="{{ sub_service.images.first.image.url }}" alt="{{ sub_service.name }}" class="img-fluid rounded-4 shadow" style="width:100%;max-height:420px;object-fit:cover;">
+      {% else %}
+        <img src="{% static 'images/no-image.png' %}" alt="No image" class="img-fluid rounded-4 shadow" style="width:100%;max-height:420px;object-fit:cover;">
+      {% endif %}
+    </div>
+    <div class="col-lg-5">
+      <div class="service-pricing">
+        {% if sub_service.discount_percent > 0 and sub_service.discount_price_min %}
+            <div class="service-price-row">
+                {% if sub_service.original_price_min and sub_service.original_price_max and sub_service.original_price_min != sub_service.original_price_max %}
+                    <span class="price-old">{{ sub_service.original_price_min|intdot }}đ - {{ sub_service.original_price_max|intdot }}đ</span>
+                {% elif sub_service.original_price_min %}
+                    <span class="price-old">{{ sub_service.original_price_min|intdot }}đ</span>
+                {% elif sub_service.original_price_max %}
+                    <span class="price-old">{{ sub_service.original_price_max|intdot }}đ</span>
+                {% endif %}
+                <span class="price-sale-row">
+                    <span class="price-sale">
+                        {% if sub_service.discount_price_min and sub_service.discount_price_max and sub_service.discount_price_min != sub_service.discount_price_max %}
+                            {{ sub_service.discount_price_min|intdot }}đ - {{ sub_service.discount_price_max|intdot }}đ
+                        {% elif sub_service.discount_price_min %}
+                            {{ sub_service.discount_price_min|intdot }}đ
+                        {% elif sub_service.discount_price_max %}
+                            {{ sub_service.discount_price_max|intdot }}đ
+                        {% endif %}
+                    </span>
+                    <span class="badge bg-danger">-{{ sub_service.discount_percent }}%</span>
+                </span>
+            </div>
+        {% else %}
+            <div class="service-price-row">
+                <span class="price-sale" style="color:#313B79;">
+                {% if sub_service.original_price_min and sub_service.original_price_max and sub_service.original_price_min != sub_service.original_price_max %}
+                    {{ sub_service.original_price_min|intdot }}đ - {{ sub_service.original_price_max|intdot }}đ
+                {% elif sub_service.original_price_min %}
+                    {{ sub_service.original_price_min|intdot }}đ
+                {% elif sub_service.original_price_max %}
+                    {{ sub_service.original_price_max|intdot }}đ
+      {% endif %}
+                </span>
+            </div>
+    {% endif %}
+        <div class="text-muted mb-2 mt-1">*Tùy thuộc chỉ định của bác sĩ</div>
+        <div class="mb-2" style="font-size:1rem;">
+          <span>Đơn vị: <b>{{ sub_service.unit|default:'Lần' }}</b></span>
+          <span class="ms-3">Dịch vụ: <a href="{% url 'service_detail' sub_service.main_service.slug %}" style="color:#1e90ff;">{{ sub_service.main_service.name }}</a></span>
+        </div>
+        <div class="d-grid gap-2 mt-4">
+          <a href="tel:{{ hotline|default:'1800xxxx' }}" class="btn btn-primary btn-lg" style="background:linear-gradient(90deg,#313B79 0,#1976D2 100%);font-weight:600;">
+            <i class="fas fa-phone-alt me-2"></i>Gọi ngay (+ 1800 9999)
+          </a>
+          <a href="{% url 'contact' %}" class="btn btn-outline-primary btn-lg"><i class="fas fa-calendar-alt me-2"></i>Đặt lịch ngay</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+<!-- Sản phẩm khác dành cho bạn -->
+<div class="container section-other-services" style="margin-top: 4.5rem;">
+  <h2 class="other-services-title">Sản phẩm khác dành cho bạn</h2>
+  <div class="d-flex justify-content-center align-items-center position-relative">
+    <div class="swiper-container-fix">
+      <div class="swiper" style="max-width:1200px; margin:0 auto; width:100%;">
+        <div class="swiper-wrapper">
+      {% for other in related_subservices %}
+          <div class="swiper-slide d-flex justify-content-center">
+            <a href="{% url 'subservice_detail' other.slug %}" class="service-card-link" style="text-decoration:none;display:block;height:100%;">
+              <div class="card h-100 shadow-sm border-0 rounded-4" style="overflow:hidden;max-width:270px;min-width:230px;">
+                <div class="service-img-wrap position-relative" style="height:180px; overflow:hidden; border-radius:18px 18px 0 0;">
+                  {% if other.discount_percent > 0 %}
+                    <span class="badge bg-danger position-absolute top-0 start-0 m-2" style="font-size:1rem;z-index:2;">Giảm {{ other.discount_percent }}%</span>
+                  {% endif %}
+                  {% with img=other.images.first %}
+                    {% if img %}
+                      <img width="400" height="240"
+                           src="{{ img.image.url }}"
+                           class="attachment-full size-full wp-post-image object-fit-cover rounded-top"
+                           alt="{{ other.name }}"
+                           decoding="async" loading="lazy"
+                           data-src="{{ img.image.url }}"
+                           srcset="{{ img.image.url }} 400w"
+                           data-srcset="{{ img.image.url }} 400w">
+                    {% else %}
+                      <img width="400" height="240"
+                           src="{% static 'images/no-image.png' %}"
+                           class="attachment-full size-full wp-post-image object-fit-cover rounded-top"
+                           alt="No image"
+                           decoding="async" loading="lazy"
+                           data-src="{% static 'images/no-image.png' %}"
+                           srcset="{% static 'images/no-image.png' %} 400w"
+                           data-srcset="{% static 'images/no-image.png' %} 400w">
+                    {% endif %}
+                  {% endwith %}
+                </div>
+                <div class="card-body text-center py-3" style="font-size:0.97rem;">
+                  <h4 class="fw-bold mb-1" style="color:#4f5bd5; font-size:1.08rem; font-weight:800; letter-spacing:0.5px;">{{ other.name }}</h4>
+                  <div class="mb-2">
+                    <span class="badge bg-light text-dark px-3 py-1" style="font-size:0.85rem; color:#888; font-weight:500;">{{ other.main_service.name }}</span>
+                  </div>
+                  <div class="mb-2">
+                    {% if other.discount_percent > 0 and other.discount_price_min %}
+                      <span class="text-decoration-line-through text-muted d-block mb-1" style="font-size:0.85rem;">
+                        {% if other.original_price_min and other.original_price_max and other.original_price_min != other.original_price_max %}
+                          {{ other.original_price_min|intdot }}đ - {{ other.original_price_max|intdot }}đ
+                        {% elif other.original_price_min %}
+                          {{ other.original_price_min|intdot }}đ
+                        {% elif other.original_price_max %}
+                          {{ other.original_price_max|intdot }}đ
+                        {% endif %}
+                      </span>
+                      <span class="fw-bold d-block price-sale" style="color:#e53935; font-size:1.05rem; font-weight:900; white-space:nowrap;">
+                        {% if other.discount_price_min and other.discount_price_max and other.discount_price_min != other.discount_price_max %}
+                          {{ other.discount_price_min|intdot }}đ - {{ other.discount_price_max|intdot }}đ
+                        {% elif other.discount_price_min %}
+                          {{ other.discount_price_min|intdot }}đ
+                        {% elif other.discount_price_max %}
+                          {{ other.discount_price_max|intdot }}đ
+          {% endif %}
+                      </span>
+              {% else %}
+                      <span class="fw-bold d-block" style="color:#4f5bd5; font-size:1.02rem; font-weight:900; white-space:nowrap;">
+                        {% if other.original_price_min and other.original_price_max and other.original_price_min != other.original_price_max %}
+                          {{ other.original_price_min|intdot }}đ - {{ other.original_price_max|intdot }}đ
+                        {% elif other.original_price_min %}
+                          {{ other.original_price_min|intdot }}đ
+                        {% elif other.original_price_max %}
+                          {{ other.original_price_max|intdot }}đ
+                        {% endif %}
+                      </span>
+              {% endif %}
+            </div>
+                  <span class="btn-detail">Xem chi tiết</span>
+                </div>
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include "includes/appointment.html" %}
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    new Swiper('.swiper', {
+        slidesPerView: 1,
+        spaceBetween: 24,
+        loop: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            576: { slidesPerView: 2 },
+            992: { slidesPerView: 3 },
+            1200: { slidesPerView: 4 }
+        }
+    });
+});
+</script>
+{% endblock %}

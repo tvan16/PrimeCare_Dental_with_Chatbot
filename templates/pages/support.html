@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Hỗ Trợ - PrimeCare Dental{% endblock %}
+
+{% block content %}
+    <!-- Page Header Start -->
+    {% include 'includes/page_header.html' %}
+    <!-- Page Header End -->
+
+    <div class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="breadcrumb-title">Hỗ Trợ</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}">Trang Chủ</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Hỗ Trợ</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="support-content">
+                    <h2>Trung Tâm Hỗ Trợ - PrimeCare Dental</h2>
+                    
+                    <h3 class="mt-4">Câu Hỏi Thường Gặp</h3>
+                    
+                    <div class="accordion" id="faqAccordion">
+                        <div class="card">
+                            <div class="card-header" id="faq1">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                        Làm thế nào để đặt lịch hẹn?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapse1" class="collapse show" aria-labelledby="faq1" data-parent="#faqAccordion">
+                                <div class="card-body">
+                                    Bạn có thể đặt lịch hẹn bằng cách điền vào biểu mẫu trên trang Liên hệ của chúng tôi, gọi điện trực tiếp đến số (+84) 789 345 601, hoặc gửi email đến support@primecare.com. Chúng tôi sẽ xác nhận lịch hẹn trong vòng 24 giờ làm việc.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header" id="faq2">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                        Tôi cần chuẩn bị gì khi đến khám lần đầu?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapse2" class="collapse" aria-labelledby="faq2" data-parent="#faqAccordion">
+                                <div class="card-body">
+                                    Khi đến khám lần đầu, vui lòng mang theo thẻ bảo hiểm y tế (nếu có), giấy tờ tùy thân, và thông tin về tiền sử bệnh án hoặc bất kỳ vấn đề răng miệng nào bạn đang gặp phải. Bạn cũng nên đến trước giờ hẹn khoảng 15 phút để hoàn tất các thủ tục đăng ký.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header" id="faq3">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                        Các phương thức thanh toán được chấp nhận?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapse3" class="collapse" aria-labelledby="faq3" data-parent="#faqAccordion">
+                                <div class="card-body">
+                                    Chúng tôi chấp nhận nhiều phương thức thanh toán khác nhau bao gồm tiền mặt, thẻ tín dụng/ghi nợ (Visa, MasterCard, JCB), chuyển khoản ngân hàng, và một số ứng dụng thanh toán di động phổ biến như MoMo, ZaloPay, và VNPay.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="mt-5">Liên Hệ Hỗ Trợ</h3>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="support-contact-box">
+                                <i class="fas fa-phone-alt mb-3"></i>
+                                <h4>Điện Thoại</h4>
+                                <p>(+84) 789 345 601</p>
+                                <p>Giờ làm việc: 8:00 - 18:00 (Thứ 2 - Thứ 7)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="support-contact-box">
+                                <i class="fas fa-envelope mb-3"></i>
+                                <h4>Email</h4>
+                                <p>support@primecare.com</p>
+                                <p>Phản hồi trong vòng 24 giờ làm việc</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="mt-5">Gửi Yêu Cầu Hỗ Trợ</h3>
+                    <form class="support-form mt-4">
+                        <div class="form-group">
+                            <label for="name">Họ và tên</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Chủ đề</label>
+                            <input type="text" class="form-control" id="subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Nội dung</label>
+                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Gửi Yêu Cầu</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="support-sidebar">
+                    <h3>Tài Liệu Hữu Ích</h3>
+                    <ul class="support-doc-list">
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> Hướng dẫn chăm sóc răng miệng</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> Thông tin về các loại điều trị</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> Biểu phí dịch vụ</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> Bảo hiểm nha khoa</a></li>
+                    </ul>
+                    
+                    <div class="emergency-support mt-5">
+                        <h4>Hỗ Trợ Khẩn Cấp</h4>
+                        <p>Gặp vấn đề khẩn cấp ngoài giờ? Liên hệ đường dây nóng của chúng tôi:</p>
+                        <h5>(+84) 789 345 602</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,85 @@
+/* static/css/sub_detail.css */
+.service-pricing {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .service-pricing strong {
+    color: #333;
+  }
+  
+  .service-pricing .badge {
+    font-size: 0.9em;
+  }
+  
+  .card {
+    transition: transform 0.3s;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .card-body {
+    padding: 15px;
+  }
+  
+  .card-title {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  
+  .badge {
+    font-size: 0.8rem;
+  }
+  
+  .btn-outline-primary {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .service-price-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  
+  .price-old {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 1.1rem;
+  }
+  
+  .price-sale-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .price-sale {
+    color: #e53935;
+    font-weight: 900;
+    font-size: 2rem;
+  }
+  
+  .badge.bg-danger {
+    background: #e53935 !important;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 16px;
+    padding: 4px 12px;
+    margin-left: 8px;
+  }

@@ -1,0 +1,755 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Đánh Giá Từ Khách Hàng - PrimeCare Dental{% endblock %}
+
+{% block extra_css %}
+<!-- AOS Animation CSS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
+    .kol-section {
+        padding: 50px 0;
+        background-color: #fff;
+        overflow: hidden;
+    }
+    
+    .section-title-section {
+        padding: 60px 0 30px;
+        text-align: center;
+        position: relative;
+    }
+    
+    .section-title-section:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: #e9e9e9;
+        z-index: 1;
+    }
+    
+    .section-title {
+        display: inline-block;
+        position: relative;
+        z-index: 2;
+        background-color: #fff;
+        padding: 0 40px;
+        margin: 0;
+        font-size: 32px;
+        font-weight: 700;
+        color: #313b79;
+    }
+    
+    .section-title span {
+        position: relative;
+    }
+    
+    .section-title span:before {
+        content: '';
+        position: absolute;
+        width: 40px;
+        height: 3px;
+        background-color: #fa9f34;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .section-intro {
+        max-width: 1000px;
+        margin: 0 auto 60px;
+        text-align: center;
+        padding: 0 20px;
+        font-size: 18px;
+        line-height: 1.8;
+        font-weight: 500;
+        color: #333;
+        letter-spacing: 0.3px;
+    }
+    
+    .kol-row {
+        display: flex;
+        margin-bottom: 100px;
+        position: relative;
+    }
+    
+    .kol-row:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+    
+    .kol-img-container {
+        flex: 0 0 40%;
+        position: relative;
+    }
+    
+    .kol-img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        position: relative;
+        z-index: 2;
+        transition: transform 0.5s ease;
+    }
+    
+    .kol-img-container:hover .kol-img {
+        transform: scale(1.05);
+    }
+    
+    .orange-box-top {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-color: #fa9f34;
+        border-radius: 5px;
+        z-index: 3;
+        right: -15px;
+        top: 20px;
+        transition: all 0.3s ease;
+    }
+    
+    .orange-box-bottom {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-color: #fa9f34;
+        border-radius: 5px;
+        z-index: 3;
+        left: -15px;
+        bottom: 20px;
+        transition: all 0.3s ease;
+    }
+    
+    .kol-img-container:hover .orange-box-top,
+    .kol-img-container:hover .orange-box-bottom {
+        background-color: #002244;
+    }
+    
+    .kol-row:nth-child(even) .orange-box-top {
+        right: auto;
+        left: -15px;
+    }
+    
+    .kol-row:nth-child(even) .orange-box-bottom {
+        left: auto;
+        right: -15px;
+    }
+    
+    .beige-box-top {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background-color: #FFF3D9;
+        border-radius: 10px 0 0 0;
+        top: -15px;
+        left: -15px;
+        z-index: 1;
+        transition: all 0.3s ease;
+    }
+    
+    .beige-box-bottom {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background-color: #FFF3D9;
+        border-radius: 0 0 10px 0;
+        bottom: -15px;
+        right: -15px;
+        z-index: 1;
+        transition: all 0.3s ease;
+    }
+    
+    .kol-img-container:hover .beige-box-top,
+    .kol-img-container:hover .beige-box-bottom {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .kol-content {
+        flex: 0 0 60%;
+        padding: 0 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .kol-row:nth-child(odd) .kol-content {
+        padding-left: 60px;
+    }
+    
+    .kol-row:nth-child(even) .kol-content {
+        padding-right: 60px;
+    }
+    
+    .kol-name {
+        font-size: 28px;
+        font-weight: 700;
+        color: #002244;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        position: relative;
+        display: inline-block;
+    }
+    
+    .kol-name:after {
+        content: '';
+        width: 50px;
+        height: 3px;
+        background-color: #fa9f34;
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        transition: width 0.3s ease;
+    }
+    
+    .kol-content:hover .kol-name:after {
+        width: 100%;
+    }
+    
+    .kol-quote {
+        font-size: 20px;
+        font-weight: 600;
+        color: #fa9f34;
+        margin-bottom: 15px;
+        line-height: 1.5;
+    }
+    
+    .kol-description {
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+    
+    .kol-description strong {
+        color: #002244;
+    }
+    
+    .kol-logo {
+        margin-top: 20px;
+    }
+    
+    .kol-logo img {
+        height: 30px;
+        width: auto;
+        transition: transform 0.3s ease;
+    }
+    
+    .kol-content:hover .kol-logo img {
+        transform: scale(1.1);
+    }
+    
+    /* Testimonial Boxes Enhancement */
+    .testimonial-box-item {
+        transition: all 0.3s ease;
+        border: 1px solid #f0f0f0;
+    }
+    
+    .testimonial-box-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .author-box-image figure {
+        overflow: hidden;
+    }
+    
+    .author-box-image figure img {
+        transition: transform 0.5s ease;
+    }
+    
+    .testimonial-box-item:hover .author-box-image figure img {
+        transform: scale(1.1);
+    }
+    
+    .testimonial-box-item .testimonial-quote-img {
+        transition: transform 0.3s ease;
+    }
+    
+    .testimonial-box-item:hover .testimonial-quote-img {
+        transform: rotate(10deg);
+    }
+    
+    /* Responsive */
+    @media (max-width: 991px) {
+        .kol-row {
+            flex-direction: column !important;
+            margin-bottom: 60px;
+        }
+        
+        .kol-img-container {
+            flex: 0 0 100%;
+            margin-bottom: 30px;
+        }
+        
+        .kol-content {
+            flex: 0 0 100%;
+            padding: 0 15px !important;
+        }
+        
+        .section-intro {
+            font-size: 16px;
+            padding: 0 15px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+    <!-- KOL Section Title -->
+    <div class="section-title-section">
+        <h2 class="section-title" data-aos="zoom-in"><span>Người nổi tiếng niềng răng tại PrimeCare</span></h2>
+    </div>
+
+    <!-- KOL Section Intro -->
+    <div class="container">
+        <p class="section-intro" data-aos="fade-up">
+            Nha khoa PrimeCare quy tụ đội ngũ hơn 30 bác sĩ chuyên môn chú trọng về chỉnh nha cùng trang thiết bị chuyên dụng hiện đại dành cho việc chỉnh nha, chúng tôi tự hào là hệ thống nha khoa phục vụ chỉnh nha chuyên môn cao, quy trình chuẩn hóa mang lại hiệu quả theo kỳ vọng của khách hàng. Nha khoa PrimeCare đã đồng hành cùng hơn 14.000 khách hàng Việt Nam, mang lại sự tự tin cho các bạn trong đó có nhiều người nổi tiếng an tâm tin tưởng chúng tôi.
+        </p>
+    </div>
+
+    <!-- KOL Section Start -->
+    <section class="kol-section">
+        <div class="container">            
+            <!-- Tống Khánh Linh -->
+            <div class="kol-row" data-aos="fade-right" data-aos-delay="100">
+                <div class="kol-img-container">
+                    <img src="{% static 'images/kol1.jpg' %}" alt="Tống Khánh Linh" class="kol-img">
+                    <div class="orange-box-top"></div>
+                    <div class="orange-box-bottom"></div>
+                    <div class="beige-box-top"></div>
+                    <div class="beige-box-bottom"></div>
+                </div>
+                <div class="kol-content">
+                    <h2 class="kol-name">Tống Khánh Linh</h2>
+                    <p class="kol-quote">" Bác sĩ ở nha khoa PrimeCare rất thân thiện "</p>
+                    <p class="kol-description">Đã điều trị Niềng răng Invisalign tại <strong>Nha Khoa PrimeCare</strong></p>
+                    <div class="kol-logo">
+                        <img src="{% static 'images/logo.svg' %}" alt="Logo PrimeCare">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Châu Bí Ngô -->
+            <div class="kol-row" data-aos="fade-left" data-aos-delay="100">
+                <div class="kol-img-container">
+                    <img src="{% static 'images/kol2.jpg' %}" alt="Châu Bí Ngô" class="kol-img">
+                    <div class="orange-box-top"></div>
+                    <div class="orange-box-bottom"></div>
+                    <div class="beige-box-top"></div>
+                    <div class="beige-box-bottom"></div>
+                </div>
+                <div class="kol-content">
+                    <h2 class="kol-name">Châu Bí Ngô</h2>
+                    <p class="kol-quote">" Niềng răng tại PrimeCare làm mình thấy trải nghiệm thật dễ dàng "</p>
+                    <p class="kol-description">Đã điều trị Niềng răng mắc cài tại <strong>Nha Khoa PrimeCare</strong></p>
+                    <div class="kol-logo">
+                        <img src="{% static 'images/logo.svg' %}" alt="Logo PrimeCare">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- An Phương -->
+            <div class="kol-row" data-aos="fade-right" data-aos-delay="100">
+                <div class="kol-img-container">
+                    <img src="{% static 'images/kol3.jpg' %}" alt="An Phương" class="kol-img">
+                    <div class="orange-box-top"></div>
+                    <div class="orange-box-bottom"></div>
+                    <div class="beige-box-top"></div>
+                    <div class="beige-box-bottom"></div>
+                </div>
+                <div class="kol-content">
+                    <h2 class="kol-name">An Phương</h2>
+                    <p class="kol-quote">" Niềng răng là phương pháp làm đẹp mà Phương thấy rất an toàn "</p>
+                    <p class="kol-description">Đã điều trị Niềng răng Invisalign tại <strong>Nha Khoa PrimeCare</strong></p>
+                    <div class="kol-logo">
+                        <img src="{% static 'images/logo.svg' %}" alt="Logo PrimeCare">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hứa Kim Tuyền -->
+            <div class="kol-row" data-aos="fade-left" data-aos-delay="100">
+                <div class="kol-img-container">
+                    <img src="{% static 'images/kol4.jpg' %}" alt="Hứa Kim Tuyền" class="kol-img">
+                    <div class="orange-box-top"></div>
+                    <div class="orange-box-bottom"></div>
+                    <div class="beige-box-top"></div>
+                    <div class="beige-box-bottom"></div>
+                </div>
+                <div class="kol-content">
+                    <h2 class="kol-name">Hứa Kim Tuyền</h2>
+                    <p class="kol-quote">" Niềng răng tại PrimeCare rất thoải mái "</p>
+                    <p class="kol-description">Đã điều trị Niềng răng Invisalign tại <strong>Nha Khoa PrimeCare</strong></p>
+                    <div class="kol-logo">
+                        <img src="{% static 'images/logo.svg' %}" alt="Logo PrimeCare">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lê Hà Trúc -->
+            <div class="kol-row" data-aos="fade-right" data-aos-delay="100">
+                <div class="kol-img-container">
+                    <img src="{% static 'images/kol5.jpg' %}" alt="Lê Hà Trúc" class="kol-img">
+                    <div class="orange-box-top"></div>
+                    <div class="orange-box-bottom"></div>
+                    <div class="beige-box-top"></div>
+                    <div class="beige-box-bottom"></div>
+                </div>
+                <div class="kol-content">
+                    <h2 class="kol-name">Lê Hà Trúc</h2>
+                    <p class="kol-quote">" Niềng răng xong giúp mình cười tự tin hơn khi là beauty blogger "</p>
+                    <p class="kol-description">Đã điều trị Niềng răng Invisalign tại <strong>Nha Khoa PrimeCare</strong></p>
+                    <div class="kol-logo">
+                        <img src="{% static 'images/logo.svg' %}" alt="Logo PrimeCare">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Salim -->
+            <div class="kol-row" data-aos="fade-left" data-aos-delay="100">
+                <div class="kol-img-container">
+                    <img src="{% static 'images/kol6.jpg' %}" alt="Salim" class="kol-img">
+                    <div class="orange-box-top"></div>
+                    <div class="orange-box-bottom"></div>
+                    <div class="beige-box-top"></div>
+                    <div class="beige-box-bottom"></div>
+                </div>
+                <div class="kol-content">
+                    <h2 class="kol-name">Salim</h2>
+                    <p class="kol-quote">" Niềng răng giúp mình cải thiện sức khỏe ăn nhai hơn "</p>
+                    <p class="kol-description">Đã điều trị Niềng răng Invisalign tại <strong>Nha Khoa PrimeCare</strong></p>
+                    <div class="kol-logo">
+                        <img src="{% static 'images/logo.svg' %}" alt="Logo PrimeCare">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- KOL Section End -->
+
+    <!-- Testimonial Title Section -->
+    <div class="section-title-section">
+        <h2 class="section-title" data-aos="zoom-in"><span>Cảm nhận của khách hàng</span></h2>
+    </div>
+
+    <!-- Page Testimonial Start -->
+    <div class="page-testimonials">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <!-- Testimonial Box Item Start -->
+                    <div class="testimonial-box-item wow fadeInUp">
+                        <div class="testimonial-box-header">
+                            <div class="author-box-image">
+                                <figure class="image-anime">
+                                    <img src="{% static 'images/giao-vien-nam.jpg' %}" alt="">
+                                </figure>
+                            </div>            
+                            <div class="author-box-content">
+                                <h3>Nguyễn Văn An</h3>
+                                <p>Giáo viên</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-box-body">
+                            <div class="testimonial-quote-img">
+                                <img src="{% static 'images/icon-quote.svg' %}" alt="">
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="testimonial-box-content">
+                            <p>Tôi vô cùng hài lòng với dịch vụ tại PrimeCare. Bác sĩ rất tận tâm và giải thích chi tiết từng bước trong quá trình điều trị. Chắc chắn tôi sẽ giới thiệu cho đồng nghiệp và học sinh của mình về phòng khám này.</p>	
+                        </div>                    
+                    </div>
+                    <!-- Testimonial Box Item End -->
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <!-- Testimonial Box Item Start -->
+                    <div class="testimonial-box-item wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="testimonial-box-header">
+                            <div class="author-box-image">
+                                <figure class="image-anime">
+                                    <img src="{% static 'images/ky-su-nu.jpg' %}" alt="">
+                                </figure>
+                            </div>            
+                            <div class="author-box-content">
+                                <h3>Trần Thị Hoa</h3>
+                                <p>Kỹ sư phần mềm</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-box-body">
+                            <div class="testimonial-quote-img">
+                                <img src="{% static 'images/icon-quote.svg' %}" alt="">
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="testimonial-box-content">
+                            <p>Thời gian làm việc linh hoạt rất phù hợp với lịch trình bận rộn của tôi. Nhân viên thân thiện và chuyên nghiệp. Cảm ơn PrimeCare đã giúp tôi có được nụ cười tự tin hơn trong các cuộc họp và thuyết trình!</p>	
+                        </div>                    
+                    </div>
+                    <!-- Testimonial Box Item End -->
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <!-- Testimonial Box Item Start -->
+                    <div class="testimonial-box-item wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="testimonial-box-header">
+                            <div class="author-box-image">
+                                <figure class="image-anime">
+                                    <img src="{% static 'images/doanh-nhan-nam.jpg' %}" alt="">
+                                </figure>
+                            </div>            
+                            <div class="author-box-content">
+                                <h3>Lê Minh Tuấn</h3>
+                                <p>Doanh nhân</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-box-body">
+                            <div class="testimonial-quote-img">
+                                <img src="{% static 'images/icon-quote.svg' %}" alt="">
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="testimonial-box-content">
+                            <p>Với công việc thường xuyên gặp đối tác, hình ảnh là điều rất quan trọng. PrimeCare đã giúp tôi cải thiện nụ cười và tăng sự tự tin. Tôi rất ấn tượng với công nghệ hiện đại và kết quả điều trị tuyệt vời. Chắc chắn sẽ quay lại!</p>	
+                        </div>                    
+                    </div>
+                    <!-- Testimonial Box Item End -->
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <!-- Testimonial Box Item Start -->
+                    <div class="testimonial-box-item wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="testimonial-box-header">
+                            <div class="author-box-image">
+                                <figure class="image-anime">
+                                    <img src="{% static 'images/bac-si-nu.jpg' %}" alt="">
+                                </figure>
+                            </div>            
+                            <div class="author-box-content">
+                                <h3>Phạm Thanh Hà</h3>
+                                <p>Bác sĩ</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-box-body">
+                            <div class="testimonial-quote-img">
+                                <img src="{% static 'images/icon-quote.svg' %}" alt="">
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="testimonial-box-content">
+                            <p>Là một bác sĩ, tôi đánh giá cao tiêu chuẩn vệ sinh nghiêm ngặt và phương pháp điều trị khoa học tại PrimeCare. Đội ngũ y tế chuyên nghiệp và tư vấn chi tiết. Tôi đã giới thiệu cho nhiều đồng nghiệp và bệnh nhân của mình đến đây.</p>	
+                        </div>                    
+                    </div>
+                    <!-- Testimonial Box Item End -->
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <!-- Testimonial Box Item Start -->
+                    <div class="testimonial-box-item wow fadeInUp" data-wow-delay="0.8s">
+                        <div class="testimonial-box-header">
+                            <div class="author-box-image">
+                                <figure class="image-anime">
+                                    <img src="{% static 'images/kien-truc-su-nam.jpg' %}" alt="">
+                                </figure>
+                            </div>            
+                            <div class="author-box-content">
+                                <h3>Hoàng Đức Minh</h3>
+                                <p>Kiến trúc sư</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-box-body">
+                            <div class="testimonial-quote-img">
+                                <img src="{% static 'images/icon-quote.svg' %}" alt="">
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="testimonial-box-content">
+                            <p>Tôi đánh giá cao sự tỉ mỉ và thẩm mỹ trong công việc của PrimeCare. Họ không chỉ chăm sóc sức khỏe răng miệng mà còn quan tâm đến vẻ đẹp tổng thể của khuôn mặt. Cảm ơn vì đã tạo nên nụ cười hoàn hảo cho tôi!</p>	
+                        </div>                    
+                    </div>
+                    <!-- Testimonial Box Item End -->
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <!-- Testimonial Box Item Start -->
+                    <div class="testimonial-box-item wow fadeInUp" data-wow-delay="1s">
+                        <div class="testimonial-box-header">
+                            <div class="author-box-image">
+                                <figure class="image-anime">
+                                    <img src="{% static 'images/nha-thiet-ke-thoi-trang-nu.jpg' %}" alt="">
+                                </figure>
+                            </div>            
+                            <div class="author-box-content">
+                                <h3>Vũ Thị Mai</h3>
+                                <p>Nhà thiết kế thời trang</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-box-body">
+                            <div class="testimonial-quote-img">
+                                <img src="{% static 'images/icon-quote.svg' %}" alt="">
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="testimonial-box-content">
+                            <p>Trong ngành thời trang, vẻ ngoài là tất cả và nụ cười đẹp là điểm nhấn không thể thiếu. PrimeCare đã giúp tôi có được hàm răng trắng sáng tự nhiên. Môi trường phòng khám sang trọng và nhân viên cực kỳ thân thiện!</p>	
+                        </div>                    
+                    </div>
+                    <!-- Testimonial Box Item End -->
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <!-- Testimonial Box Item Start -->
+                    <div class="testimonial-box-item wow fadeInUp" data-wow-delay="1.2s">
+                        <div class="testimonial-box-header">
+                            <div class="author-box-image">
+                                <figure class="image-anime">
+                                    <img src="{% static 'images/dau-bep-nam.jpg' %}" alt="">
+                                </figure>
+                            </div>            
+                            <div class="author-box-content">
+                                <h3>Đặng Quốc Bảo</h3>
+                                <p>Đầu bếp</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-box-body">
+                            <div class="testimonial-quote-img">
+                                <img src="{% static 'images/icon-quote.svg' %}" alt="">
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="testimonial-box-content">
+                            <p>Là một đầu bếp, tôi nếm thử nhiều món ăn mỗi ngày nên sức khỏe răng miệng rất quan trọng. PrimeCare không chỉ giúp tôi điều trị hiệu quả mà còn tư vấn cách bảo vệ răng miệng trong công việc đặc thù. Sẽ tiếp tục ủng hộ phòng khám!</p>	
+                        </div>                    
+                    </div>
+                    <!-- Testimonial Box Item End -->
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <!-- Testimonial Box Item Start -->
+                    <div class="testimonial-box-item wow fadeInUp" data-wow-delay="1.4s">
+                        <div class="testimonial-box-header">
+                            <div class="author-box-image">
+                                <figure class="image-anime">
+                                    <img src="{% static 'images/nhac-si-nu.jpg' %}" alt="">
+                                </figure>
+                            </div>            
+                            <div class="author-box-content">
+                                <h3>Bùi Thị Linh</h3>
+                                <p>Nhạc sĩ</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-box-body">
+                            <div class="testimonial-quote-img">
+                                <img src="{% static 'images/icon-quote.svg' %}" alt="">
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="testimonial-box-content">
+                            <p>Trên sân khấu, nụ cười là một phần của nghệ thuật biểu diễn. Cảm ơn PrimeCare đã mang đến cho tôi sự tự tin khi trình diễn. Tôi đặc biệt yêu thích không gian thư giãn và âm nhạc nhẹ nhàng tại phòng khám, rất chuyên nghiệp!</p>	
+                        </div>                    
+                    </div>
+                    <!-- Testimonial Box Item End -->
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <!-- Testimonial Box Item Start -->
+                    <div class="testimonial-box-item wow fadeInUp" data-wow-delay="1.6s">
+                        <div class="testimonial-box-header">
+                            <div class="author-box-image">
+                                <figure class="image-anime">
+                                    <img src="{% static 'images/phi-cong-nam.jpg' %}" alt="">
+                                </figure>
+                            </div>            
+                            <div class="author-box-content">
+                                <h3>Ngô Văn Dũng</h3>
+                                <p>Phi công</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-box-body">
+                            <div class="testimonial-quote-img">
+                                <img src="{% static 'images/icon-quote.svg' %}" alt="">
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="testimonial-box-content">
+                            <p>Với lịch bay không ổn định, tôi rất trân trọng sự linh hoạt trong lịch hẹn tại PrimeCare. Đội ngũ y tế luôn tìm giải pháp phù hợp nhất cho tình trạng của tôi. Sau 3 tháng điều trị, kết quả vượt xa mong đợi. Chắc chắn sẽ quay lại!</p>	
+                        </div>                    
+                    </div>
+                    <!-- Testimonial Box Item End -->
+                </div>
+            </div>
+        </div>
+    </div> 
+    <!-- Page Testimonial End -->   
+    {% include 'includes/appointment.html' %}
+{% endblock %}
+
+{% block extra_js %}
+<!-- AOS Animation JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    // Initialize AOS animation
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true
+    });
+</script>
+{% endblock %}

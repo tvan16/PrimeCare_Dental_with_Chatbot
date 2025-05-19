@@ -1,0 +1,394 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+{% load service_filters %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include "includes/header.html" %}
+
+<!-- Breadcrumb -->
+<div class="container mt-4 mb-2">
+    <nav aria-label="breadcrumb">
+        <div class="breadcrumb-custom" style="font-size:1.08rem; color:#22336b; margin-bottom:1.2rem;">
+            <a href="/">Trang chủ</a>
+            <span class="breadcrumb-sep">&gt;</span>
+            <a href="/services-list/">Dịch vụ</a>
+            <span class="breadcrumb-sep">&gt;</span>
+            <span class="active" style="color:#888; font-weight:600;">{{ service.name }}</span>
+        </div>
+        <style>
+        .breadcrumb-custom {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            font-size: 1.08rem;
+            margin-bottom: 1.2rem;
+            margin-top: 0.5rem;
+            color: #22336b;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+        .breadcrumb-custom a {
+            color: #1e90ff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .breadcrumb-custom a:hover {
+            color: #0b5ed7;
+            text-decoration: underline;
+        }
+        .breadcrumb-custom .active {
+            color: #888;
+            font-weight: 600;
+        }
+        .breadcrumb-sep {
+            color: #b0b0b0;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin: 0 0.2em;
+            user-select: none;
+        }
+        </style>
+    </nav>
+</div>
+
+<!-- Tiêu đề và filter -->
+<div class="container mt-4 mb-3 d-flex align-items-center justify-content-between flex-wrap">
+    <h2 style="font-weight:700; color:#22336b; margin-bottom: 2.5rem;">
+        <span style="color:#1e90ff; font-size:2.2rem; font-weight:900;">|</span>
+        {{ service.name }}
+    </h2>
+    <div class="service-filters d-flex gap-3 flex-wrap">
+        <a href="#" class="filter-link {% if not request.GET.sort %}active{% endif %}" data-sort="">Tất cả</a>
+        <a href="#" class="filter-link {% if request.GET.sort == 'discount' %}active{% endif %}" data-sort="discount"><span style="color:#ff6600;">🔥</span> Khuyến mãi</a>
+        <a href="#" class="filter-link {% if request.GET.sort == 'banchay' %}active{% endif %}" data-sort="banchay">Bán chạy</a>
+        <a href="#" class="filter-link {% if request.GET.sort == 'price_desc' %}active{% endif %}" data-sort="price_desc">Giá từ cao xuống thấp</a>
+        <a href="#" class="filter-link {% if request.GET.sort == 'price_asc' %}active{% endif %}" data-sort="price_asc">Giá từ thấp đến cao</a>
+    </div>
+</div>
+
+    <!-- Danh sách dịch vụ con -->
+<div class="container mb-5" style="margin-top: 2.5rem;">
+    <div class="row g-4">
+        {% if request.GET.sort == 'discount' and no_discount %}
+            <div class="col-12 text-center py-5">
+                <div class="alert alert-info" style="font-size:1.15rem;">Hiện không có sản phẩm nào đang khuyến mãi.</div>
+            </div>
+        {% else %}
+            {% for sub in sub_services %}
+            <div class="col-xl-3 col-lg-4 col-md-6">
+                <a href="{% url 'subservice_detail' sub.slug %}" class="service-item-link">
+                    <div class="card shadow-sm border-0 h-100 service-card position-relative" style="border-radius:18px;">
+                        <div class="service-img-wrap position-relative" style="height:180px; overflow:hidden; border-radius:18px 18px 0 0;">
+                            {% if sub.discount_percent > 0 %}
+                                <span class="badge bg-danger position-absolute top-0 start-0 m-2" style="font-size:1rem;z-index:2;">Giảm {{ sub.discount_percent }}%</span>
+                            {% endif %}
+                        {% with img=sub.images.first %}
+                            {% if img %}
+                                    <img width="400" height="240"
+                                         src="{{ img.image.url }}"
+                                         class="attachment-full size-full wp-post-image object-fit-cover rounded-top"
+                                         alt="{{ sub.name }}"
+                                         decoding="async" loading="lazy"
+                                         data-src="{{ img.image.url }}"
+                                         srcset="{{ img.image.url }} 400w"
+                                         data-srcset="{{ img.image.url }} 400w">
+                            {% else %}
+                                    <img width="400" height="240"
+                                         src="{% static 'images/no-image.png' %}"
+                                         class="attachment-full size-full wp-post-image object-fit-cover rounded-top"
+                                         alt="No image"
+                                         decoding="async" loading="lazy"
+                                         data-src="{% static 'images/no-image.png' %}"
+                                         srcset="{% static 'images/no-image.png' %} 400w"
+                                         data-srcset="{% static 'images/no-image.png' %} 400w">
+                            {% endif %}
+                        {% endwith %}
+                        </div>
+                        <div class="card-body text-center py-3" style="font-size:0.97rem;">
+                            <h4 class="fw-bold mb-1" style="color:#4f5bd5; font-size:1.08rem; font-weight:800; letter-spacing:0.5px;">{{ sub.name }}</h4>
+                            <div class="mb-2">
+                                <span class="badge bg-light text-dark px-3 py-1" style="font-size:0.85rem; color:#888; font-weight:500;">{{ service.name }}</span>
+                            </div>
+                            <div class="mb-2">
+                                {% if sub.discount_percent > 0 and sub.discount_price_min %}
+                                    <span class="text-decoration-line-through text-muted d-block mb-1" style="font-size:0.85rem;">
+                                        {% if sub.original_price_min and sub.original_price_max and sub.original_price_min != sub.original_price_max %}
+                                            {{ sub.original_price_min|intdot }}đ - {{ sub.original_price_max|intdot }}đ
+                                        {% elif sub.original_price_min %}
+                                            {{ sub.original_price_min|intdot }}đ
+                                        {% elif sub.original_price_max %}
+                                            {{ sub.original_price_max|intdot }}đ
+                                        {% endif %}
+                                    </span>
+                                    <span class="fw-bold d-block price-sale" style="color:#e53935; font-size:1.05rem; font-weight:900; white-space:nowrap;">
+                                        {% if sub.discount_price_min and sub.discount_price_max and sub.discount_price_min != sub.discount_price_max %}
+                                            {{ sub.discount_price_min|intdot }}đ - {{ sub.discount_price_max|intdot }}đ
+                                        {% elif sub.discount_price_min %}
+                                            {{ sub.discount_price_min|intdot }}đ
+                                        {% elif sub.discount_price_max %}
+                                            {{ sub.discount_price_max|intdot }}đ
+                                        {% endif %}
+                                    </span>
+                                {% elif sub.discount_percent > 0 and sub.discount_price_max %}
+                                    <span class="text-decoration-line-through text-muted d-block mb-1" style="font-size:0.85rem;">
+                                        {% if sub.original_price_min and sub.original_price_max and sub.original_price_min != sub.original_price_max %}
+                                            {{ sub.original_price_min|intdot }}đ - {{ sub.original_price_max|intdot }}đ
+                                        {% elif sub.original_price_min %}
+                                            {{ sub.original_price_min|intdot }}đ
+                                        {% elif sub.original_price_max %}
+                                            {{ sub.original_price_max|intdot }}đ
+                                        {% endif %}
+                                    </span>
+                                    <span class="fw-bold d-block price-sale" style="color:#e53935; font-size:1.05rem; font-weight:900; white-space:nowrap;">
+                                        {% if sub.discount_price_min and sub.discount_price_max and sub.discount_price_min != sub.discount_price_max %}
+                                            {{ sub.discount_price_min|intdot }}đ - {{ sub.discount_price_max|intdot }}đ
+                                        {% elif sub.discount_price_min %}
+                                            {{ sub.discount_price_min|intdot }}đ
+                                        {% elif sub.discount_price_max %}
+                                            {{ sub.discount_price_max|intdot }}đ
+                                        {% endif %}
+                                    </span>
+                                {% else %}
+                                    <span class="fw-bold d-block" style="color:#4f5bd5; font-size:1.02rem; font-weight:900; white-space:nowrap;">
+                                        {% if sub.original_price_min and sub.original_price_max and sub.original_price_min != sub.original_price_max %}
+                                            {{ sub.original_price_min|intdot }}đ - {{ sub.original_price_max|intdot }}đ
+                                        {% elif sub.original_price_min %}
+                                            {{ sub.original_price_min|intdot }}đ
+                                        {% elif sub.original_price_max %}
+                                            {{ sub.original_price_max|intdot }}đ
+                                        {% endif %}
+                                    </span>
+                        {% endif %}
+                    </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    {% if sub_services.has_other_pages %}
+    <nav aria-label="Page navigation" class="mt-4">
+      <ul class="pagination justify-content-center">
+        {% if sub_services.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ sub_services.previous_page_number }}" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <span class="page-link">&laquo;</span>
+          </li>
+        {% endif %}
+        {% for num in sub_services.paginator.page_range %}
+          {% if sub_services.number == num %}
+            <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+          {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+          {% endif %}
+        {% endfor %}
+        {% if sub_services.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ sub_services.next_page_number }}" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <span class="page-link">&raquo;</span>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+    {% endif %}
+    </div>
+
+<!-- CSS cho giao diện đẹp hơn -->
+<style>
+.service-card {
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(30,144,255,0.10);
+    padding-bottom: 1.2rem;
+    background: #fff;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+.service-card:hover {
+    box-shadow: 0 8px 32px rgba(30,144,255,0.16);
+    transform: translateY(-6px) scale(1.03);
+}
+.service-img-wrap img {
+    object-fit: cover;
+    width: 100%;
+    height: 180px;
+    border-radius: 18px 18px 0 0;
+    background: #f8fafd;
+}
+.filter-link {
+    color: #22336b;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 6px 16px;
+    border-radius: 20px;
+    transition: background 0.2s, color 0.2s;
+}
+.filter-link.active, .filter-link:hover {
+    background: #eaf4ff;
+    color: #1e90ff;
+}
+.btn-primary {
+    background: linear-gradient(90deg,#1e90ff 0,#00c6fb 100%);
+    border: none;
+}
+.btn-primary:hover {
+    background: linear-gradient(90deg,#00c6fb 0,#1e90ff 100%);
+}
+.service-item-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+.service-item {
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    height: 100%;
+    cursor: pointer;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.service-icon {
+    margin-bottom: 20px;
+}
+
+.service-icon img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.service-content h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.service-content p {
+    color: #666;
+    margin: 0;
+    line-height: 1.6;
+}
+</style>
+
+<!-- PHẦN 2: Giới thiệu chi tiết dịch vụ -->
+<div class="page-service-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Nội dung bài viết -->
+                <!-- PHẦN GIỚI THIỆU CHUNG -->
+                {% if service.intro_detail_image %}
+                    <div class="mb-4 text-center">
+                        <img src="{{ service.intro_detail_image.url }}" alt="{{ service.name }}"
+                             style="width:1000px; height:500px; object-fit:cover; border-radius:16px;">
+                    </div>
+                {% endif %}
+                <h2 class="mb-3" style="font-weight:700; font-size:2.5rem;">{{ service.detail_title }}</h2>
+                <p class="lead" style="font-size:1.15rem;">{{ service.detail_content|linebreaks }}</p>
+                <!-- PHẦN LỢI ÍCH CHÍNH -->
+                <h2 id="loi-ich-chinh" class="text-anime-style-3 mb-3" style="font-size:2.2rem; font-weight:700;">{{ service.benefits_title }}</h2>
+                <p class="mb-4" style="font-size:1.1rem;">{{ service.benefits_intro }}</p>
+                <div class="row align-items-center mb-4">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        {% if service.benefits_image %}
+                            <img src="{{ service.benefits_image.url }}" alt="Lợi ích {{ service.name }}" class="img-fluid rounded shadow">
+                        {% endif %}
+            </div>
+            <div class="col-md-6">
+                <ul class="list-unstyled">
+                    {% for benefit in service.benefits_list.splitlines %}
+                                    <li class="d-flex align-items-center mb-3" style="font-size:1.1rem;">
+                                        <span class="me-2" style="color:#1abc9c; font-size:1.3rem;">
+                                            <i class="fas fa-check-circle"></i>
+                                        </span>
+                                        <span style="font-weight:600;">{{ benefit }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+            </div>
+            <div class="col-md-4">
+                <!-- Sidebar dịch vụ -->
+                <div class="service-sidebar" style="position:sticky;top:100px;">
+                    <div class="service-catagery-list wow fadeInUp">
+                        <h3>Các phần</h3>
+                        <ul>
+                            <li><a href="#loi-ich-chinh">{{ service.benefits_title }}</a></li>
+                            <li><a href="#dieu-can-biet">{{ service.faq_title }}</a></li>
+                        </ul>
+                    </div>
+                    <div class="working-time-box wow fadeInUp" data-wow-delay="0.25s">
+                        <div class="working-box-title">
+                            <h3>Giờ làm việc</h3>
+                        </div>
+                        <div class="working-time-list">
+                            <ul>
+                                <li><span>Thứ hai đến Thứ sáu: </span>8:00 - 19:00</li>
+                                <li><span>Thứ bảy: </span>7:00 - 18:00</li>
+                                <li><span>Chủ nhật: </span>7:00 - 16:00</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="section-cta-box wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="icon-box">
+                            <img src="{% static 'images/icon-faqs-cta-box.svg' %}" alt="">
+                        </div>
+                        <div class="section-cta-content">
+                            <p>Chúng tôi luôn chăm sóc nụ cười của bạn</p>
+                            <h3>Hỗ trợ khẩn cấp 24/7</h3>
+                            <span>(+04) 123456789</span>
+        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include "includes/appointment.html" %}
+
+<script>
+document.querySelectorAll('.filter-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const sort = this.getAttribute('data-sort');
+        const url = new URL(window.location.href);
+        if (sort) {
+            url.searchParams.set('sort', sort);
+        } else {
+            url.searchParams.delete('sort');
+        }
+        url.searchParams.delete('page'); // reset về trang 1 khi đổi filter
+        window.location.href = url.toString();
+    });
+});
+</script>
+
+{% endblock %}

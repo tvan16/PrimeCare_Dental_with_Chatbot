@@ -1,0 +1,124 @@
+{% load static %}
+{% block extra_css%}
+<style>
+    /* Điều chỉnh khoảng cách cho footer */
+    footer, .footer {
+        padding-top: 60px !important;
+        margin-top: 30px !important;
+    }
+    
+    /* Tạo khoảng cách cho nội dung footer */
+    .footer-top, .footer-main {
+        padding-top: 30px !important;
+    }
+    
+    /* Tăng khoảng cách giữa nội dung trang và footer */
+    #content + footer,
+    .content-wrapper + footer,
+    #main + footer,
+    .page-content + footer,
+    .page-header + footer {
+        margin-top: 50px !important;
+    }
+</style>
+{% endblock %}
+<!-- Footer Start -->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <!-- Giới Thiệu Start -->
+                <div class="about-footer">
+                    <!-- Logo Footer Start -->
+                    <div class="footer-logo">
+                        <img src="{% static 'images/footer-logo.svg' %}" alt="Logo PrimeCare">
+                    </div>
+                    <!-- Logo Footer End -->
+
+                    <!-- Nội dung Giới Thiệu Start -->
+                    <div class="about-footer-content">
+                        <p>PrimeCare là phòng khám nha khoa uy tín, cam kết mang đến dịch vụ chăm sóc răng miệng chất lượng cao cho mọi khách hàng.</p>
+                    </div>
+                    <!-- Nội dung Giới Thiệu End -->
+
+                    <!-- Thông tin Liên hệ Start -->
+                    <div class="footer-contact-content">
+                        <h3>support@primecare.com</h3>
+                        <h3>(+84) 789 345 601</h3>
+                    </div>
+                    <!-- Thông tin Liên hệ End -->
+                </div>
+                <!-- Giới Thiệu End -->
+            </div>
+            
+            <div class="col-lg-2 col-md-4">
+                <!-- Liên Kết Nhanh Start -->
+                <div class="footer-links">
+                    <h3>Liên kết nhanh</h3>
+                    <ul>
+                        <li><a href="{% url 'home' %}">Trang chủ</a></li>
+                        <li><a href="{% url 'about' %}">Giới thiệu</a></li>
+                        <li><a href="{% url 'services_list' %}">Dịch vụ</a></li>
+                        <li><a href="{% url 'contact' %}">Đặt lịch hẹn</a></li>
+                    </ul>
+                </div>
+                <!-- Liên Kết Nhanh End -->
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-12">
+                <!-- Mạng Xã Hội Start -->
+                <div class="footer-links">
+                    <h3>Mạng xã hội</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+                <!-- Mạng Xã Hội End -->
+            </div>
+
+            <div class="col-lg-3 col-md-5 col-12">
+                <!-- Dịch Vụ Của Chúng Tôi Start -->
+                <div class="footer-links">
+                    <h3>Dịch vụ của chúng tôi</h3>
+                    <ul>
+                        <li><a href="{% url 'service_detail' 'nha-khoa-tong-quat' %}">Nha khoa tổng quát</a></li>
+                        <li><a href="{% url 'service_detail' 'nha-khoa-tham-my' %}">Nha khoa thẩm mỹ</a></li>
+                        <li><a href="{% url 'service_detail' 'nha-khoa-phuc-hoi' %}">Nha khoa phục hồi</a></li>
+                        <li><a href="{% url 'service_detail' 'nieng-rang' %}">Niềng răng</a></li>
+                    </ul>
+                </div>
+                <!-- Dịch Vụ Của Chúng Tôi End -->
+            </div>
+        </div>
+
+        <!-- Bản Quyền Start -->
+        <div class="footer-copyright">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-6">
+                    <!-- Văn bản Bản Quyền Start -->
+                    <div class="footer-copyright-text">
+                        <p>Bản quyền © {% now "Y" %}. Mọi quyền được bảo lưu.</p>
+                    </div>
+                    <!-- Văn bản Bản Quyền End -->
+                </div>
+
+                <div class="col-lg-6 col-md-6">
+                    <!-- Chính Sách và Điều Khoản Start -->
+                    <div class="footer-privacy-policy">
+                        <ul>
+                            <li><a href="{% url 'terms' %}">Điều khoản & điều kiện</a></li>
+                            <li><a href="{% url 'support' %}">Hỗ trợ</a></li>
+                            <li><a href="{% url 'privacy' %}">Chính sách bảo mật</a></li>
+                        </ul>
+                    </div>
+                    <!-- Chính Sách và Điều Khoản End -->
+                </div>
+            </div>
+        </div>
+        <!-- Bản Quyền End -->
+    </div>
+</footer>
+<!-- Footer End -->

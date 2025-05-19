@@ -1,0 +1,539 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load doctor_filters %}
+
+{% block title %}PrimeCare - Bác sĩ {{ doctor.name }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/doctor-page.css' %}?v=1.1">
+<link rel="stylesheet" href="{% static 'css/appointment.css' %}">
+<style>
+    .page-header {
+        background-image: url('{% static "images/bacsi.jpg" %}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 100px 0;
+        color: #fff;
+    }
+    .breadcrumb-item a {
+        color: #fff;
+    }
+    .pagination {
+        justify-content: center;
+        margin-top: 40px;
+    }
+    .pagination .page-item .page-link {
+        color: #fff;
+        background-color: #1e6091;
+        border-color: #1e6091;
+        width: 40px;
+        height: 40px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 5px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    .pagination .page-item.active .page-link {
+        background-color: #fff;
+        color: #1e6091;
+        border: 2px solid #1e6091;
+    }
+    .pagination .page-link:hover {
+        background-color: #154a70;
+        border-color: #154a70;
+        color: #fff;
+    }
+    .pagination .page-item.active .page-link:hover {
+        background-color: #fff;
+        color: #1e6091;
+    }
+    .team-image figure {
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+    }
+    .team-image figure img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+    }
+</style>
+
+{% endblock %}
+
+{% block body_attrs %}data-doctor-id="{{ doctor.id }}" data-doctor-slug="{{ doctor.slug }}"{% endblock %}
+
+{% block content %}
+
+    <!-- Page Header Start -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <!-- Page Header Box Start -->
+                    <div class="page-header-box">
+                        <h1 class="text-anime-style-3" data-cursor="-opaque">Thông tin Bác sĩ</h1>
+                    </div>
+                    <!-- Page Header Box End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- Breadcrumb -->
+    <div class="container mt-4 mb-2">
+        <nav aria-label="breadcrumb">
+            <div class="breadcrumb-custom" style="font-size:1.08rem; color:#22336b; margin-bottom:1.2rem;">
+                <a href="/">Trang chủ</a>
+                <span class="breadcrumb-sep">&gt;</span>
+                <a href="/doctors/">Bác sĩ</a>
+                <span class="breadcrumb-sep">&gt;</span>
+                <span class="active" style="color:#888; font-weight:600;">{{ doctor.name }}</span>
+            </div>
+            <style>
+            .breadcrumb-custom {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                font-size: 1.08rem;
+                margin-bottom: 1.2rem;
+                margin-top: 0.5rem;
+                color: #22336b;
+                font-weight: 500;
+                letter-spacing: 0.01em;
+            }
+            .breadcrumb-custom a {
+                color: #1e90ff;
+                text-decoration: none;
+                font-weight: 600;
+                transition: color 0.2s;
+            }
+            .breadcrumb-custom a:hover {
+                color: #0b5ed7;
+                text-decoration: underline;
+            }
+            .breadcrumb-custom .active {
+                color: #888;
+                font-weight: 600;
+            }
+            .breadcrumb-sep {
+                color: #b0b0b0;
+                font-size: 1.1em;
+                font-weight: bold;
+                margin: 0 0.2em;
+                user-select: none;
+            }
+            </style>
+        </nav>
+    </div>
+    
+    <!-- Page Doctor Details Start -->
+    <div class="page-doctor-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 order-lg-1 order-2">
+                    <div class="doctor-details-content">
+                        <!-- About Doctor Info Start -->
+                        <div class="about-doctor-info">
+                            <!-- Bio Intro Section -->
+                            <h2 class="section-heading">Giới thiệu chung</h2>
+
+                            {% if doctor.bio_intro %}
+                                {% if doctor.bio_intro|is_list %}
+                                    {% for paragraph in doctor.bio_intro %}
+                                        <p class="wow fadeInUp" data-wow-delay="0.2s">{{ paragraph|safe|striptags }}</p>
+                                    {% endfor %}
+                                {% else %}
+                                    <p class="wow fadeInUp" data-wow-delay="0.2s">{{ doctor.bio_intro|safe|striptags }}</p>
+                                {% endif %}
+                            {% else %}
+                                <p class="wow fadeInUp" data-wow-delay="0.2s">
+                                    Bác sĩ {{ doctor.name }} là một trong những bác sĩ tại phòng khám chúng tôi, với kinh nghiệm dày dặn và luôn tận tâm với bệnh nhân.
+                                </p>
+                            {% endif %}
+
+                            <!-- Bio Expertise Section -->
+                            <h2 class="text-anime-style-3">Chuyên Môn</h2>
+
+                            <!-- Hiển thị đoạn văn đầu tiên - bio_expertise_1 -->
+                            {% if doctor.bio_expertise_1 %}
+                                <p class="wow fadeInUp" data-wow-delay="0.2s">{{ doctor.bio_expertise_1 }}</p>
+                            {% else %}
+                                <p class="wow fadeInUp" data-wow-delay="0.2s">
+                                    Bác sĩ {{ doctor.name }} chuyên về chăm sóc nha khoa toàn diện, bao gồm các dịch vụ phòng ngừa, điều trị và thẩm mỹ.
+                                </p>
+                            {% endif %}
+
+                            <!-- Hiển thị kỹ năng -->
+                            <div class="team-member-skills wow fadeInUp" data-wow-delay="0.4s">
+                                <!-- Skills Progress Bar 1 -->
+                                <div class="skills-progress-bar">
+                                    <div class="skillbar" data-percent="{{ doctor.healing_therapy }}%">
+                                        <div class="skill-data">
+                                            <div class="skill-title">Liệu pháp chữa lành</div>
+                                            <div class="skill-no">{{ doctor.healing_therapy }}%</div>
+                                        </div>
+                                        <div class="skill-progress">
+                                            <div class="count-bar" style="width: {{ doctor.healing_therapy }}%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Skills Progress Bar 2 -->
+                                <div class="skills-progress-bar">
+                                    <div class="skillbar" data-percent="{{ doctor.pain_management }}%">
+                                        <div class="skill-data">
+                                            <div class="skill-title">Quản lý đau</div>
+                                            <div class="skill-no">{{ doctor.pain_management }}%</div>
+                                        </div>
+                                        <div class="skill-progress">
+                                            <div class="count-bar" style="width: {{ doctor.pain_management }}%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Skills Progress Bar 3 -->
+                                <div class="skills-progress-bar">
+                                    <div class="skillbar" data-percent="{{ doctor.diagnosis }}%">
+                                        <div class="skill-data">
+                                            <div class="skill-title">Kiểm tra và chẩn đoán</div>
+                                            <div class="skill-no">{{ doctor.diagnosis }}%</div>
+                                        </div>
+                                        <div class="skill-progress">
+                                            <div class="count-bar" style="width: {{ doctor.diagnosis }}%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% comment %} <!-- Hiển thị bio_expertise_2 -->
+                            {% if doctor.bio_expertise_2 %}
+                                <p class="wow fadeInUp" data-wow-delay="0.5s">{{ doctor.bio_expertise_2 }}</p>
+                            {% endif %} {% endcomment %}
+
+                            <!-- Nội dung mô tả chuyên môn khác -->
+                            <p class="wow fadeInUp" data-wow-delay="0.6s">
+                                {% if expertise_additional %}
+                                    {{ expertise_additional }}
+                                {% elif doctor.area %}
+                                    Bác sĩ {{ doctor.name }} và đội ngũ của chúng tôi luôn dành tâm trí và sức lực trong từng ca bệnh để đem đến quý khách dịch vụ chất lượng cao.
+                                {% else %}
+                                    Bác sĩ {{ doctor.name }} và đội ngũ của chúng tôi luôn dành tâm huyết để mang đến dịch vụ nha khoa chất lượng cao, 
+                                    sử dụng các kỹ thuật tiên tiến cùng với trang thiết bị hiện đại để đảm bảo kết quả điều trị tối ưu và sự hài lòng của bệnh nhân.
+                                {% endif %}
+                            </p>
+                            <!-- Bio Expertise Section End -->
+                        </div>
+                        <!-- About Doctor Info End -->
+                    
+                        <!-- About Doctor Feature Start -->
+                        <div class="about-doctor-feature">
+                            <!-- Section Title Start -->
+                            <div class="section-title">
+                                <h3 class="wow fadeInUp section-logo">Đặc Điểm Nổi Bật</h3>
+                                <h2 class="section-heading" data-cursor="-opaque">Về Bác sĩ {{ doctor.name }}</h2>
+                                
+                                <p class="wow fadeInUp" data-wow-delay="0.2s">
+                                    Với nền tảng kiến thức y khoa vững chắc và sự tận tâm với sức khỏe răng miệng cộng đồng, BS {{ doctor.name }} không ngừng trau dồi chuyên môn, minh chứng qua những chứng chỉ nổi bật sau đây.
+                                </p>
+                                
+                                <!-- Certificate Section -->
+                                <div class="certificate-container wow fadeInUp" data-wow-delay="0.25s">
+                                    <h4 class="certificate-title">Chứng chỉ và thành tựu: </h4>
+                                    
+                                    {% if certificates %}
+                                        <ol class="certificate-numbered-list">
+                                            {% for cert in certificates %}
+                                                <li class="certificate-item">{{ cert }}</li>
+                                            {% endfor %}
+                                        </ol>
+                                    {% else %}
+                                        <div class="certificate-item-container">
+                                            <div class="certificate-item-box certificate-empty">
+                                                <div class="certificate-content">Thông tin chứng chỉ sẽ được cập nhật sớm.</div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <!-- Section Title End -->
+                        
+                            <!-- Doctor Feature List Start -->
+                            <div class="doctor-feature-list">
+                                <ul class="wow fadeInUp large-text-features" data-wow-delay="0.5s">
+                                    <li>Tận tâm với dịch vụ chăm sóc răng miệng chất lượng cao</li>
+                                    <li>Kinh nghiệm và chuyên môn cho nụ cười của bạn</li>
+                                    <li>Người bạn đồng hành đáng tin cậy trên hành trình chăm sóc răng miệng</li>
+                                    <li>Cam kết mang đến sức khỏe nha khoa tốt nhất</li>
+                                </ul>
+                            </div>
+                            <!-- Doctor Feature List End -->
+                        </div>
+                        <!-- About Doctor Feature End -->
+                    </div>
+                </div>
+
+                <div class="col-lg-4 order-lg-2 order-1">
+                    <div class="doctor-details-sidebar">
+                        <div class="doctor-details-box wow fadeInUp" style="position: relative;">
+                            <!-- Team Image Start -->
+                            <div class="doctor-image">
+                                {% if doctor.image and doctor.image != '' %}
+                                    <img src="{% static 'images/doctor_images/' %}{{ doctor.image }}"
+                                        alt="{{ doctor.name }}"
+                                        class="img-fluid"
+                                        onerror="this.onerror=null;this.src='{% static 'images/doctor_images/default-doctor.jpg' %}';">
+                                {% else %}
+                                    <img src="{% static 'images/doctor_images/default-doctor.jpg' %}"
+                                        alt="{{ doctor.name }}"
+                                        class="img-fluid">
+                                {% endif %}
+                            </div>
+                            
+                            <!-- Social Media Icons -->
+                            <div class="doctor-social-media">
+                                {% if doctor.facebook %}
+                                <a href="{{ doctor.facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                {% endif %}
+                                {% if doctor.instagram %}
+                                <a href="{{ doctor.instagram }}" target="_blank"><i class="fab fa-instagram"></i></a>
+                                {% endif %}
+                                {% if doctor.twitter %}
+                                <a href="{{ doctor.twitter }}" target="_blank"><i class="fab fa-twitter"></i></a>
+                                {% endif %}
+                            </div>
+                            <!-- Team Image End -->
+                    
+                            <!-- Team Content Start -->
+                            <div class="doctor-content">
+                                <h3>{{ doctor.name }}</h3>
+                                <p>{{ doctor.area|default:"Bác Sĩ" }}</p>
+                            </div>
+                            <!-- Team Content End -->
+                        </div>
+
+                        <div class="get-touch-box wow fadeInUp" data-wow-delay="0.25s">
+                            <div class="get-touch-title">
+                                <h3>Liên hệ với chúng tôi</h3>
+                            </div>
+                            <ul>
+                                <li><span>Điện thoại - </span>659-989-565</li>
+                                <li><span>Email - </span>support@primecare.com</li>
+                                <li><span>Chức vụ - </span>Bác Sĩ</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Doctor Details End -->
+
+    <!-- Appointment Section Start -->
+    <div class="doctor-appointment-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 mb-5">
+                    <div class="section-title text-center">
+                        <h3 class="wow fadeInUp section-logo">Đặt lịch</h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">Đặt Lịch Hẹn Với Bác Sĩ {{ doctor.name }}</h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.2s">Hãy đặt lịch hẹn ngay hôm nay để được Bác sĩ {{ doctor.name }} tư vấn và điều trị.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-8">
+                    <!-- Biểu Mẫu Đặt Lịch Start -->
+                    <div class="appointment-form wow fadeInUp" data-wow-delay="0.25s">
+                        <div class="appointment-form-content">
+                            <p>Điền thông tin vào biểu mẫu dưới đây để yêu cầu lịch hẹn. Chúng tôi sẽ xác nhận thời gian và gửi cho bạn một lời nhắc.</p>
+                        </div>
+                        <!-- Form Start -->
+                        <form id="appointmentForm" onsubmit="return false;">
+                            <div class="row">
+                                <div class="form-group col-md-6 mb-4">
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Nhập Họ và Tên" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-md-6 mb-4">
+                                    <input type="email" name="email" class="form-control" id="email" placeholder="Nhập Email" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-md-6 mb-4">
+                                    <input type="text" name="location" class="form-control" id="location" placeholder="Nhập Địa Chỉ">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-md-6 mb-4">
+                                    <input type="text" name="recordno" class="form-control" id="recordno" placeholder="Số Điện Thoại" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-md-6 mb-4">
+                                    <input type="date" name="date" class="form-control" id="date" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-md-6 mb-4">
+                                    <input type="time" name="time" class="form-control" id="time" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                
+
+                                <div class="appointment-form-title">
+                                    <h3>Lý Do Khám</h3>
+                                </div>
+
+                                <div class="appointment-reason">
+                                    <div class="reason-box">
+                                        <input type="radio" id="routine" name="reason" value="Routine Checkup" checked>
+                                        <label for="routine">Khám tổng quát</label>
+                                    </div>                                      
+                                    <div class="reason-box">
+                                        <input type="radio" id="new" name="reason" value="New Patient Visit">
+                                        <label for="new">Khám lần đầu</label>
+                                    </div>
+                                    <div class="reason-box">
+                                        <input type="radio" id="specific" name="reason" value="Specific Concern">
+                                        <label for="specific">Vấn đề cụ thể</label>
+                                    </div>
+                                </div>
+                                
+                                <!-- Thêm box text cho vấn đề cụ thể - ban đầu ẩn đi -->
+                                <div id="specificIssueContainer" class="col-md-12 mt-3" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="specificIssueDetail" class="form-label">Mô tả vấn đề răng miệng bạn đang gặp phải</label>
+                                        <textarea name="specificIssueDetail" id="specificIssueDetail" class="form-control" rows="4" placeholder="Vui lòng mô tả chi tiết vấn đề răng miệng bạn đang gặp phải..."></textarea>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn-default">Đặt Lịch Hẹn</button>
+                                    <div id="msgSubmit" class="h3 hidden"></div>
+                                </div>
+                                
+                            </div>
+                        </form>
+                        <!-- Form End -->
+                    </div>
+                    <!-- Biểu Mẫu Đặt Lịch End -->
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="appointment-info wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="appointment-info-box">
+                            <h3>Thông Tin Liên Hệ</h3>
+                            <p>Nếu bạn có câu hỏi hoặc cần hỗ trợ đặt lịch, vui lòng liên hệ với chúng tôi:</p>
+                            <ul>
+                                <li><i class="fas fa-phone"></i> (+84) 123 456 789</li>
+                                <li><i class="fas fa-envelope"></i> support@primecare.com</li>
+                                <li><i class="fas fa-clock"></i> Thứ Hai - Thứ Sáu: 8:00 - 19:00</li>
+                                <li><i class="fas fa-clock"></i> Thứ Bảy: 7:00 - 18:00</li>
+                                <li><i class="fas fa-clock"></i> Chủ Nhật: 7:00 - 16:00</li>
+                            </ul>
+                        </div>
+                        <div class="appointment-emergency">
+                            <h3>Cần Khám Khẩn Cấp?</h3>
+                            <p>Chúng tôi cung cấp dịch vụ chăm sóc khẩn cấp cho các trường hợp đau răng, gãy răng, hoặc các tình trạng cấp bách khác.</p>
+                            <a href="tel:+84789345601" class="emergency-phone">
+                                <i class="fas fa-phone-alt"></i> Gọi (+ 1800 9999)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Appointment Section End -->
+
+    <!-- Other Doctors Section Start -->
+    <div class="other-doctors-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title text-center">
+                        <img src="{% static 'images/logo.svg' %}" alt="PrimeCare Logo" class="logo-primecare">
+                        <h3 class="wow fadeInUp section-logo">Đội Ngũ Y Bác Sĩ</h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">Các Bác Sĩ Khác Tại PrimeCare</h2>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-lg-12">
+                    <!-- Sửa phần này - loại bỏ div lồng nhau thừa -->
+                    <div class="doctor-slider">
+                        <div class="swiper-container" id="doctorSwiper">
+                            <div class="swiper-wrapper">
+                                {% for other_doctor in other_doctors %}
+                                <div class="swiper-slide">
+                                    <div class="team-member-item">
+                                        <div class="team-image">
+                                            <a href="{% url 'doctors:detail' other_doctor.slug %}">
+                                                <figure class="image-anime">
+                                                    {% with doctor_image='images/doctor_images/'|add:other_doctor.image %}
+                                                    <img src="{% static doctor_image %}" alt="{{ other_doctor.name }}" onerror="this.onerror=null; this.src='{% static 'images/doctor_images/default-doctor.jpg' %}'">
+                                                    {% endwith %}
+                                                </figure>
+                                            </a>
+                                            <div class="doctor-social-media">
+                                                {% if other_doctor.facebook %}
+                                                <a href="{{ other_doctor.facebook }}" class="icon-img icon-facebook"></a>
+                                                {% endif %}
+                                                {% if other_doctor.instagram %}
+                                                <a href="{{ other_doctor.instagram }}" class="icon-img icon-instagram"></a>
+                                                {% endif %}
+                                                {% if other_doctor.twitter %}
+                                                <a href="{{ other_doctor.twitter }}" class="icon-img icon-twitter"></a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="team-content">
+                                            <h3><a href="{% url 'doctors:detail' other_doctor.slug %}">{{ other_doctor.name }}</a></h3>
+                                            <p>{{ other_doctor.area|default:"Bác Sĩ" }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% empty %}
+                                <div class="swiper-slide">
+                                    <div class="team-member-item">
+                                        <p>Không có bác sĩ khác</p>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Thêm pagination -->
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        
+                        <!-- Navigation buttons - di chuyển ra ngoài -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="{% url 'doctors:list' %}" class="btn main-btn wow fadeInUp">
+                    <span>Xem Tất Cả Bác Sĩ</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Other Doctors Section End -->
+{% endblock %}
+{% block extra_js%}
+<script src="{% static 'js/appointment.v2.js' %}"></script>
+<script src="{% static 'js/doctor-page.js' %}"></script>
+{% endblock %}
+

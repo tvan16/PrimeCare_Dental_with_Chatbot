@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- Page Header Start -->
+<div class="page-header">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <!-- Page Header Box Start -->
+                <div class="page-header-box">
+                    <h1 class="text-anime-style-3" data-cursor="-opaque">Không Tìm Thấy Trang</h1>
+                    <nav class="wow fadeInUp">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}">Trang chủ</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Lỗi 404</li>
+                        </ol>
+                    </nav>
+                </div>
+                <!-- Page Header Box End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<!-- error section start -->
+<div class="error-page">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <div class="error-page-image wow fadeInUp" data-wow-delay="0.25s">
+                    <img src="{% static 'images/404-error-img.png' %}" alt="404 Error" class="img-fluid">
+                </div>
+                <div class="error-page-content">
+                    <div class="error-page-content-heading">
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">Oops! Không Tìm Thấy Trang</h2>
+                    </div>
+                    <div class="error-page-content-body">
+                        <p class="wow fadeInUp" data-wow-delay="0.5s">Trang bạn đang tìm kiếm không tồn tại hoặc đã bị di chuyển</p>
+                        <div class="error-actions wow fadeInUp" data-wow-delay="0.75s">
+                            <a href="{% url 'home' %}" class="btn-default">Về Trang Chủ</a>
+                            <a href="{% url 'contact' %}" class="btn-default btn-outline">Liên Hệ Hỗ Trợ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- error section end -->
+
+<style>
+.page-header {
+    background: #f8f9fa;
+    padding: 60px 0;
+    margin-bottom: 60px;
+}
+
+.page-header-box h1 {
+    font-size: 2.5rem;
+    color: #22336b;
+    margin-bottom: 15px;
+}
+
+.breadcrumb {
+    margin: 0;
+    padding: 0;
+}
+
+.breadcrumb-item a {
+    color: #1e90ff;
+    text-decoration: none;
+}
+
+.breadcrumb-item.active {
+    color: #666;
+}
+
+.error-page {
+    padding: 60px 0;
+}
+
+.error-page-image {
+    margin-bottom: 40px;
+}
+
+.error-page-image img {
+    max-width: 400px;
+    height: auto;
+}
+
+.error-page-content-heading h2 {
+    font-size: 2.2rem;
+    color: #22336b;
+    margin-bottom: 20px;
+}
+
+.error-page-content-body p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.error-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn-default {
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-default:not(.btn-outline) {
+    background: linear-gradient(90deg, #1e90ff 0, #00c6fb 100%);
+    color: white;
+    border: none;
+}
+
+.btn-default.btn-outline {
+    background: transparent;
+    color: #1e90ff;
+    border: 2px solid #1e90ff;
+}
+
+.btn-default:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(30, 144, 255, 0.2);
+}
+
+.btn-default.btn-outline:hover {
+    background: #1e90ff;
+    color: white;
+}
+</style>
+{% endblock %} 

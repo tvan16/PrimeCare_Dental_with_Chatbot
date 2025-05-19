@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Chính Sách Bảo Mật - PrimeCare Dental{% endblock %}
+
+{% block content %}
+    <!-- Page Header Start -->
+    {% include 'includes/page_header.html' %}
+    <!-- Page Header End -->
+
+    <div class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="breadcrumb-title">Chính Sách Bảo Mật</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}">Trang Chủ</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Chính Sách Bảo Mật</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="privacy-content">
+                    <h2>Chính Sách Bảo Mật - PrimeCare Dental</h2>
+                    <p>Cập nhật lần cuối: 01/05/2025</p>
+                    
+                    <h3 class="mt-4">1. Thông Tin Chúng Tôi Thu Thập</h3>
+                    <p>Khi quý khách sử dụng website của chúng tôi, chúng tôi có thể thu thập các thông tin sau:</p>
+                    <ul>
+                        <li>Thông tin cá nhân: Họ tên, địa chỉ email, số điện thoại, địa chỉ liên lạc</li>
+                        <li>Thông tin y tế: Lịch sử điều trị, tình trạng sức khỏe răng miệng</li>
+                        <li>Thông tin kỹ thuật: Địa chỉ IP, loại trình duyệt, thiết bị truy cập</li>
+                    </ul>
+                    
+                    <h3 class="mt-4">2. Cách Chúng Tôi Sử Dụng Thông Tin</h3>
+                    <p>Chúng tôi sử dụng thông tin thu thập được để:</p>
+                    <ul>
+                        <li>Cung cấp và duy trì dịch vụ nha khoa</li>
+                        <li>Xử lý đặt lịch hẹn và liên lạc với quý khách</li>
+                        <li>Cải thiện trải nghiệm người dùng trên website</li>
+                        <li>Gửi thông tin và cập nhật về dịch vụ mới (nếu quý khách đồng ý)</li>
+                    </ul>
+                    
+                    <h3 class="mt-4">3. Bảo Vệ Thông Tin</h3>
+                    <p>Chúng tôi áp dụng các biện pháp bảo mật phù hợp để bảo vệ thông tin cá nhân của quý khách khỏi truy cập trái phép, sử dụng hoặc tiết lộ. Tuy nhiên, không có phương thức truyền tải qua internet hoặc phương thức lưu trữ điện tử nào là an toàn 100%.</p>
+                    
+                    <h3 class="mt-4">4. Chia Sẻ Thông Tin</h3>
+                    <p>Chúng tôi không bán, trao đổi, hoặc chuyển giao thông tin cá nhân của quý khách cho bên thứ ba mà không có sự đồng ý của quý khách, ngoại trừ các trường hợp cần thiết để cung cấp dịch vụ hoặc tuân thủ pháp luật.</p>
+                    
+                    <h3 class="mt-4">5. Quyền Của Quý Khách</h3>
+                    <p>Quý khách có quyền:</p>
+                    <ul>
+                        <li>Truy cập và nhận bản sao thông tin cá nhân của mình</li>
+                        <li>Yêu cầu cập nhật hoặc xóa thông tin cá nhân</li>
+                        <li>Hạn chế hoặc phản đối việc xử lý thông tin</li>
+                    </ul>
+                    
+                    <h3 class="mt-4">6. Cookie và Công Nghệ Theo Dõi</h3>
+                    <p>Website của chúng tôi có thể sử dụng cookie để cải thiện trải nghiệm người dùng. Quý khách có thể thiết lập trình duyệt để từ chối tất cả cookie hoặc thông báo khi cookie được gửi đi.</p>
+                    
+                    <h3 class="mt-4">7. Thay Đổi Chính Sách Bảo Mật</h3>
+                    <p>Chúng tôi có thể cập nhật Chính Sách Bảo Mật này theo thời gian. Chúng tôi sẽ thông báo cho quý khách về những thay đổi quan trọng bằng cách đăng thông báo trên website của chúng tôi.</p>
+                    
+                    <h3 class="mt-4">8. Liên Hệ</h3>
+                    <p>Nếu quý khách có bất kỳ câu hỏi nào về Chính Sách Bảo Mật của chúng tôi, vui lòng liên hệ với chúng tôi theo số điện thoại (+84) 789 345 601 hoặc email support@primecare.com.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

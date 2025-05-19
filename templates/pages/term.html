@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Điều Khoản Sử Dụng - PrimeCare Dental{% endblock %}
+
+{% block content %}
+    <!-- Page Header Start -->
+    {% include 'includes/page_header.html' %}
+    <!-- Page Header End -->
+
+    <div class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="breadcrumb-title">Điều Khoản Sử Dụng</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}">Trang Chủ</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Điều Khoản Sử Dụng</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="terms-content">
+                    <h2>Điều Khoản Sử Dụng - PrimeCare Dental</h2>
+                    <p>Cập nhật lần cuối: 01/05/2025</p>
+                    
+                    <h3 class="mt-4">1. Giới Thiệu</h3>
+                    <p>Chào mừng quý khách đến với website của PrimeCare Dental. Bằng cách truy cập và sử dụng website này, quý khách đồng ý với các điều khoản và điều kiện sử dụng được đề cập dưới đây.</p>
+                    
+                    <h3 class="mt-4">2. Đặt Lịch Hẹn</h3>
+                    <p>Việc đặt lịch hẹn qua website của chúng tôi không đảm bảo rằng quý khách sẽ nhận được thời gian mong muốn. Chúng tôi sẽ liên hệ để xác nhận lịch hẹn sau khi nhận được yêu cầu của quý khách.</p>
+                    
+                    <h3 class="mt-4">3. Thông Tin Y Tế</h3>
+                    <p>Thông tin y tế được cung cấp trên website này chỉ mang tính chất tham khảo và không thay thế cho tư vấn trực tiếp từ bác sĩ nha khoa. Vui lòng luôn tham khảo ý kiến bác sĩ cho các vấn đề sức khỏe cụ thể.</p>
+                    
+                    <h3 class="mt-4">4. Quyền Sở Hữu Trí Tuệ</h3>
+                    <p>Tất cả nội dung trên website này, bao gồm văn bản, hình ảnh, logo, và thiết kế, đều thuộc quyền sở hữu của PrimeCare Dental và được bảo vệ bởi luật bản quyền.</p>
+                    
+                    <h3 class="mt-4">5. Giới Hạn Trách Nhiệm</h3>
+                    <p>PrimeCare Dental không chịu trách nhiệm về bất kỳ thiệt hại nào phát sinh từ việc sử dụng hoặc không thể sử dụng website này.</p>
+                    
+                    <h3 class="mt-4">6. Thay Đổi Điều Khoản</h3>
+                    <p>Chúng tôi có thể cập nhật các Điều Khoản Sử Dụng này theo thời gian. Mọi thay đổi sẽ có hiệu lực ngay khi được đăng lên website.</p>
+                    
+                    <h3 class="mt-4">7. Liên Hệ</h3>
+                    <p>Nếu quý khách có bất kỳ câu hỏi nào về Điều Khoản Sử Dụng của chúng tôi, vui lòng liên hệ với chúng tôi theo số điện thoại (+84) 789 345 601 hoặc email support@primecare.com.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

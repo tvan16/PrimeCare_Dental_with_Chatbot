@@ -1,0 +1,611 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dịch vụ - PrimeCare Dental{% endblock %}
+
+{% block extra_css %}
+<!-- Thêm CSS đặc biệt cho trang dịch vụ nếu cần -->
+<style>
+    /* Styling cho footer để điều chỉnh khoảng cách */
+    footer.main-footer {
+        padding-top: 80px;
+        margin-top: 40px;
+    }
+    
+    .footer-top {
+        margin-top: 30px;
+    }
+    
+    /* Styling điều chỉnh cho trang dịch vụ */
+    .page-services {
+        padding: 50px 0 70px;
+    }
+    
+    .service-item {
+        margin-bottom: 30px;
+    }
+    
+    /* Thêm khoảng cách giữa các section */
+    .why-choose-us,
+    .our-faqs,
+    .our-process,
+    .our-technology {
+        margin-top: 60px;
+        padding: 60px 0;
+    }
+    
+    /* ==== CSS cho phần Quy trình ==== */
+    .our-process {
+        background-color: #f8f9fd;
+        position: relative;
+    }
+    
+    .our-process:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('{% static "images/pattern-light.png" %}');
+        opacity: 0.15;
+        z-index: 0;
+    }
+    
+    .process-item {
+        background: #ffffff;
+        padding: 30px 25px;
+        border-radius: 15px;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+        margin-bottom: 30px;
+        position: relative;
+        transition: all 0.3s ease;
+        min-height: 250px;
+        z-index: 1;
+        border-bottom: 4px solid transparent;
+        overflow: hidden;
+    }
+    
+    .process-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        border-bottom-color: #fa9f34;
+    }
+    
+    .process-item:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 4px;
+        background: #313B79;
+        transition: width 0.5s ease;
+        z-index: -1;
+    }
+    
+    .process-item:hover:after {
+        width: 100%;
+    }
+    
+    .process-number {
+        font-size: 64px;
+        font-weight: 700;
+        color: rgba(49, 59, 121, 0.08);
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        line-height: 1;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    .process-item h4 {
+        font-size: 22px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 15px;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .process-item p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #666;
+        position: relative;
+        z-index: 2;
+    }
+    
+    /* ==== CSS cho phần Công nghệ ==== */
+    .our-technology {
+        background-color: #ffffff;
+        position: relative;
+    }
+    
+    .tech-item {
+        background: #ffffff;
+        padding: 30px 25px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(0,0,0,0.05);
+        text-align: center;
+        min-height: 280px;
+    }
+    
+    .tech-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        border-color: rgba(250, 159, 52, 0.2);
+    }
+    
+    .tech-icon {
+        width: 90px;
+        height: 90px;
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(49, 59, 121, 0.05);
+        border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+    
+    .tech-item:hover .tech-icon {
+        background: rgba(250, 159, 52, 0.1);
+        transform: scale(1.1) rotate(5deg);
+    }
+    
+    .tech-icon img {
+        width: 50px;
+        height: auto;
+        transition: all 0.3s ease;
+    }
+    
+    .tech-item:hover .tech-icon img {
+        transform: scale(1.1);
+    }
+    
+    .tech-item h4 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 15px;
+    }
+    
+    .tech-item p {
+        font-size: 15px;
+        line-height: 1.6;
+        color: #666;
+    }
+    
+    /* Responsive styling */
+    @media (max-width: 991px) {
+        .process-item, .tech-item {
+            min-height: auto;
+            margin-bottom: 20px;
+        }
+    }
+    
+    @media (max-width: 767px) {
+        .our-process, .our-technology {
+            padding: 40px 0;
+        }
+        
+        .section-title h2 {
+            font-size: 28px;
+        }
+        
+        .process-number {
+            font-size: 48px;
+            top: 5px;
+            right: 15px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+    <!-- Dịch vụ chính -->
+    <div class="page-services">
+        <div class="container">
+            <div class="row">
+                {% for service in services %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-item wow fadeInUp" data-wow-delay="{{ forloop.counter0|add:"0.2"|floatformat:1 }}s">
+                        <div class="service-header">
+                            <div class="service-item-box">
+                                <div class="icon-box">
+                                    {% if service.icon %}
+                                        <img src="{{ service.icon.url }}" alt="{{ service.name }}">
+                                    {% else %}
+                                        <img src="{% static 'images/icon-service-' %}{{ forloop.counter }}.svg" alt="{{ service.name }}">
+                                    {% endif %}
+                                </div>
+                                <div class="service-item-content">
+                                    <a href="{% url 'service_detail' service.slug %}">
+                                        <h3>{{ service.name }}</h3>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="service-readmore">
+                                <a href="{% url 'service_detail' service.slug %}">
+                                    <img src="{% static 'images/arrow-accent.svg' %}" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="service-body">
+                            <p>{{ service.intro|truncatewords:20 }}</p>
+                        </div>
+                        <div class="service-image">
+                            <a href="{% url 'service_detail' service.slug %}">
+                                <figure class="image-anime">
+                                    {% if service.intro_image %}
+                                        <img src="{{ service.intro_image.url }}" alt="{{ service.name }}">
+                                    {% else %}
+                                        <img src="{% static 'images/default-service.jpg' %}" alt="{{ service.name }}">
+                                    {% endif %}
+                                </figure>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Dịch vụ chính End -->
+     
+    <!-- Why Choose Us Section Start -->
+    <div class="why-choose-us">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 order-lg-1 order-1">
+                    <!-- Nội dung Lý do tin tưởng PrimeCare Start -->
+                    <div class="why-choose-content">
+                        <!-- Tiêu đề Phần Start -->
+                        <div class="section-title">
+                            <h3 class="wow fadeInUp">Lý do tin tưởng PrimeCare</h3>
+                            <h2 class="text-anime-style-3" data-cursor="-opaque">Kết quả xuất sắc mà bạn có thể tin tưởng</h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.25s">
+                                Chẩn đoán chính xác các bệnh về răng miệng giúp xây dựng kế hoạch điều trị hiệu quả, giúp duy trì sức khỏe răng miệng và ngăn ngừa các biến chứng sau này.
+                            </p>
+                        </div>
+                        <!-- Tiêu đề Phần End -->
+    
+                        <!-- Nút Liên hệ Start -->
+                        <div class="why-choose-btn wow fadeInUp">
+                            <a href="{% url 'contact' %}" class="btn-default btn-border">Liên hệ với chúng tôi</a>
+                        </div>
+                        <!-- Nút Liên hệ End -->
+                    </div>
+                    <!-- Nội dung Lý do tin tưởng PrimeCare End -->
+                </div>
+    
+                <div class="col-lg-4 order-lg-2 order-3">
+                    <!-- Hình ảnh Lý do tin tưởng PrimeCare Start -->
+                    <div class="why-choose-image">
+                        <figure>
+                            <img src="{% static 'images/why-choose-image.png' %}" alt="Lý do tin tưởng PrimeCare">
+                        </figure>
+                    </div>
+                    <!-- Hình ảnh Lý do tin tưởng PrimeCare End -->
+                </div>
+    
+                <div class="col-lg-4 order-lg-3 order-2">
+                    <!-- Danh sách Lý do tin tưởng PrimeCare Start -->
+                    <div class="why-choose-list wow fadeInUp">
+                        <!-- Mục 1 Start -->
+                        <div class="why-choose-item">
+                            <div class="icon-box">
+                                <img src="{% static 'images/icon-why-choose-1.svg' %}" alt="Dịch vụ khẩn cấp">
+                            </div>
+                            <div class="why-choose-item-content">
+                                <h3>Dịch vụ khẩn cấp</h3>
+                                <p>Mục tiêu của phòng khám là cung cấp dịch vụ nha khoa thân thiện và tận tâm.</p>
+                            </div>
+                        </div>
+                        <!-- Mục 1 End -->
+    
+                        <!-- Mục 2 Start -->
+                        <div class="why-choose-item wow fadeInUp" data-wow-delay="0.25s">
+                            <div class="icon-box">
+                                <img src="{% static 'images/icon-why-choose-2.svg' %}" alt="Phản hồi tích cực">
+                            </div>
+                            <div class="why-choose-item-content">
+                                <h3>Phản hồi tích cực từ khách hàng</h3>
+                                <p>Mục tiêu của phòng khám là cung cấp dịch vụ nha khoa thân thiện và tận tâm.</p>
+                            </div>
+                        </div>
+                        <!-- Mục 2 End -->
+    
+                        <!-- Mục 3 Start -->
+                        <div class="why-choose-item wow fadeInUp" data-wow-delay="0.5s">
+                            <div class="icon-box">
+                                <img src="{% static 'images/icon-why-choose-3.svg' %}" alt="Đội ngũ giàu kinh nghiệm">
+                            </div>
+                            <div class="why-choose-item-content">
+                                <h3>Đội ngũ giàu kinh nghiệm</h3>
+                                <p>Mục tiêu của phòng khám là cung cấp dịch vụ nha khoa thân thiện và tận tâm.</p>
+                            </div>
+                        </div>
+                        <!-- Mục 3 End -->
+                    </div>
+                    <!-- Danh sách Lý do tin tưởng PrimeCare End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Why Choose Us Section End -->
+
+    <!-- Our Faqs Section Start -->
+    <div class="our-faqs">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <!-- Nội dung Câu hỏi thường gặp Start -->
+                    <div class="our-faqs-content">
+                        <!-- Tiêu đề Phần Start -->
+                        <div class="section-title">
+                            <h3 class="wow fadeInUp">Câu hỏi thường gặp</h3>
+                            <h2 class="text-anime-style-2" data-cursor="-opaque">Tất cả những gì bạn cần biết về chăm sóc răng miệng</h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.25s">
+                                Tìm kiếm câu trả lời nhanh cho các câu hỏi phổ biến về dịch vụ nha khoa, quy trình điều trị và chăm sóc khách hàng của chúng tôi trong mục Hỏi Đáp.
+                            </p>
+                        </div>
+                        <!-- Tiêu đề Phần End -->
+    
+                        <!-- Hộp CTA Start -->
+                        <div class="section-cta-box wow fadeInUp" data-wow-delay="0.5s">
+                            <div class="icon-box">
+                                <img src="{% static 'images/icon-faqs-cta-box.svg' %}" alt="Liên hệ">
+                            </div>
+                            <div class="section-cta-content">
+                                <p>Chúng tôi luôn chăm sóc nụ cười của bạn</p>
+                                <h3>Hỗ trợ khẩn cấp 24/7</h3>
+                                <span>659-989-698565</span>
+                            </div>
+                        </div>
+                        <!-- Hộp CTA End -->
+                    </div>  
+                    <!-- Nội dung Câu hỏi thường gặp End -->                  
+                </div>
+    
+                <div class="col-lg-6">
+                    <div class="our-faq-section">
+                        <!-- Accordion Câu hỏi thường gặp Start -->
+                        <div class="faq-accordion" id="faqaccordion">
+                            <!-- Mục 1 Start -->
+                            <div class="accordion-item wow fadeInUp">
+                                <h2 class="accordion-header" id="heading1">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                        Bạn cung cấp những dịch vụ nào?
+                                    </button>
+                                </h2>
+                                <div id="collapse1" class="accordion-collapse collapse" aria-labelledby="heading1" data-bs-parent="#faqaccordion">
+                                    <div class="accordion-body">
+                                        <p>Chúng tôi cung cấp dịch vụ nha khoa tổng quát, nha khoa thẩm mỹ và nha khoa phục hồi. Vui lòng liên hệ để được tư vấn chi tiết.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Mục 1 End -->
+    
+                            <!-- Mục 2 Start -->
+                            <div class="accordion-item wow fadeInUp" data-wow-delay="0.2s">
+                                <h2 class="accordion-header" id="heading2">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                        Tôi nên đi khám nha khoa bao lâu một lần?
+                                    </button>
+                                </h2>
+                                <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#faqaccordion">
+                                    <div class="accordion-body">
+                                        <p>Bạn nên đi khám nha khoa ít nhất 6 tháng một lần để duy trì sức khỏe răng miệng tốt nhất.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Mục 2 End -->
+    
+                            <!-- Mục 3 Start -->
+                            <div class="accordion-item wow fadeInUp" data-wow-delay="0.4s">
+                                <h2 class="accordion-header" id="heading3">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                        Bạn có chấp nhận bảo hiểm không?
+                                    </button>
+                                </h2>
+                                <div id="collapse3" class="accordion-collapse collapse show" aria-labelledby="heading3" data-bs-parent="#faqaccordion">
+                                    <div class="accordion-body">
+                                        <p>Chúng tôi chấp nhận hầu hết các loại bảo hiểm nha khoa lớn. Vui lòng liên hệ với chúng tôi để xác nhận chi tiết.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Mục 3 End -->
+    
+                            <!-- Mục 4 Start -->
+                            <div class="accordion-item wow fadeInUp" data-wow-delay="0.6s">
+                                <h2 class="accordion-header" id="heading4">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                        Tôi có thể mong đợi gì trong lần khám đầu tiên?
+                                    </button>
+                                </h2>
+                                <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#faqaccordion">
+                                    <div class="accordion-body">
+                                        <p>Trong lần khám đầu tiên, bác sĩ sẽ kiểm tra tình trạng răng miệng của bạn, chụp X-quang nếu cần và thảo luận về kế hoạch điều trị phù hợp.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Mục 4 End -->
+    
+                            <!-- Mục 5 Start -->
+                            <div class="accordion-item wow fadeInUp" data-wow-delay="0.8s">
+                                <h2 class="accordion-header" id="heading5">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                        Bạn có cung cấp dịch vụ nha khoa khẩn cấp không?
+                                    </button>
+                                </h2>
+                                <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#faqaccordion">
+                                    <div class="accordion-body">
+                                        <p>Chúng tôi cung cấp dịch vụ nha khoa khẩn cấp 24/7 để xử lý các trường hợp đau răng hoặc tai nạn nha khoa ngoài giờ.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Mục 5 End --> 
+                        </div>
+                        <!-- Accordion Câu hỏi thường gặp End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Faqs Section End -->
+
+    <!-- Our Treatment Process Section Start -->
+    <div class="our-process">
+        <div class="container">
+            <div class="row section-row align-items-center">
+                <div class="col-lg-8">
+                    <!-- Tiêu đề Phần Start -->
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp">Quy Trình Điều Trị</h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">Trải nghiệm điều trị chuyên nghiệp từ PrimeCare</h2>
+                    </div>
+                    <!-- Tiêu đề Phần End -->
+                </div>
+                <div class="col-lg-4">
+                    <div class="section-btn wow fadeInUp">
+                        <a href="{% url 'contact' %}" class="btn-default">Đặt lịch ngay</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <!-- Các bước quy trình -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="process-item wow fadeInUp">
+                        <div class="process-number">01</div>
+                        <h4>Thăm Khám & Tư Vấn</h4>
+                        <p>Bác sĩ sẽ khám tổng quát, chẩn đoán và đề xuất phương pháp điều trị phù hợp.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="process-item wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="process-number">02</div>
+                        <h4>Lên Kế Hoạch Điều Trị</h4>
+                        <p>Xây dựng lộ trình điều trị chi tiết, bao gồm thời gian và chi phí dự kiến.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="process-item wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="process-number">03</div>
+                        <h4>Điều Trị</h4>
+                        <p>Thực hiện điều trị theo kế hoạch với các trang thiết bị và công nghệ hiện đại.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="process-item wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="process-number">04</div>
+                        <h4>Chăm Sóc Sau Điều Trị</h4>
+                        <p>Hướng dẫn và theo dõi sức khỏe răng miệng định kỳ để duy trì kết quả tốt nhất.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Treatment Process Section End -->
+
+    <!-- Our Technology Section Start -->
+    <div class="our-technology">
+        <div class="container">
+            <div class="row section-row">
+                <div class="col-lg-12">
+                    <div class="section-title text-center">
+                        <h3 class="wow fadeInUp">Công Nghệ Hiện Đại</h3>
+                        <h2 class="text-anime-style-2" data-cursor="-opaque">Trang thiết bị tiên tiến cho điều trị tối ưu</h2>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="tech-item wow fadeInUp">
+                        <div class="tech-icon">
+                            <img src="{% static 'images/tech-1.png' %}" alt="3D Scanning">
+                        </div>
+                        <h4>Công Nghệ Scan 3D</h4>
+                        <p>Tạo mô hình răng kỹ thuật số chính xác, giảm thiểu thời gian và tăng độ chính xác trong điều trị.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="tech-item wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="tech-icon">
+                            <img src="{% static 'images/tech-2.png' %}" alt="Dental Laser">
+                        </div>
+                        <h4>Công Nghệ Laser</h4>
+                        <p>Điều trị không đau, nhanh chóng và giảm thời gian hồi phục cho nhiều vấn đề răng miệng.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="tech-item wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="tech-icon">
+                            <img src="{% static 'images/tech-3.png' %}" alt="Digital X-Ray">
+                        </div>
+                        <h4>X-quang Kỹ Thuật Số</h4>
+                        <p>Chẩn đoán chính xác với liều phóng xạ thấp hơn 80% so với X-quang truyền thống.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Technology Section End -->
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    $(document).ready(function() {
+        // Điều chỉnh khoảng cách của footer
+        $('footer.main-footer').css({
+            'padding-top': '80px',
+            'margin-top': '40px'
+        });
+        
+        // Thêm scroll animation cho các phần tử service-item
+        $('.service-item').each(function(index) {
+            $(this).attr('data-aos', 'fade-up');
+            $(this).attr('data-aos-delay', index * 100);
+        });
+        
+        // Animation cho các phần tử khi scroll
+        new WOW().init();
+        
+        // Thêm hiệu ứng hover cho process-item
+        $('.process-item').hover(function() {
+            $(this).find('.process-number').css({
+                'color': 'rgba(250, 159, 52, 0.15)'
+            });
+        }, function() {
+            $(this).find('.process-number').css({
+                'color': 'rgba(49, 59, 121, 0.08)'
+            });
+        });
+        
+        // Counter animation cho số quy trình
+        $('.process-number').each(function() {
+            $(this).prop('Counter', 0).animate({
+                Counter: $(this).text()
+            }, {
+                duration: 2000,
+                easing: 'swing',
+                step: function(now) {
+                    $(this).text(Math.ceil(now));
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

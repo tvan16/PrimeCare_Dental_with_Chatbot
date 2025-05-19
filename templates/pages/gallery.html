@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Thư Viện Ảnh - PrimeCare Dental{% endblock %}
+
+{% block content %}
+
+    <!-- Photo Gallery Section Start -->
+    <div class="our-gallery-page">
+        <div class="container" style="margin-top: 32px; margin-bottom: 24px;">
+            <h2 style="font-size:2.4rem; font-weight:800; color:#3a3c7c; text-align:left; letter-spacing:2px;">| Thư mục hình ảnh</h2>
+        </div>
+        <div class="container">
+            <!-- gallery section start -->
+            <div class="row gallery-items">
+                <div class="col-lg-4 col-md-6 col-6">
+                    <!-- image gallery start -->
+                    <div class="photo-gallery wow fadeInUp" data-cursor-text="Xem">
+                        <a href="{% static 'images/gallery-1.jpg' %}">
+                            <figure>
+                                <img src="{% static 'images/gallery-1.jpg' %}" alt="">
+                            </figure>
+                        </a>
+                    </div>
+                    <!-- image gallery end -->
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-6">
+                    <!-- image gallery start -->
+                    <div class="photo-gallery wow fadeInUp" data-wow-delay="0.2s" data-cursor-text="Xem">
+                        <a href="{% static 'images/gallery-2.jpg' %}">
+                            <figure>
+                                <img src="{% static 'images/gallery-2.jpg' %}" alt="">
+                            </figure>
+                        </a>
+                    </div>
+                    <!-- image gallery end -->
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-6">
+                    <!-- image gallery start -->
+                    <div class="photo-gallery wow fadeInUp" data-wow-delay="0.4s" data-cursor-text="Xem">
+                        <a href="{% static 'images/gallery-3.jpg' %}">
+                            <figure>
+                                <img src="{% static 'images/gallery-3.jpg' %}" alt="">
+                            </figure>
+                        </a>
+                    </div>
+                    <!-- image gallery end -->
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-6">
+                    <!-- image gallery start -->
+                    <div class="photo-gallery wow fadeInUp" data-wow-delay="0.6s" data-cursor-text="Xem">
+                        <a href="{% static 'images/gallery-4.jpg' %}">
+                            <figure>
+                                <img src="{% static 'images/gallery-4.jpg' %}" alt="">
+                            </figure>
+                        </a>
+                    </div>
+                    <!-- image gallery end -->
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-6">
+                    <!-- image gallery start -->
+                    <div class="photo-gallery wow fadeInUp" data-wow-delay="0.8s" data-cursor-text="Xem">
+                        <a href="{% static 'images/gallery-5.jpg' %}">
+                            <figure>
+                                <img src="{% static 'images/gallery-5.jpg' %}" alt="">
+                            </figure>
+                        </a>
+                    </div>
+                    <!-- image gallery end -->
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-6">
+                    <!-- image gallery start -->
+                    <div class="photo-gallery wow fadeInUp" data-wow-delay="1s" data-cursor-text="Xem">
+                        <a href="{% static 'images/gallery-6.jpg' %}">
+                            <figure>
+                                <img src="{% static 'images/gallery-6.jpg' %}" alt="">
+                            </figure>
+                        </a>
+                    </div>
+                    <!-- image gallery end -->
+                </div>
+                
+                <div class="col-lg-4 col-md-6 col-6">
+                    <!-- image gallery start -->
+                    <div class="photo-gallery wow fadeInUp" data-wow-delay="1.2s" data-cursor-text="Xem">
+                        <a href="{% static 'images/gallery-7.jpg' %}">
+                            <figure>
+                                <img src="{% static 'images/gallery-7.jpg' %}" alt="">
+                            </figure>
+                        </a>
+                    </div>
+                    <!-- image gallery end -->
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-6">
+                    <!-- image gallery start -->
+                    <div class="photo-gallery wow fadeInUp" data-wow-delay="1.4s" data-cursor-text="Xem">
+                        <a href="{% static 'images/gallery-8.jpg' %}">
+                            <figure>
+                                <img src="{% static 'images/gallery-8.jpg' %}" alt="">
+                            </figure>
+                        </a>
+                    </div>
+                    <!-- image gallery end -->
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-6">
+                    <!-- image gallery start -->
+                    <div class="photo-gallery wow fadeInUp" data-wow-delay="1.6s" data-cursor-text="Xem">
+                        <a href="{% static 'images/gallery-9.jpg' %}">
+                            <figure>
+                                <img src="{% static 'images/gallery-9.jpg' %}" alt="">
+                            </figure>
+                        </a>
+                    </div>
+                    <!-- image gallery end -->
+                </div>
+            </div>
+            <!-- gallery section end -->
+        </div>
+    </div>
+    <!-- Photo Gallery Section End -->
+    {% include 'includes/appointment.html' %}
+{% endblock %}

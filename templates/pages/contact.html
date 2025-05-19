@@ -1,0 +1,248 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Liên Hệ - PrimeCare Dental{% endblock %}
+
+{% block content %}
+    <!-- Page Contact Us Start -->
+    <div class="page-contact-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Contact US Info Start -->
+                    <div class="contact-us-info">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="contact-us-item wow fadeInUp">
+                                    <div class="icon-box">
+                                        <img src="{% static 'images/icon-phone-info.svg' %}" alt="">
+                                    </div>
+                                    <div class="contact-info-content">
+                                        <h3>Liên hệ</h3>
+                                        <p>(+084) 123456789</p>
+                                        <p>(+ 1800 9999)</p>
+                                        <p>PrimeCare.work@gmail.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-4 col-md-6">
+                                <div class="contact-us-item wow fadeInUp" data-wow-delay="0.25s">
+                                    <div class="icon-box">
+                                        <img src="{% static 'images/icon-watch-info.svg' %}" alt="">
+                                    </div>
+                                    <div class="contact-info-content">
+                                        <h3>Giờ mở cửa</h3>
+                                        <p>Thứ hai đến Thứ sáu: 8:00 - 19:00</p>
+                                        <p>Thứ bảy: 7:00 - 18:00</p>
+                                        <p>Chủ nhật: 7:00 - 16:00</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6">
+                                <div class="contact-us-item wow fadeInUp" data-wow-delay="0.5s">
+                                    <div class="icon-box">
+                                        <img src="{% static 'images/icon-location-info.svg' %}" alt="">
+                                    </div>
+                                    <div class="contact-info-content">
+                                        <h3>Hệ thống chi nhánh</h3>
+                                        <p>Hà Nội: 2 Cơ sở</p>
+                                        <p>Hồ Chí Minh: 2 Cơ sở</p>
+                                        <p>Các tỉnh: 2 Cơ sở</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Location Selection Start -->
+    <div class="location-selection">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="location-tabs">
+                        <button class="location-tab-btn active" data-location="hanoi">Hà Nội</button>
+                        <button class="location-tab-btn" data-location="hcm">Thành phố Hồ Chí Minh</button>
+                        <button class="location-tab-btn" data-location="provinces">Các tỉnh</button>
+                    </div>
+
+                    <!-- Hanoi Addresses -->
+                    <div class="address-list hanoi-addresses" style="display:block;">
+                        <div class="address-item" data-address="hanoi1">
+                            <h4>159 Triều Khúc, Tân Triều, Thanh Trì, Hà Nội</h4>
+                        </div>
+                        <div class="address-item" data-address="hanoi2">
+                            <h4>60-62 Đại Cồ Việt, Quận Hai Bà Trưng, Hà Nội</h4>
+                        </div>
+                    </div>
+
+                    <!-- HCM Addresses -->
+                    <div class="address-list hcm-addresses" style="display:none;">
+                        <div class="address-item" data-address="hcm1">
+                            <h4>Số 6, Trần Não, Khu phố 2, Thành phố Thủ Đức, Thành phố Hồ Chí Minh</h4>
+                        </div>
+                        <div class="address-item" data-address="hcm2">
+                            <h4>228-228A Trần Hưng Đạo, phường Nguyễn Cư Trinh, Quận 1, Thành phố Hồ Chí Minh</h4>
+                        </div>
+                    </div>
+
+                    <!-- Province Addresses -->
+                    <div class="address-list province-addresses" style="display:none;">
+                        <div class="address-item" data-address="province1">
+                            <h4>131 Nguyễn Văn Cừ, Phường Hưng Bình, Thành phố Vinh</h4>
+                        </div>
+                        <div class="address-item" data-address="province2">
+                            <h4>256 Ngô Gia Tự, Phường Tiền An, Thành phố Bắc Ninh</h4>
+                        </div>
+                    </div>
+
+                    <!-- Map Container -->
+                    <div class="map-container">
+                        <div class="selected-address"></div>
+                        <div class="map-wrapper">
+                            <iframe id="location-map" src="" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+    .location-selection { padding: 40px 0; }
+    .location-tabs { 
+        display: flex; 
+        justify-content: center; 
+        gap: 20px; 
+        margin-bottom: 30px; 
+    }
+    .location-tab-btn { 
+        background: #f1f5ff; 
+        border: none; 
+        padding: 15px 40px; 
+        border-radius: 30px; 
+        font-weight: 700; 
+        color: #313B79; 
+        font-size: 1.2rem; 
+        cursor: pointer; 
+        transition: all 0.3s ease; 
+    }
+    .location-tab-btn.active, .location-tab-btn:hover { 
+        background: #313B79; 
+        color: #fff; 
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(49,59,121,0.2);
+    }
+    .address-list { 
+        display: flex; 
+        flex-direction: column; 
+        gap: 15px; 
+        margin-bottom: 30px; 
+    }
+    .address-item { 
+        background: #fff; 
+        padding: 20px; 
+        border-radius: 15px; 
+        cursor: pointer; 
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .address-item:hover { 
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .address-item h4 { 
+        margin: 0; 
+        color: #313B79; 
+        font-size: 1.1rem; 
+    }
+    .map-container { 
+        margin-top: 30px; 
+    }
+    .selected-address { 
+        font-size: 1.2rem; 
+        font-weight: 600; 
+        color: #313B79; 
+        margin-bottom: 20px; 
+        text-align: center; 
+    }
+    .map-wrapper { 
+        width: 100%; 
+        height: 500px; 
+        border-radius: 20px; 
+        overflow: hidden; 
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .map-wrapper iframe { 
+        width: 100%; 
+        height: 100%; 
+        border: 0; 
+    }
+    @media (max-width: 768px) {
+        .location-tabs { flex-direction: column; align-items: center; }
+        .location-tab-btn { width: 100%; max-width: 300px; }
+        .map-wrapper { height: 300px; }
+    }
+    </style>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const locationTabs = document.querySelectorAll('.location-tab-btn');
+        const addressLists = document.querySelectorAll('.address-list');
+        const addressItems = document.querySelectorAll('.address-item');
+        const mapFrame = document.getElementById('location-map');
+        const selectedAddress = document.querySelector('.selected-address');
+
+        // Map URLs
+        const mapUrls = {
+            hanoi1: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.308895522843!2d105.78463367582107!3d21.01807258062343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab474b6a0cfb%3A0x8eae8cb5c4b0a193!2zMTU5IFRyaeG7h3UgS2jhu6ljLCBUw6JuIFRyaeG7h3UsIFRoYW5oIFRyaeG7h3UsIEjDoCBO4buZaSwgVmnhu4d0IE5hbQ!5e0!3m2!1sen!2svi!4v1711376054095!5m2!1sen!2svi',
+            hanoi2: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.785123456789!2d105.84963367582107!3d21.00507258062343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab474b6a0cfb%3A0x8eae8cb5c4b0a193!2zNjAgxJAuIMSQ4bqhaSBDw7ogVmnhu4d0LCBIYWkgQsOgIFRydW5nLCBIw6AgTuG7mWksIFZp4buHdCBOYW0!5e0!3m2!1sen!2svi!4v1711376054095!5m2!1sen!2svi',
+            hcm1: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.484013712332!2d106.7402660757352!3d10.78089925900559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175271d6e7e2e6b%3A0x6e7e2e6b!2zU-G7kSA2LCBUcuG6p24gTuG6oW8sIEtodeG6pXAgcGjhu5EgMiwgVGjhu6cgUGjhu5EgVGjhu6cgQ2jDrSBNaW5oLCBUaOG7pyBQaOG7kSBI4buTIENow60gTWluaA!5e0!3m2!1sen!2svi!4v1711377000000!5m2!1sen!2svi',
+            hcm2: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.443019361343!2d106.6878720757342!3d10.76291325940659!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1e7e7e2e6b%3A0x7e7e2e6b!2zMjI4LTIyOEEgVHLhuqduIEjGsG5nIMSQ4bqhaSwgcGjGsOG7nW5nIE5ndXnhu4VuIEPGoCBUcmluaCwgUXXhuq1uIDEsIFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaA!5e0!3m2!1sen!2svi!4v1711378000000!5m2!1sen!2svi',
+            province1: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.308895522843!2d105.68463367582107!3d18.67907258062343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab474b6a0cfb%3A0x8eae8cb5c4b0a193!2zMTMxIE5ndXnhu4VuIFbEg24gQ-G7lSwgUGjGsOG7nW5nIEjGsG5nIELDrG5oLCBUaOG7pyBWw6BuaA!5e0!3m2!1sen!2svi!4v1711379000000!5m2!1sen!2svi',
+            province2: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.308895522843!2d105.68463367582107!3d21.18307258062343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab474b6a0cfb%3A0x8eae8cb5c4b0a193!2zMjU2IE5nw7MgR2lhIFThu6sgLCBQaMaw4budbmcgVGnhur90IEFuLCBUaOG7pyBC4bqvYyBOaW5o!5e0!3m2!1sen!2svi!4v1711380000000!5m2!1sen!2svi'
+        };
+
+        // Location tab click handler
+        locationTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Update active tab
+                locationTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+
+                // Show corresponding address list
+                addressLists.forEach(list => list.style.display = 'none');
+                document.querySelector('.' + this.dataset.location + '-addresses').style.display = 'block';
+
+                // Reset map and selected address
+                mapFrame.src = '';
+                selectedAddress.textContent = '';
+            });
+        });
+
+        // Address item click handler
+        addressItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Update selected address
+                selectedAddress.textContent = this.querySelector('h4').textContent;
+                
+                // Update map
+                const addressKey = this.dataset.address;
+                mapFrame.src = mapUrls[addressKey];
+
+                // Scroll to map
+                document.querySelector('.map-container').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    });
+    </script>
+
+    <!-- Contact Form Start -->
+    {% include 'includes/appointment.html' %}
+    <!-- Contact Form End -->
+{% endblock %}

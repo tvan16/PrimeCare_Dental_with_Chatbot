@@ -1,0 +1,1244 @@
+/* Tăng kích thước chữ cho các phần nội dung chính */
+.about-doctor-info p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 22px;
+}
+
+.about-doctor-info h2 {
+    font-size: 32px;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 12px;
+    color: #002244;
+    font-weight: 700;
+}
+
+.about-doctor-info h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, #34c3ff, #002244);
+    border-radius: 30px;
+    transition: width 0.3s ease;
+}
+
+.about-doctor-info h2:hover::after {
+    width: 100%;
+}
+
+.section-title p {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* Loại bỏ icon răng bên cạnh tiêu đề */
+.section-logo::before,
+.section-logo::after,
+h3.section-logo::before,
+h3.section-logo::after {
+    display: none !important;
+    content: none !important;
+    background-image: none !important;
+    background: none !important;
+}
+
+/* Loại bỏ tất cả các icon tự động được thêm vào */
+.section-title h3::before,
+.section-title h3::after,
+.section-title h3 i,
+.section-title h3 span[class*="icon"],
+.section-title h3 span.icon,
+.section-title h3 .fa,
+.section-title h3 img:not(.logo-primecare) {
+    display: none !important;
+    content: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* LOGO PRIMECARE - CĂN LỀ TRÁI */
+.logo-primecare {
+    display: block !important;
+    margin: 10px 0 20px 0 !important; /* Căn lề trái */
+    max-width: 150px !important;
+}
+
+/* Điều chỉnh lại style cho tiêu đề không có icon */
+.section-title h3.section-logo {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    background: linear-gradient(120deg, rgba(52, 195, 255, 0.2) 0%, rgba(52, 195, 255, 0.1) 100%) !important;
+    border-radius: 8px !important;
+    margin-bottom: 20px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    display: inline-block !important;
+    text-align: center !important;
+}
+
+/* Làm to dấu tick trong Đặc Điểm Nổi Bật */
+.doctor-feature-list ul li {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 12px;
+    padding-left: 30px;
+    position: relative;
+}
+
+.doctor-feature-list ul li:before {
+    font-size: 20px !important; /* Tăng kích thước từ 14px lên 20px */
+    color: #34c3ff !important; /* Đổi màu sang màu chủ đạo */
+    margin-right: 10px !important;
+    position: absolute;
+    left: 0;
+    top: 2px; /* Điều chỉnh vị trí theo chiều dọc */
+    content: "\f00c" !important; /* Unicode cho dấu tick */
+    font-family: "FontAwesome" !important;
+    font-weight: 900 !important;
+}
+
+.get-touch-box ul li {
+    font-size: 17px;
+}
+
+.get-touch-box ul li span {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.doctor-content h3 {
+    font-size: 24px;
+}
+
+.doctor-content p {
+    font-size: 18px;
+}
+
+.skill-title {
+    font-size: 16px;
+}
+
+/* FIX: Sửa hiển thị các tiêu đề - xuống dòng và hiệu ứng */
+.section-title h3 {
+    font-size: 28px;
+    display: block;
+    background: linear-gradient(120deg, rgba(52, 195, 255, 0.15) 0%, rgba(52, 195, 255, 0.05) 100%);
+    padding: 5px 12px;
+    border-radius: 5px;
+    color: #34c3ff;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    width: fit-content;
+}
+
+.section-title h2 {
+    font-size: 36px;
+    position: relative;
+    padding-bottom: 12px;
+    margin-bottom: 25px;
+    color: #002244;
+    font-weight: 700;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+    display: block; /* Đảm bảo xuống dòng */
+    clear: both; /* Đảm bảo không có phần tử float bên cạnh */
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, #34c3ff, #002244);
+    border-radius: 30px;
+    transition: width 0.3s ease;
+}
+
+.section-title h2:hover::after {
+    width: 200px;
+}
+
+/* Tăng độ nổi bật cho các phần quan trọng */
+.text-anime-style-3 {
+    font-weight: 700;
+    color: #002244;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 8px;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.text-anime-style-3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, #34c3ff, #002244);
+    border-radius: 30px;
+    transition: width 0.4s ease;
+}
+
+.text-anime-style-3:hover::after {
+    width: 100%;
+}
+
+/* Tăng khoảng cách giữa các phần để dễ đọc */
+.about-doctor-info,
+.about-doctor-feature {
+    margin-bottom: 40px;
+}
+
+/* Tăng độ tương phản của text */
+.about-doctor-info p,
+.doctor-feature-list ul li {
+    color: #333;
+}
+
+/* Styles cho phần bác sĩ khác */
+.other-doctors-section {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ===== FIX: KHOẢNG CÁCH GIỮA LOGO VÀ TIÊU ĐỀ ===== */
+/* Giải pháp tổng thể cho tất cả tiêu đề có logo */
+.section-title img,
+.section-title svg,
+.section-logo img,
+.section-logo svg,
+.section-title [class^="icon-"],
+.section-title i {
+    display: block;
+    margin-bottom: 20px !important; /* Giảm margin để đẩy các phần lên */
+    margin-top: 20px !important;
+}
+
+.section-logo {
+    margin-top: 40px !important; /* Giảm margin top */
+    margin-bottom: 20px !important; /* Giảm margin bottom */
+    position: relative;
+}
+
+/* Đặt khoảng cách rõ ràng cho tất cả tiêu đề */
+.section-title h3 {
+    margin-top: 20px !important; /* Giảm margin */
+    margin-bottom: 15px !important; /* Giảm margin */
+    display: block !important;
+    position: relative;
+    clear: both;
+}
+
+/* ===== CĂN LỀ TRÁI CHO PHẦN ĐẶC ĐIỂM NỔI BẬT ===== */
+.about-doctor-feature .section-title {
+    text-align: left !important;
+}
+
+.about-doctor-feature .section-title h3,
+.about-doctor-feature .section-title h2,
+.about-doctor-feature .section-title p {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    text-align: left !important;
+}
+
+.about-doctor-feature .section-title h2::after {
+    left: 0 !important;
+    transform: none !important;
+}
+
+/* ===== CERTIFICATE STYLING ===== */
+.certificate-container {
+    background-color: #f8f9fa !important;
+    border-radius: 12px !important;
+    padding: 25px !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.certificate-title {
+    color: #1a1a1a;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border-left: 4px solid #6247ea;
+    padding-left: 15px;
+}
+
+.certificate-numbered-list {
+    padding-left: 30px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    list-style-type: decimal;
+}
+
+.certificate-item {
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+    padding-left: 10px;
+    color: #333;
+    font-weight: 500;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #e0e0e0;
+}
+
+.certificate-item:last-child {
+    border-bottom: none;
+}
+
+.certificate-item::marker {
+    font-weight: bold;
+    color: #6247ea;
+    font-size: 18px;
+}
+
+.certificate-item:hover {
+    color: #6247ea;
+    transition: color 0.3s ease;
+}
+
+/* ===== PHẦN ĐỘI NGŨ Y BÁC SĨ - LOGO LỀ TRÁI ===== */
+.other-doctors-section .section-title {
+    position: relative !important;
+    text-align: center !important;
+    padding-left: 0 !important;
+    margin-bottom: 40px !important;
+}
+
+.other-doctors-section .logo-primecare {
+    position: absolute !important;
+    left: 0 !important;
+    top: 10px !important;
+    max-width: 150px !important;
+    margin: 0 !important;
+}
+
+.other-doctors-section .section-title h3,
+.other-doctors-section .section-title h2 {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+}
+
+.other-doctors-section .section-title h2::after {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+}
+
+/* ===== PHẦN ĐẶT LỊCH - LAYOUT MỚI ===== */
+.doctor-appointment-section .section-title {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    position: relative !important;
+    text-align: center !important;
+    padding-left: 0 !important;
+    margin-bottom: 40px !important;
+}
+
+/* Logo PrimeCare bên trái */
+.doctor-appointment-section .logo-primecare {
+    position: absolute !important;
+    left: 0 !important;
+    top: 10px !important;
+    max-width: 150px !important;
+    margin: 0 !important;
+}
+
+/* Tiêu đề ĐẶT LỊCH */
+.doctor-appointment-section .section-title h3 {
+    margin: 0 auto 15px auto !important;
+    text-align: center !important;
+}
+
+/* Tiêu đề Đặt Lịch Hẹn Với Bác Sĩ */
+.doctor-appointment-section .section-title h2 {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+}
+
+.doctor-appointment-section .section-title h2::after {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+}
+
+/* ===== CAROUSEL BÁC SĨ ===== */
+.doctor-slider {
+    position: relative !important;
+    width: 100% !important; 
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 50px !important; /* Để nút điều hướng nằm ngoài */
+    box-sizing: border-box !important;
+    overflow: hidden !important; /* Quan trọng: ẩn nội dung nằm ngoài */
+}
+
+.swiper-container {
+    width: 100% !important;
+    overflow: visible !important; /* Để nút điều hướng hiển thị bên ngoài */
+    padding: 10px 0 30px 0 !important;
+}
+
+/* Sửa hiển thị cho slider bác sĩ */
+.swiper-slide {
+    box-sizing: border-box !important;
+    padding: 0 10px !important; /* Giảm padding để tránh khoảng trống */
+    height: auto !important;
+    min-height: 400px !important;
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    transition: transform 0.3s ease !important;
+}
+
+/* Làm khung bác sĩ nhỏ gọn hơn */
+.team-member-item {
+    width: 100% !important;
+    margin: 0 auto !important;
+    height: 100% !important;
+    border-radius: 10px !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important;
+    background-color: #fff !important;
+}
+
+/* Sửa hiển thị ảnh bác sĩ */
+.team-image {
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    flex: 0 0 auto;
+}
+
+.team-image img {
+    width: 100% !important;
+    height: 250px !important; /* Giảm chiều cao ảnh */
+    object-fit: cover !important;
+    object-position: center 15% !important; /* Căn ảnh lên trên để hiện khuôn mặt */
+    transition: transform 0.5s ease !important;
+    border-radius: 10px 10px 0 0 !important;
+}
+
+/* Thu gọn phần nội dung */
+.team-content {
+    padding: 12px !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    flex: 1 !important;
+}
+
+.team-content h3 {
+    font-size: 16px !important;
+    margin-bottom: 5px !important;
+    line-height: 1.2 !important;
+    white-space: normal !important; /* Cho phép xuống dòng */
+}
+
+.team-content p {
+    margin-bottom: 2px !important;
+    font-size: 14px !important;
+    line-height: 1.3 !important;
+}
+
+/* Làm đẹp pagination dots */
+.swiper-pagination {
+    position: relative !important;
+    bottom: 0 !important;
+    margin-top: 15px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.swiper-pagination-bullet {
+    width: 8px !important;
+    height: 8px !important;
+    margin: 0 5px !important; 
+    background-color: #ccc !important;
+    opacity: 0.7 !important;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #6247ea !important;
+    opacity: 1 !important;
+    width: 10px !important;
+    height: 10px !important;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Style cho nút điều hướng */
+.swiper-button-next, 
+.swiper-button-prev {
+    width: 40px !important;
+    height: 40px !important;
+    background-color: white !important;
+    border-radius: 50% !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
+    color: #333 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 100 !important;
+    margin-top: -20px !important; /* Điều chỉnh vị trí theo chiều dọc */
+}
+
+.swiper-button-prev {
+    left: 5px !important;
+}
+
+.swiper-button-next {
+    right: 5px !important;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 18px !important;
+    font-weight: bold !important;
+    color: #333 !important;
+}
+
+.swiper-button-next:hover, 
+.swiper-button-prev:hover {
+    background: #6247ea !important;
+}
+
+.swiper-button-next:hover:after, 
+.swiper-button-prev:hover:after {
+    color: white !important;
+}
+
+/* CSS đặc biệt cho slide thứ 4 (cải thiện hiển thị trên màn hình lớn) */
+@media (min-width: 992px) {
+    .swiper-slide {
+        width: 25% !important; /* Chiếm đúng 1/4 không gian */
+    }
+}
+/* Đảm bảo swiper-wrapper hiển thị đúng */
+.swiper-wrapper {
+    align-items: stretch !important; /* Đảm bảo các slide có chiều cao đồng nhất */
+    height: auto !important;
+}
+
+/* Đảm bảo hiển thị đầy đủ card */
+@media (min-width: 992px) {
+    .swiper-container {
+        overflow: visible !important; /* Quan trọng để hiển thị đầy đủ slide thứ 4 */
+    }
+}
+
+/* Cải thiện hiệu ứng hover */
+.team-member-item:hover {
+    transform: translateY(-5px) !important; /* Thay đổi từ scale sang translateY */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15) !important;
+    z-index: 10 !important;
+}
+
+/* Hiệu ứng nút điều hướng */
+.doctor-slider-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.doctor-slider-button {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    z-index: 100;
+    transform: translateY(-50%);
+    pointer-events: auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    color: #34c3ff;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(200, 200, 200, 0.3);
+}
+
+.doctor-slider-button:hover {
+    background: #34c3ff;
+    color: #fff;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 5px 15px rgba(52, 195, 255, 0.3);
+}
+
+.doctor-slider-button:active,
+.doctor-button-active {
+    transform: translateY(-50%) scale(0.95);
+    background: #0099cc !important;
+    color: #fff !important;
+}
+
+.doctor-slider-button.prev {
+    left: 5px;
+}
+
+.doctor-slider-button.next {
+    right: 5px;
+}
+
+.team-image:hover img {
+    transform: scale(1.05);
+}
+
+/* ===== ICON MẠNG XÃ HỘI - SỬ DỤNG HÌNH ẢNH ===== */
+.doctor-social-media {
+    position: absolute;
+    right: 10px;
+    top: 40%;
+    display: flex !important;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 99 !important; 
+}
+
+/* ===== ICON MẠNG XÃ HỘI - BẢNG CHI TIẾT BÁC SĨ ===== */
+.doctor-details-box .doctor-social-media {
+    position: absolute;
+    right: 15px;
+    top: 20px;
+    display: flex !important;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 99 !important;
+}
+
+/* Tăng kích thước icon trong trang chi tiết bác sĩ */
+.doctor-details-box .doctor-social-media a {
+    width: 46px !important;  /* Tăng từ 40px lên 46px */
+    height: 46px !important; /* Tăng từ 40px lên 46px */
+    background: linear-gradient(145deg, #002244, #0a3a6a) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 4px 12px rgba(0, 34, 68, 0.3) !important;
+    border: 2px solid rgba(255, 255, 255, 0.1) !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+/* Tăng font size cho icon */
+.doctor-details-box .doctor-social-media a i {
+    font-size: 20px !important; /* Tăng từ 16px lên 20px */
+    color: white !important;
+}
+
+.doctor-details-box .doctor-social-media a:hover {
+    transform: scale(1.15) rotate(5deg) !important;
+    background: linear-gradient(145deg, #34c3ff, #0099cc) !important;
+    box-shadow: 0 6px 15px rgba(52, 195, 255, 0.5) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Sử dụng hình ảnh thay cho icon FontAwesome */
+.team-member-item .doctor-social-media {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex !important;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 99 !important;
+    opacity: 0; /* Ban đầu ẩn */
+    transition: all 0.4s ease;
+}
+
+.team-member-item:hover .doctor-social-media {
+    opacity: 1;
+    right: 15px;
+}
+
+.team-member-item .doctor-social-media a.icon-img {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 0 !important; /* Bắt đầu với kích thước 0 */
+    height: 0 !important;
+    background: rgba(52, 90, 162, 0.9) !important;
+    color: white !important;
+    border-radius: 50% !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    opacity: 0 !important;
+    transform: translateX(20px) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25) !important;
+    margin: 5px 0 !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: 50% !important; /* Giảm từ 60% xuống 50% */
+}
+
+.team-member-item:hover .doctor-social-media a.icon-img {
+    width: 36px !important;
+    height: 36px !important;
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+}
+
+/* Hiệu ứng xuất hiện tuần tự cho các icon */
+.team-member-item .doctor-social-media a:nth-child(1) {
+    transition-delay: 0s !important;
+}
+
+.team-member-item .doctor-social-media a:nth-child(2) {
+    transition-delay: 0.1s !important;
+}
+
+.team-member-item .doctor-social-media a:nth-child(3) {
+    transition-delay: 0.2s !important;
+}
+
+.team-member-item .doctor-social-media a.icon-img:hover {
+    transform: scale(1.2) !important;
+    background: #34c3ff !important;
+    box-shadow: 0 6px 15px rgba(52, 195, 255, 0.5) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Icon-specific styles */
+.team-member-item .doctor-social-media a.icon-facebook {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="white" d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>') !important;
+}
+
+.team-member-item .doctor-social-media a.icon-instagram {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="white" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>') !important;
+}
+
+.team-member-item .doctor-social-media a.icon-twitter {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="white" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>') !important;
+}
+
+/* Loại bỏ hoàn toàn overlay và các chấm */
+.team-image:hover::before,
+.team-image:hover::after,
+.team-image::before,
+.team-image::after,
+.team-image .overlay,
+.team-image .dots,
+.team-image .white-dots,
+.team-image:hover .white-dots,
+.team-image .swiper-slide-overlay,
+.team-image .hover-effect,
+.team-image .blue-overlay,
+.team-image:hover .dots,
+.image-anime .dots-overlay,
+.team-image .circle-dots,
+.team-image .whitedots,
+.team-image *::before,
+.team-image *::after,
+figure.image-anime::before,
+figure.image-anime::after {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    background: transparent !important;
+    pointer-events: none !important;
+    content: none !important;
+}
+
+/* Trang chi tiết bác sĩ */
+.doctor-detail-container {
+    padding: 50px 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.doctor-detail-image {
+    flex: 0 0 40%;
+    position: relative;
+}
+
+.doctor-detail-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+}
+
+/* Vô hiệu hóa bất kỳ background overlay nào */
+.team-image::before,
+.team-image::after {
+    background-color: transparent !important;
+    content: none !important;
+}
+
+/* Ẩn social icon khi hiển thị trong carousel */
+.team-social-icon {
+    display: none !important;
+}
+
+/* Cải thiện Appointment form styles */
+.doctor-appointment-section {
+    padding: 80px 0;
+    background-color: #f8fbfe;
+    position: relative;
+}
+
+.doctor-appointment-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../images/appointment-bg-pattern.png');
+    background-repeat: repeat;
+    background-size: 200px;
+    opacity: 0.05;
+}
+
+.appointment-form {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    border: 1px solid #eaeaea;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.appointment-form:hover {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+.appointment-form-content {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 20px;
+}
+
+.appointment-form-content p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 0;
+}
+
+.form-control {
+    height: 55px;
+    border-radius: 10px;
+    border: 1px solid #e1e1e1;
+    padding: 10px 20px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 3px rgba(52, 195, 255, 0.1);
+    border-color: #34c3ff;
+    background-color: #fff;
+}
+
+.appointment-form-title {
+    width: 100%;
+    margin: 10px 0 25px;
+    padding-top: 10px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.appointment-form-title h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #002244;
+    position: relative;
+    padding-left: 15px;
+}
+
+.appointment-form-title h3:before {
+    content: '';
+    width: 5px;
+    height: 20px;
+    background: #34c3ff;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 10px;
+}
+
+.appointment-reason {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.reason-box {
+    flex: 1;
+    min-width: 150px;
+    background: #f8f9fa;
+    padding: 16px 20px;
+    border-radius: 8px;
+    border: 1px solid #e8e8e8;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.reason-box:hover {
+    border-color: #34c3ff;
+    background-color: rgba(52, 195, 255, 0.05);
+}
+
+.reason-box input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #34c3ff;
+}
+
+.reason-box label {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #444;
+}
+
+/* ===== CẢI THIỆN NÚT ĐẶT LỊCH HẸN ===== */
+.btn-default,
+.doctor-appointment-section .btn-default,
+.appointment-form .btn-default {
+    background: linear-gradient(45deg, #34c3ff, #1da2e2);
+    color: #fff;
+    border: none;
+    padding: 16px 40px;
+    font-size: 17px;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(52, 195, 255, 0.3);
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    min-width: 200px;
+}
+
+.btn-default::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #34c3ff, #1da2e2, #0077b6, #34c3ff);
+    z-index: -1;
+    border-radius: 50px;
+    background-size: 400%;
+    animation: glowing 10s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+.btn-default:hover {
+    background: linear-gradient(45deg, #1da2e2, #0077b6);
+    box-shadow: 0 15px 30px rgba(52, 195, 255, 0.4);
+    transform: translateY(-3px);
+}
+
+.btn-default:hover::before {
+    opacity: 1;
+}
+
+.btn-default::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 100%;
+    top: 0;
+    left: -100px;
+    background: rgba(255, 255, 255, 0.3);
+    transform: skew(-20deg);
+    transition: all 0.6s ease;
+}
+
+.btn-default:hover::after {
+    left: 120%;
+}
+
+/* Thông tin đặt lịch bên phải */
+.appointment-info {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.appointment-info-box {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 35px 30px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    margin-bottom: 25px;
+    border: 1px solid #eaeaea;
+    flex: 1;
+}
+
+.appointment-info-box h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #002244;
+    position: relative;
+    padding-left: 18px;
+}
+
+.appointment-info-box h3:before {
+    content: '';
+    width: 5px;
+    height: 22px;
+    background: #34c3ff;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 10px;
+}
+
+.appointment-info-box p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.appointment-info-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.appointment-info-box ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #444;
+    font-size: 15px;
+}
+
+.appointment-info-box ul li i {
+    margin-right: 12px;
+    color: #34c3ff;
+    width: 20px;
+    text-align: center;
+}
+
+.appointment-emergency {
+    background: linear-gradient(45deg, #002244, #003366);
+    color: #fff;
+    border-radius: 15px;
+    padding: 35px 30px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.appointment-emergency h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.appointment-emergency p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 20px;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.emergency-phone {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.emergency-phone i {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.emergency-phone:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
+    transform: translateY(-3px);
+    text-decoration: none;
+}
+
+/* Nút "Xem Tất Cả Bác Sĩ" nổi bật hơn */
+.other-doctors-section .btn.main-btn {
+    background: linear-gradient(45deg, #34c3ff, #0099cc);
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 15px 40px;
+    border-radius: 50px;
+    box-shadow: 0 8px 25px rgba(52, 195, 255, 0.3);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    margin-top: 25px;
+}
+
+.other-doctors-section .btn.main-btn::after {
+    content: "";
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+    top: -20%;
+    left: -120%;
+    transform: rotate(45deg);
+    transition: all 0.7s ease;
+}
+
+.other-doctors-section .btn.main-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(52, 195, 255, 0.5);
+    background: linear-gradient(45deg, #0088bb, #005577);
+}
+
+.other-doctors-section .btn.main-btn:hover::after {
+    left: 100%;
+}
+
+.other-doctors-section .btn.main-btn span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Media queries cho thiết bị di động */
+@media (max-width: 768px) {
+    .about-doctor-info p,
+    .section-title p,
+    .doctor-feature-list ul li {
+        font-size: 16px;
+    }
+    
+    .about-doctor-info h2,
+    .section-title h2 {
+        font-size: 28px;
+    }
+    
+    .appointment-form {
+        padding: 25px;
+    }
+    
+    .reason-box {
+        width: 100%;
+    }
+    
+    .doctor-slider {
+        margin: 0;
+        padding: 0 30px;
+    }
+    
+    .doctor-slider-button {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .appointment-info-box, 
+    .appointment-emergency {
+        padding: 25px;
+        margin-top: 30px;
+    }
+    
+    .team-member-item {
+        max-width: 220px;
+    }
+    
+    .team-image img {
+        height: 250px;
+    }
+
+    /* Đảm bảo biểu tượng mạng xã hội hiển thị trên thiết bị di động */
+    .doctor-details-box .doctor-social-media {
+        right: 5px !important;
+        top: 15px !important;
+    }
+
+    .doctor-details-box .doctor-social-media a {
+        width: 40px !important;
+        height: 40px !important;
+        margin: 3px 0 !important;
+    }
+
+    /* Điều chỉnh layout khi responsive */
+    .doctor-appointment-section .section-title,
+    .other-doctors-section .section-title {
+        padding-top: 50px !important; /* Thêm padding top khi màn hình nhỏ để logo không đè lên tiêu đề */
+    }
+    
+    .doctor-appointment-section .logo-primecare,
+    .other-doctors-section .logo-primecare {
+        position: relative !important;
+        left: 0 !important;
+        top: 0 !important;
+        margin: 0 auto 20px auto !important;
+    }
+}

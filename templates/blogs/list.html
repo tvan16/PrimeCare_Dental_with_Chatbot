@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Kiến Thức Nha Khoa - PrimeCare{% endblock %}
+
+{% block content %}
+    <!-- Page Header Start -->
+    <div class="container" style="margin-top: 32px; margin-bottom: 24px;">
+        <h2 style="font-size:2.4rem; font-weight:800; color:#3a3c7c; text-align:left; letter-spacing:2px;">| Kiến Thức Nha Khoa</h2>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- Page Blog Start -->
+    <div class="page-blog">
+        <div class="container">
+            <p style="color:red;">Số bài viết: {{ page_obj.paginator.count }}</p>
+            <div class="row">
+                {% for blog in page_obj %}
+                <div class="col-lg-4 col-md-6">
+                    <!-- Blog Item Start -->
+                    <div class="blog-item wow fadeInUp">
+                        <!-- Post Featured Image Start-->
+                        <div class="post-featured-image" data-cursor-text="Xem">
+                            <figure>
+                                <a href="{% url 'blogs:blog_detail' blog.slug %}" class="image-anime">
+                                    {% if blog.image %}
+                                        {% if blog.image.url %}
+                                            <img src="{{ blog.image.url }}" alt="{{ blog.name }}">
+                                        {% else %}
+                                            <img src="{{ blog.image }}" alt="{{ blog.name }}">
+                                        {% endif %}
+                                    {% else %}
+                                        <img src="{% static 'images/no-image.png' %}" alt="No image">
+                                    {% endif %}
+                                </a>
+                            </figure>
+                        </div>
+                        <!-- Post Featured Image End -->
+
+                        <!-- post Item Body Start -->
+                        <div class="post-item-body">
+                            <!-- Post Item Content Start -->
+                            <div class="post-item-content">
+                                <h3><a href="{% url 'blogs:blog_detail' blog.slug %}">{{ blog.name }}</a></h3>
+                                <div style="font-size:0.98rem; color:#888; margin-bottom:6px;">
+                                    <i class="fa-regular fa-calendar"></i> {{ blog.publish_time|date:'d/m/Y' }}
+                            </div>
+                                <p>{{ blog.intro|truncatewords:30 }}</p>
+                            </div>
+                            <!-- Post Item Content End -->
+
+                            <!-- Post Readmore Button Start-->
+                            <div class="post-readmore-btn">
+                                <a href="{% url 'blogs:blog_detail' blog.slug %}">Tìm hiểu thêm</a>
+                            </div>
+                            <!-- Post Readmore Button End-->
+                        </div>
+                        <!-- post Item Body End -->
+                    </div>
+                    <!-- Blog Item End -->
+                </div>
+                {% endfor %}
+
+                <div class="col-lg-12">
+                    <div class="page-pagination wow fadeInUp" data-wow-delay="0.5s">
+                        <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                                <li><a href="?page={{ page_obj.previous_page_number }}"><i class="fa-solid fa-arrow-left-long"></i></a></li>
+                            {% endif %}
+                            {% for num in page_obj.paginator.page_range %}
+                                {% if page_obj.number == num %}
+                                    <li class="active"><a href="#">{{ num }}</a></li>
+                                {% else %}
+                                    <li><a href="?page={{ num }}">{{ num }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li><a href="?page={{ page_obj.next_page_number }}"><i class="fa-solid fa-arrow-right-long"></i></a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Blog End -->
+    {% include "includes/appointment.html" %}
+
+    <style>
+    /* Thêm hoặc chỉnh sửa đoạn này để giảm khoảng cách giữa title và danh sách bài viết */
+    .blog-title-section, .page-title, .section-title {
+      margin-bottom: 1.0rem !important;
+    }
+    .blog-list-section, .blog-list, .blog-list-wrapper {
+      margin-top: 0 !important;
+    }
+    </style>
+{% endblock %}
